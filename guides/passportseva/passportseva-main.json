@@ -336,9 +336,9 @@
               "actionType": "point_and_click",
               "target": {
                 "id": null,
-                "css": "select.locatePskBoxShape1, select",
+                "css": "div.FeeCalculator select.locatePskBoxShape1, select.locatePskBoxShape1",
                 "textMatch": null,
-                "relativeTo": null
+                "relativeTo": "p.locatePskSelect"
               },
               "messages": {
                 "en": {
@@ -473,9 +473,9 @@
               "actionType": "point_and_click",
               "target": {
                 "id": null,
-                "css": "select.locatePskBoxShape, select",
+                "css": "div.locatePskBox select.locatePskBoxShape, select.locatePskBoxShape",
                 "textMatch": null,
-                "relativeTo": null
+                "relativeTo": "p.locatePskSelect"
               },
               "messages": {
                 "en": {
@@ -545,9 +545,9 @@
               "order": 1,
               "actionType": "point_and_click",
               "target": {
-                "id": "formBasicEmail",
-                "css": "input#formBasicEmail, input[placeholder*='file number']",
-                "textMatch": null,
+                "id": null,
+                "css": "button.checkAppointmentButton",
+                "textMatch": "Track Application Status",
                 "relativeTo": null
               },
               "messages": {
@@ -598,8 +598,8 @@
                 }
               },
               "stepDoneTrigger": {
-                "type": "focus",
-                "selector": "input#formBasicEmail"
+                "type": "click",
+                "selector": "button.checkAppointmentButton"
               }
             }
           ]
