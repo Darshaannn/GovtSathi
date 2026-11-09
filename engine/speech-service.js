@@ -126,16 +126,30 @@
     }
 
     getRateMultiplier() {
+      let base = 1.0;
+      // Default rate about 0.95 for English to keep a calm, gentle pace
+      if (this.currentLang === 'en') {
+        base = 0.95;
+      }
+
       switch (this.currentSpeed) {
-        case 'slow': return 0.85;
-        case 'fast': return 1.2;
+        case 'slow': return +(base * 0.85).toFixed(2);
+        case 'fast': return +(base * 1.25).toFixed(2);
         case 'normal':
-        default: return 1.0;
+        default: return base;
       }
     }
 
     /**
      * Returns installed voices matching language ranked by quality:
+     * For English:
+     * 1. en-IN female natural/neural/online (e.g. Neerja, Heera, Veena, Google India English, etc.)
+     * 2. Other en-IN voices
+     * 3. Other English female natural/neural voices (en-GB/en-US, etc.)
+     * 4. Other natural/neural voices
+     * 5. The rest of matching English voices
+     *
+     * For other languages:
      * 1. Exact locale match (e.g. hi-IN over hi)
      * 2. Natural / Neural / Online in name
      * 3. Prefix locale match
@@ -149,12 +163,54 @@
       const targetLocale = (langMeta ? langMeta.ttsLocale : langCode).toLowerCase();
       const prefix = langCode.toLowerCase();
 
+      if (prefix === 'en') {
+        // Specialised high-priority ranking for English (calm Indian-English female voice)
+        const enVoices = voices.filter(v => {
+          const vLang = (v.lang || '').toLowerCase().replace(/_/g, '-');
+          return vLang.startsWith('en');
+        });
+
+        const femaleNames = ['neerja', 'heera', 'veena', 'ananya', 'kavya', 'priya', 'aditi', 'zira', 'aria', 'jenny', 'sonia', 'samantha', 'victoria'];
+        const isFemaleOrNaturalName = (name) => {
+          const n = name.toLowerCase();
+          return femaleNames.some(fn => n.includes(fn)) || n.includes('female') || n.includes('woman');
+        };
+
+        return enVoices.sort((a, b) => {
+          const score = (v) => {
+            let s = 0;
+            const vLang = (v.lang || '').toLowerCase().replace(/_/g, '-');
+            const vName = (v.name || '').toLowerCase();
+            const isIndian = vLang === 'en-in' || vName.includes('india') || vName.includes('indian') || vName.includes('en-in');
+            const isNatural = vName.includes('natural') || vName.includes('neural') || vName.includes('online') || !v.localService;
+            const isFemale = isFemaleOrNaturalName(vName);
+
+            // Tier 1: en-IN female natural/neural/online (e.g. Neerja, Heera, Veena, Google India English)
+            if (isIndian && isFemale && isNatural) s += 1000;
+            else if (isIndian && (isFemale || vName.includes('google') || vName.includes('microsoft'))) s += 700;
+            else if (isIndian && isNatural) s += 600;
+            else if (isIndian) s += 500; // Other en-IN voices
+            else if (isFemale && isNatural) s += 300; // Other English female natural
+            else if (isNatural) s += 200; // Other English natural
+            else if (isFemale) s += 100; // Other English female
+            else s += 50;
+
+            if (vName.includes('neerja')) s += 400; // Neerja is top choice for calm Indian English
+            else if (vName.includes('heera') || vName.includes('veena')) s += 300;
+            if (vName.includes('natural') || vName.includes('neural')) s += 100;
+            if (vName.includes('india english')) s += 250;
+            return s;
+          };
+          return score(b) - score(a);
+        });
+      }
+
       const matched = voices.filter(v => {
         const vLang = (v.lang || '').toLowerCase().replace(/_/g, '-');
         return vLang === targetLocale || vLang.startsWith(prefix);
       });
 
-      // Score and rank
+      // Score and rank for non-English languages
       return matched.sort((a, b) => {
         const score = (voice) => {
           let s = 0;
@@ -198,13 +254,28 @@
 
       this.stopSpeaking();
 
-      // 1. If step has pre-recorded audio for this language, play it
+      // 1. If step has pre-recorded audio for this language, try playing it first
       if (audioOptions && audioOptions.audioUrl) {
-        this._playAudioFile(audioOptions.audioUrl);
-        return;
+        let fullAudioUrl = audioOptions.audioUrl;
+        if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.getURL) {
+          if (!fullAudioUrl.startsWith('http') && !fullAudioUrl.startsWith('blob:') && !fullAudioUrl.startsWith('data:')) {
+            fullAudioUrl = chrome.runtime.getURL(audioOptions.audioUrl);
+          }
+        }
+
+        const played = this._playAudioFile(fullAudioUrl, () => {
+          // On audio playback error (file missing or load failure), silently fallback to TTS
+          this._speakTTS(text);
+        });
+
+        if (played) return;
       }
 
       // 2. Fall back to SpeechSynthesis
+      this._speakTTS(text);
+    }
+
+    _speakTTS(text) {
       if (!('speechSynthesis' in window)) {
         if (this.onNoVoiceAvailable) this.onNoVoiceAvailable(this.currentLang);
         return;
@@ -238,7 +309,8 @@
       utterance.lang = langMeta ? langMeta.ttsLocale : 'en-IN';
       utterance.voice = chosenVoice;
       utterance.rate = this.getRateMultiplier();
-      utterance.pitch = 1.0;
+      // Calm, warm, slightly relaxed pitch (0.98 for calm human cadence in English)
+      utterance.pitch = (this.currentLang === 'en') ? 0.98 : 1.0;
 
       utterance.onstart = () => {
         if (this.onSpeakingChange) this.onSpeakingChange(true);
@@ -253,7 +325,7 @@
       window.speechSynthesis.speak(utterance);
     }
 
-    _playAudioFile(url) {
+    _playAudioFile(url, onErrorFallback) {
       try {
         const audio = new Audio(url);
         this.currentAudio = audio;
@@ -269,13 +341,23 @@
         audio.onerror = () => {
           if (this.onSpeakingChange) this.onSpeakingChange(false);
           this.currentAudio = null;
+          if (onErrorFallback) onErrorFallback();
         };
 
-        audio.play().catch(() => {
-          if (this.onSpeakingChange) this.onSpeakingChange(false);
-        });
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            if (this.onSpeakingChange) this.onSpeakingChange(false);
+            this.currentAudio = null;
+            if (onErrorFallback) onErrorFallback();
+          });
+        }
+        return true;
       } catch (err) {
         if (this.onSpeakingChange) this.onSpeakingChange(false);
+        this.currentAudio = null;
+        if (onErrorFallback) onErrorFallback();
+        return false;
       }
     }
 

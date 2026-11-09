@@ -11,19 +11,20 @@ GovGuide is a privacy-first, lightweight Google Chrome extension (Manifest V3). 
 2. [Key Features & Upgrades](#-key-features--upgrades)
 3. [Supported Languages & Review Process](#-supported-languages--review-process)
 4. [Voice Engine & Speech Quality](#-voice-engine--speech-quality)
-5. [How It Works (Architecture)](#-how-it-works-architecture)
-6. [Current Support & Verified Flows](#-current-support--verified-flows)
-7. [Privacy & Safety Guarantees](#-privacy--safety-guarantees)
-8. [How to Install (Load Unpacked in Chrome)](#-how-to-install-load-unpacked-in-chrome)
-9. [How to Run and Use It](#-how-to-run-and-use-it)
-   - [Option A: Try the Built-In Offline Demo Portal (Recommended first!)](#option-a-try-the-built-in-offline-demo-portal-recommended-first)
-   - [Option B: Use on the Live Parivahan Portal](#option-b-use-on-the-live-parivahan-portal)
-10. [Controls & On-Screen UI Guide](#-controls--on-screen-ui-guide)
-11. [Project File Structure](#-project-file-structure)
-12. [How to Add a New Language (Translation Guide)](#-how-to-add-a-new-language-translation-guide)
-13. [How to Add New Portal Guides (For Contributors)](#-how-to-add-new-portal-guides-for-contributors)
-14. [Troubleshooting & FAQ](#-troubleshooting--faq)
-15. [Disclaimer](#-disclaimer)
+5. [Generating the English Voice (Developer Tool)](#-generating-the-english-voice-developer-tool)
+6. [How It Works (Architecture)](#-how-it-works-architecture)
+7. [Current Support & Verified Flows](#-current-support--verified-flows)
+8. [Privacy & Safety Guarantees](#-privacy--safety-guarantees)
+9. [How to Install (Load Unpacked in Chrome)](#-how-to-install-load-unpacked-in-chrome)
+10. [How to Run and Use It](#-how-to-run-and-use-it)
+    - [Option A: Try the Built-In Offline Demo Portal (Recommended first!)](#option-a-try-the-built-in-offline-demo-portal-recommended-first)
+    - [Option B: Use on the Live Parivahan Portal](#option-b-use-on-the-live-parivahan-portal)
+11. [Controls & On-Screen UI Guide](#-controls--on-screen-ui-guide)
+12. [Project File Structure](#-project-file-structure)
+13. [How to Add a New Language (Translation Guide)](#-how-to-add-a-new-language-translation-guide)
+14. [How to Add New Portal Guides (For Contributors)](#-how-to-add-new-portal-guides-for-contributors)
+15. [Troubleshooting & FAQ](#-troubleshooting--faq)
+16. [Disclaimer](#-disclaimer)
 
 ---
 
@@ -112,6 +113,65 @@ If a language sounds robotic or is missing on your device:
   1. Open **Settings** &rarr; **System** &rarr; **Languages & Input** &rarr; **Text-to-speech output**.
   2. Tap the settings gear next to *Speech Services by Google* &rarr; **Install voice data**.
   3. Select your language and download the high-quality voice pack.
+
+---
+
+## 🎙️ Generating the English Voice (Developer Tool)
+
+GovGuide includes a standalone developer CLI tool in `tools/generate-audio.js` to generate calm, young, human-sounding Indian-English voiceover audio using Cloud Neural TTS.
+
+### How it works
+1. Reads `guides/parivahan/sarathi-ll.json` and pulls the dedicated `spoken` script field for each step.
+2. Formats natural SSML with soft pauses, relaxed tempo (`rate="-5%"` / `0.95x`), and calm pitch.
+3. Synthesizes MP3 files into `assets/audio/en/<stepId>.mp3`.
+4. Automatically updates each step's `audio.en` path in `sarathi-ll.json`.
+5. At runtime, the GovGuide engine plays these pre-recorded files first. If an audio file is missing or blocked, it silently falls back to the browser's ranked TTS voice with zero console errors.
+
+### Character Count & Free-Tier Estimate
+- **Total Spoken Characters:** **1,398 characters** (across all 10 Delhi Learner's Licence steps).
+- **Free-Tier Limits:**
+  - **Azure Cognitive Speech:** 500,000 characters/month free (1,398 characters uses **0.28%** of monthly free quota).
+  - **Google Cloud TTS:** 1,000,000 characters/month free for Neural2 voices (1,398 characters uses **0.14%**).
+  - **ElevenLabs:** 10,000 characters/month free tier (uses ~14%).
+
+### Choosing a Provider & Running the Generator
+
+> [!IMPORTANT]
+> API keys must **only** be passed via environment variables. Never commit or hardcode keys. The `tools/` folder is excluded from extension packaging and git.
+
+#### Option 1: Microsoft Azure Neural TTS (Recommended: Neerja)
+Azure Neural's `en-IN-NeerjaNeural` voice delivers the highest quality, warmest conversational Indian-English woman tone with calm expressiveness:
+```powershell
+# 1. Set your environment variables
+$env:AZURE_SPEECH_KEY="your-azure-speech-key"
+$env:AZURE_SPEECH_REGION="centralindia" # or eastus
+
+# 2. Preview text and character count without calling the API:
+node tools/generate-audio.js --dry-run
+
+# 3. Generate the MP3 files:
+node tools/generate-audio.js --provider=azure
+
+# (Optional) Re-generate and overwrite existing files:
+node tools/generate-audio.js --provider=azure --force
+```
+
+#### Option 2: Google Cloud Text-to-Speech (`en-IN-Neural2-A`)
+```powershell
+$env:GOOGLE_TTS_API_KEY="your-google-tts-key"
+node tools/generate-audio.js --provider=google
+```
+
+#### Option 3: ElevenLabs (Optional)
+```powershell
+$env:ELEVENLABS_API_KEY="your-elevenlabs-key"
+node tools/generate-audio.js --provider=elevenlabs
+```
+
+#### Commercial Licensing & Rights
+- **Azure Cognitive Speech:** Standard Azure pay-as-you-go or free F0 tiers grant commercial usage rights for synthesized audio files in your applications.
+- **Google Cloud TTS:** Audio generated via Google Cloud TTS API carries full commercial rights under standard Google Cloud terms of service.
+- **ElevenLabs:** Verify your plan tier; commercial use requires a paid starter tier or above under ElevenLabs licensing.
 
 ---
 

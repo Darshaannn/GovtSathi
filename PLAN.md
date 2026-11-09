@@ -55,3 +55,4 @@
 - `guides/parivahan/sarathi-ll.json`: Complete translations for all 11 languages across all pages/steps.
 - `manifest.json`: Ensure new script files are included in content script and web accessible resources.
 - `README.md`, `TODO.md`, `TEST-PHASE-1.md`, `TEST-PHASE-2.md`.
+

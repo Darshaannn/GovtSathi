@@ -1,25 +1,35 @@
-# GovGuide Upgrade TODO List
+# GovGuide English Voice & Spoken Script Upgrade TODO
 
-- [x] 1. Read current code; write short plan to PLAN.md.
-- [x] 2. Implement Upgrades A, B, and C:
-  - [x] C. Central Languages Definition & Translations (`engine/languages.js`, `guides/parivahan/sarathi-ll.json`, `manifest.json`).
-  - [x] A. UI Polish & Shadow DOM Styling (`engine/shadow-dom.js`, `engine/speech-bubble.js`, `engine/mascot-ui.js`, `engine/highlighter.js`).
-  - [x] B. Voice Engine Improvements (`engine/speech-service.js`, `engine/step-runner.js`, `popup/popup.html`, `popup/popup.css`, `popup/popup.js`).
-- [x] 3. TEST PHASE 1 (Offline verification suite):
-  - Check all 11 languages for every guide step and UI string (no blank or undefined).
-  - Verify English fallback works.
-  - Verify layout responsiveness (360px & desktop, long Tamil/Malayalam strings).
-  - Verify bubble never covers target element.
-  - Spotlight alignment on scroll/resize and click-through.
-  - Single mascot mount.
-  - Voice picker and fallback when no voice exists.
-  - Mute/repeat/speed/text-size controls persist.
-  - Keyboard focus & accessibility.
-  - Dark mode & prefers-reduced-motion.
-  - Privacy grep (`.value` lookups).
-  - Save results to TEST-PHASE-1.md.
-- [x] 4. TEST PHASE 2 (Live read-only test):
-  - Walk Delhi flow in Chromium with loaded extension (English, Hindi, and 2 new languages).
-  - Document results and screenshots in TEST-PHASE-2.md.
-- [x] 5. Fix any failures and verify.
-- [x] 6. Update README.md with voice quality, OS voice install instructions, language contribution guide, and final summary report.
+- [x] 1. Update Voice Ranking in `engine/speech-service.js` & Popup hint in `popup/popup.js` / `popup/popup.html`:
+  - [x] Rank English voices: en-IN female natural/neural/online first (Neerja, Heera, Veena, Google India English, etc.), then other en-IN, then other English female natural voices, then the rest.
+  - [x] Set default rate ~0.95 and slightly warm/calm pitch (~1.0 or 0.95) for English. Keep user speed control multiplier.
+  - [x] In `popup/popup.js` / `popup/popup.html`, display active voice name and a polite install hint if no en-IN voice is found.
+- [x] 2. Guide Schema & Spoken Script Field:
+  - [x] Support optional `spoken` text in `step.messages[lang]` (and `step.messages.en.spoken`).
+  - [x] In `engine/step-runner.js`, resolve message: if `spoken` is present, use it for audio/TTS; keep `bubble` text clean and unchanged.
+  - [x] Add conversational, calm, Indian-English female style "spoken" script to EVERY English step in `guides/parivahan/sarathi-ll.json`.
+  - [x] Include natural pauses, gentle warm phrasing ("okay, so", "just", "now"), light human hesitations ("uh", "hmm") on ~1 in 4 steps (never on sensitive/critical steps like documents, Aadhaar, OTP, fees).
+  - [x] Preserve official portal terms ("Apply for Learner Licence", "Continue", etc.) exactly. Do not alter other 10 languages.
+- [x] 3. Audio Generator Dev Tool (`tools/generate-audio.js`):
+  - [x] Create `tools/generate-audio.js` supporting Azure Neural TTS (`en-IN-NeerjaNeural`), Google Cloud TTS (`en-IN`), and optional ElevenLabs.
+  - [x] Use SSML for pauses, calm rate, pitch.
+  - [x] Support `--dry-run` to print text & character count without calling APIs.
+  - [x] Skip existing files unless `--force` is provided.
+  - [x] Automatically update `step.audio.en` relative path in guide JSON when generated.
+  - [x] Read API keys strictly from env vars (`AZURE_SPEECH_KEY`, `GOOGLE_APPLICATION_CREDENTIALS` / `GOOGLE_TTS_API_KEY`, `ELEVENLABS_API_KEY`).
+  - [x] Exclude `tools/` and `assets/audio/` appropriately (`tools/` in `.gitignore` and excluded from extension packaging; `assets/*` in web_accessible_resources for playback).
+- [x] 4. Engine Audio Playback & Graceful Fallback:
+  - [x] If `step.audio[lang]` (or `.en`) is present and file exists/loads: play via `Audio(chrome.runtime.getURL(...))`, apply `playbackRate`, trigger speaking animation, handle mute/repeat.
+  - [x] If audio fails to load or is missing: silently fall back to ranked browser TTS without console errors.
+  - [x] If TTS has no voice: show polite text-only notice.
+- [x] 5. Offline Verification & Tests (`TEST-PHASE-3.md`):
+  - [x] Test voice ranking with mocked voice lists (en-IN female natural first, fallback paths, no en-IN voice).
+  - [x] Test audio playback vs missing audio fallback to TTS vs audio error handling.
+  - [x] Test spoken field fallback to speech/bubble.
+  - [x] Test generator `--dry-run` output and verify character count calculation.
+  - [x] Privacy grep: 0 form `.value` reads, 0 runtime network calls in extension/engine/popup.
+  - [x] No API keys or secrets in codebase.
+  - [x] Re-run Delhi walk offline harness in English to guarantee zero regression.
+- [x] 6. Documentation:
+  - [x] Update `README.md` with "Generating the English voice" section (providers, env vars, commands, commercial license terms, character count estimate).
+- [x] 7. Final Report.

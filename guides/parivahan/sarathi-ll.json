@@ -74,7 +74,8 @@
               "messages": {
                 "en": {
                   "speech": "Please select your State from this dropdown menu to view services.",
-                  "bubble": "Select your state from this dropdown. The portal will automatically load services for your state."
+                  "bubble": "Select your state from this dropdown. The portal will automatically load services for your state.",
+                  "spoken": "Okay, so to get started, please select your state from this dropdown menu. Once you choose Delhi, the portal will open up your state services."
                 },
                 "hi": {
                   "speech": "सेवाएं देखने के लिए कृपया इस ड्रॉपडाउन मेनू से अपना राज्य चुनें।",
@@ -133,6 +134,9 @@
                 "ml": "നിങ്ങളുടെ സംസ്ഥാനം തിരഞ്ഞെടുക്കുന്നതിന് പേജിന്റെ മധ്യഭാഗത്തുള്ള 'Select State Name' ഡ്രോപ്പ്ഡൗൺ ബോക്സ് കാണുക.",
                 "pa": "ਆਪਣਾ ਰਾਜ ਚੁਣਨ ਲਈ ਪੰਨੇ ਦੇ ਵਿਚਕਾਰ 'Select State Name' ਡ੍ਰੌਪਡਾਉਨ ਬਾਕਸ ਦੇਖੋ।",
                 "or": "ଆପଣଙ୍କ ରାଜ୍ୟ ଚୟନ କରିବାକୁ ପୃଷ୍ଠାର ମଝିରେ ଥିବା 'Select State Name' ଡ୍ରପଡାଉନ୍ ବାକ୍ସ ଦେଖନ୍ତୁ।"
+              },
+              "audio": {
+                "en": "assets/audio/en/step_01_select_state.mp3"
               }
             }
           ]
@@ -160,7 +164,8 @@
               "messages": {
                 "en": {
                   "speech": "An information popup about Contactless Licence Services is displayed. Click the cross button to close it.",
-                  "bubble": "This popup announces contactless online services. Click the 'x' button in the top corner to close this dialog."
+                  "bubble": "This popup announces contactless online services. Click the 'x' button in the top corner to close this dialog.",
+                  "spoken": "Alright, now there is a small notice popup on the screen about contactless services. Just click the cross icon in the corner to close it."
                 },
                 "hi": {
                   "speech": "कॉन्टैक्टलेस लाइसेंस सेवाओं के बारे में एक सूचना पॉपअप दिख रहा है। इसे बंद करने के लिए क्रॉस बटन पर क्लिक करें।",
@@ -207,7 +212,10 @@
                 "type": "click",
                 "selector": "#contactless_statepopup button.close"
               },
-              "fallback": null
+              "fallback": null,
+              "audio": {
+                "en": "assets/audio/en/step_02_dismiss_popup.mp3"
+              }
             }
           ]
         },
@@ -233,7 +241,8 @@
               "messages": {
                 "en": {
                   "speech": "Click on 'Apply for Learner Licence' to start a new application.",
-                  "bubble": "Click the 'Apply for Learner Licence' card to proceed with the online application workflow."
+                  "bubble": "Click the 'Apply for Learner Licence' card to proceed with the online application workflow.",
+                  "spoken": "Now, uh, look right here under Driving Licence services, and click on Apply for Learner Licence to begin your application."
                 },
                 "hi": {
                   "speech": "नया आवेदन शुरू करने के लिए 'Apply for Learner Licence' पर क्लिक करें।",
@@ -292,6 +301,9 @@
                 "ml": "'Apply for Learner Licence' എന്ന ശീർഷകമുള്ള സർവീസ് കാർഡോ മെനു ലിങ്കോ കണ്ടെത്തി അതിൽ ക്ലിക്ക് ചെയ്യുക.",
                 "pa": "'Apply for Learner Licence' ਸਿਰਲੇਖ ਵਾਲਾ ਸੇਵਾ ਕਾਰਡ ਜਾਂ ਮੀਨੂ ਲਿੰਕ ਲੱਭੋ ਅਤੇ ਉਸ 'ਤੇ ਕਲਿੱਕ ਕਰੋ।",
                 "or": "'Apply for Learner Licence' ଶୀର୍ଷକ ଥିବା ସେବା କାର୍ଡ ବା ମେନୁ ଲିଙ୍କ୍ ଖୋଜି ତାହା ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ।"
+              },
+              "audio": {
+                "en": "assets/audio/en/step_03_click_apply_ll.mp3"
               }
             }
           ]
@@ -318,7 +330,8 @@
               "messages": {
                 "en": {
                   "speech": "Read the application stages displayed on this page, then click the Continue button at the bottom.",
-                  "bubble": "These are the official application stages (Fill details, upload documents, upload signature, fee payment). Click 'Continue' to proceed."
+                  "bubble": "These are the official application stages (Fill details, upload documents, upload signature, fee payment). Click 'Continue' to proceed.",
+                  "spoken": "Okay, so these are the five application stages you will go through. Just take a quick look, and then click the Continue button at the bottom."
                 },
                 "hi": {
                   "speech": "इस पृष्ठ पर दिखाए गए आवेदन चरणों को पढ़ें, फिर नीचे दिए गए Continue बटन पर क्लिक करें।",
@@ -377,6 +390,9 @@
                 "ml": "നിർദ്ദേശ പേജിന്റെ താഴേക്ക് സ്ക്രോൾ ചെയ്ത് 'Continue' ബട്ടണിൽ ക്ലിക്ക് ചെയ്യുക.",
                 "pa": "ਹਦਾਇਤਾਂ ਵਾਲੇ ਪੰਨੇ ਦੇ ਹੇਠਾਂ ਸਕ੍ਰੌਲ ਕਰੋ ਅਤੇ 'Continue' ਬਟਨ 'ਤੇ ਕਲਿੱਕ ਕਰੋ।",
                 "or": "ନିର୍ଦ୍ଦେଶନାମା ପୃଷ୍ଠାର ତଳକୁ ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ ଏବଂ 'Continue' ବଟନ୍ ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ।"
+              },
+              "audio": {
+                "en": "assets/audio/en/step_04_review_instructions_and_continue.mp3"
               }
             }
           ]
@@ -398,7 +414,8 @@
               "messages": {
                 "en": {
                   "speech": "The Category dropdown is set to General by default. If you do not belong to a special category, leave it as it is.",
-                  "bubble": "The applicant category defaults to 'General'. If you do not belong to a special category (like Divyang or Ex-Servicemen), simply leave this as it is."
+                  "bubble": "The applicant category defaults to 'General'. If you do not belong to a special category (like Divyang or Ex-Servicemen), simply leave this as it is.",
+                  "spoken": "Here, the category is already set to General. Hmm, unless you belong to a special category like defence or divyang, just leave it as it is."
                 },
                 "hi": {
                   "speech": "श्रेणी ड्रॉपडाउन डिफ़ॉल्ट रूप से General पर सेट है। यदि आप किसी विशेष श्रेणी में नहीं हैं, तो इसे ऐसे ही रहने दें।",
@@ -444,7 +461,10 @@
               "stepDoneTrigger": {
                 "type": "manual_next"
               },
-              "fallback": null
+              "fallback": null,
+              "audio": {
+                "en": "assets/audio/en/step_05_select_category.mp3"
+              }
             },
             {
               "stepId": "step_06_select_licence_status",
@@ -454,7 +474,8 @@
               "messages": {
                 "en": {
                   "speech": "The option 'Applicant does not hold any Driving or Learner licence' is already selected by default. Leave it as it is if you hold no licence.",
-                  "bubble": "The first option ('Applicant does not hold any Driving/Learner licence issued in India') is selected by default. If you have no existing licence, leave it selected as it is."
+                  "bubble": "The first option ('Applicant does not hold any Driving/Learner licence issued in India') is selected by default. If you have no existing licence, leave it selected as it is.",
+                  "spoken": "Next, the option saying you do not hold any existing licence is already selected by default. If this is your first licence, keep it as is."
                 },
                 "hi": {
                   "speech": "'Applicant does not hold any Driving or Learner licence' विकल्प पहले से चुना हुआ है। यदि आपके पास कोई लाइसेंस नहीं है, तो इसे ऐसे ही रहने दें।",
@@ -500,7 +521,10 @@
               "stepDoneTrigger": {
                 "type": "manual_next"
               },
-              "fallback": null
+              "fallback": null,
+              "audio": {
+                "en": "assets/audio/en/step_06_select_licence_status.mp3"
+              }
             },
             {
               "stepId": "step_07_explain_submission_boundary",
@@ -515,7 +539,8 @@
               "messages": {
                 "en": {
                   "speech": "Click Submit to proceed to the verification step. We never read or store OTPs or form details.",
-                  "bubble": "Click 'Submit' to proceed. The next screen offers Aadhaar OTP verification or physical RTO testing. GovGuide explains each step safely."
+                  "bubble": "Click 'Submit' to proceed. The next screen offers Aadhaar OTP verification or physical RTO testing. GovGuide explains each step safely.",
+                  "spoken": "Now go ahead and click Submit to move forward. Remember, GovGuide is completely private and never reads any of your personal details."
                 },
                 "hi": {
                   "speech": "सत्यापन चरण पर जाने के लिए Submit पर क्लिक करें। हम कभी भी ओटीपी या फ़ॉर्म विवरण नहीं पढ़ते हैं।",
@@ -574,6 +599,9 @@
                 "ml": "തിരിച്ചറിയൽ പരിശോധന ഘട്ടത്തിലേക്ക് തുടരാൻ 'Submit' ബട്ടണിൽ ക്ലിക്ക് ചെയ്യുക.",
                 "pa": "ਪਛਾਣ ਤਸਦੀਕ ਪੜਾਅ 'ਤੇ ਅੱਗੇ ਵਧਣ ਲਈ 'Submit' ਬਟਨ 'ਤੇ ਕਲਿੱਕ ਕਰੋ।",
                 "or": "ପରିଚୟ ଯାଞ୍ଚ ପର୍ଯ୍ୟାୟକୁ ଆଗକୁ ବଢ଼ିବା ପାଇଁ 'Submit' ବଟନ୍ ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ।"
+              },
+              "audio": {
+                "en": "assets/audio/en/step_07_explain_submission_boundary.mp3"
               }
             }
           ]
@@ -595,7 +623,8 @@
               "messages": {
                 "en": {
                   "speech": "Choose your verification method. With Aadhaar OTP authentication, you can take the online test from home without visiting an RTO.",
-                  "bubble": "Official rule: 'Applicants using Aadhaar number can take the test from home and obtain e-Learner license instantly. Applicants without Aadhaar must visit the RTO office physically.' Choose your option and proceed."
+                  "bubble": "Official rule: 'Applicants using Aadhaar number can take the test from home and obtain e-Learner license instantly. Applicants without Aadhaar must visit the RTO office physically.' Choose your option and proceed.",
+                  "spoken": "Okay, here you can choose how to verify. If you authenticate with your Aadhaar, you can take the online learner test from home without visiting an RTO office."
                 },
                 "hi": {
                   "speech": "अपनी सत्यापन विधि चुनें। आधार ओटीपी सत्यापन के साथ, आप आरटीओ गए बिना घर से ऑनलाइन परीक्षा दे सकते हैं।",
@@ -641,7 +670,10 @@
               "stepDoneTrigger": {
                 "type": "manual_next"
               },
-              "fallback": null
+              "fallback": null,
+              "audio": {
+                "en": "assets/audio/en/step_08_unverified_choose_ekyc_method.mp3"
+              }
             },
             {
               "stepId": "step_09_unverified_explain_aadhaar_otp",
@@ -651,7 +683,8 @@
               "messages": {
                 "en": {
                   "speech": "Enter the OTP sent to your Aadhaar-registered mobile number. Important: Never share your OTP with anyone.",
-                  "bubble": "Safety Notice: GovGuide never reads, captures, or transmits OTPs or form inputs. Enter your OTP directly in the portal field."
+                  "bubble": "Safety Notice: GovGuide never reads, captures, or transmits OTPs or form inputs. Enter your OTP directly in the portal field.",
+                  "spoken": "Now you will receive an OTP on your mobile number registered with Aadhaar. Enter it carefully, and never share this OTP with anyone."
                 },
                 "hi": {
                   "speech": "अपने आधार-पंजीकृत मोबाइल नंबर पर भेजा गया ओटीपी दर्ज करें। महत्वपूर्ण: अपना ओटीपी कभी किसी के साथ साझा न करें।",
@@ -697,7 +730,10 @@
               "stepDoneTrigger": {
                 "type": "manual_next"
               },
-              "fallback": null
+              "fallback": null,
+              "audio": {
+                "en": "assets/audio/en/step_09_unverified_explain_aadhaar_otp.mp3"
+              }
             }
           ]
         },
@@ -718,7 +754,8 @@
               "messages": {
                 "en": {
                   "speech": "The subsequent official stages are: 1. Fill personal details, 2. Upload documents, 3. Upload photo and signature, 4. Fee payment, and 5. Road Safety tutorial and test.",
-                  "bubble": "Official Application Roadmap (from Parivahan):\n1. Fill Application Details\n2. Upload Documents\n3. Upload Photo & Signature (eKYC requires only signature)\n4. Fee Payment & Status Verification\n5. Slot Booking (if without Aadhaar)\n6. Online LL Test."
+                  "bubble": "Official Application Roadmap (from Parivahan):\n1. Fill Application Details\n2. Upload Documents\n3. Upload Photo & Signature (eKYC requires only signature)\n4. Fee Payment & Status Verification\n5. Slot Booking (if without Aadhaar)\n6. Online LL Test.",
+                  "spoken": "Great, so the rest of the process involves filling your details, uploading your signature, paying the government fee, and watching the road safety tutorial."
                 },
                 "hi": {
                   "speech": "इसके बाद के आधिकारिक चरण हैं: 1. व्यक्तिगत विवरण भरें, 2. दस्तावेज अपलोड करें, 3. फोटो और हस्ताक्षर अपलोड करें, 4. शुल्क भुगतान, और 5. सड़क सुरक्षा ट्यूटोरियल और परीक्षा।",
@@ -764,7 +801,10 @@
               "stepDoneTrigger": {
                 "type": "manual_next"
               },
-              "fallback": null
+              "fallback": null,
+              "audio": {
+                "en": "assets/audio/en/step_10_unverified_explain_remaining_stages.mp3"
+              }
             }
           ]
         }

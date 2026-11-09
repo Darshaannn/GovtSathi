@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const langSelect = document.getElementById('languageSelect');
   const voiceSelect = document.getElementById('voiceSelect');
+  const voiceHintBox = document.getElementById('voiceHintBox');
   const testVoiceBtn = document.getElementById('testVoiceBtn');
   const speedSelect = document.getElementById('speedSelect');
   const textSizeSelect = document.getElementById('textSizeSelect');
@@ -44,27 +45,78 @@ document.addEventListener('DOMContentLoaded', async () => {
   function populateVoices(langCode) {
     if (!('speechSynthesis' in window)) {
       voiceSelect.innerHTML = '<option value="">SpeechSynthesis not available</option>';
+      if (voiceHintBox) voiceHintBox.style.display = 'none';
       return;
     }
 
     const voices = window.speechSynthesis.getVoices() || [];
     const langPrefix = langCode.toLowerCase();
 
-    // Match exact locale or prefix
-    const matched = voices.filter(v => {
-      const vLang = (v.lang || '').toLowerCase().replace(/_/g, '-');
-      return vLang.startsWith(langPrefix);
-    });
+    // Check if we have specialized engine ranking logic or match exact
+    let matched = [];
+    if (langPrefix === 'en') {
+      const femaleNames = ['neerja', 'heera', 'veena', 'ananya', 'kavya', 'priya', 'aditi', 'zira', 'aria', 'jenny', 'sonia', 'samantha', 'victoria'];
+      const isFemale = (n) => femaleNames.some(fn => n.toLowerCase().includes(fn)) || n.toLowerCase().includes('female');
 
-    voiceSelect.innerHTML = '<option value="">Default Recommended Voice</option>';
+      matched = voices.filter(v => (v.lang || '').toLowerCase().replace(/_/g, '-').startsWith('en')).sort((a, b) => {
+        const score = (v) => {
+          let s = 0;
+          const vLang = (v.lang || '').toLowerCase().replace(/_/g, '-');
+          const vName = (v.name || '').toLowerCase();
+          const isIndian = vLang === 'en-in' || vName.includes('india') || vName.includes('indian');
+          const isNatural = vName.includes('natural') || vName.includes('neural') || vName.includes('online') || !v.localService;
+          const fem = isFemale(vName);
+
+          if (isIndian && fem && isNatural) s += 1000;
+          else if (isIndian && (fem || vName.includes('google') || vName.includes('microsoft'))) s += 700;
+          else if (isIndian && isNatural) s += 600;
+          else if (isIndian) s += 500;
+          else if (fem && isNatural) s += 300;
+          else if (isNatural) s += 200;
+          else if (fem) s += 100;
+          else s += 50;
+
+          if (vName.includes('neerja') || vName.includes('heera') || vName.includes('veena')) s += 300;
+          return s;
+        };
+        return score(b) - score(a);
+      });
+
+      // Show hint if no Indian English voice is detected
+      const hasIndianVoice = matched.some(v => {
+        const vLang = (v.lang || '').toLowerCase().replace(/_/g, '-');
+        const vName = (v.name || '').toLowerCase();
+        return vLang === 'en-in' || vName.includes('india');
+      });
+
+      if (voiceHintBox) {
+        voiceHintBox.style.display = hasIndianVoice ? 'none' : 'block';
+      }
+    } else {
+      if (voiceHintBox) voiceHintBox.style.display = 'none';
+      matched = voices.filter(v => {
+        const vLang = (v.lang || '').toLowerCase().replace(/_/g, '-');
+        return vLang.startsWith(langPrefix);
+      });
+    }
+
+    voiceSelect.innerHTML = '';
     if (matched.length === 0) {
       const opt = document.createElement('option');
       opt.value = '';
-      opt.textContent = `No installed voice for (${langCode})`;
+      opt.textContent = `No voice available for (${langCode})`;
       opt.disabled = true;
+      opt.selected = true;
       voiceSelect.appendChild(opt);
       return;
     }
+
+    // Default Recommended option
+    const recOpt = document.createElement('option');
+    recOpt.value = '';
+    const topVoiceName = matched[0] ? matched[0].name : 'Default';
+    recOpt.textContent = `Recommended: ${topVoiceName}`;
+    voiceSelect.appendChild(recOpt);
 
     matched.forEach(v => {
       const opt = document.createElement('option');

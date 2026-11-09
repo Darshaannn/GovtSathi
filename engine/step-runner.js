@@ -259,17 +259,17 @@
         return { speech: '', bubble: '' };
       }
       const langMsg = messagesObj[this.currentLanguage];
-      if (langMsg && (langMsg.bubble || langMsg.speech)) {
+      if (langMsg && (langMsg.bubble || langMsg.spoken || langMsg.speech)) {
         return {
-          speech: langMsg.speech || langMsg.bubble || '',
-          bubble: langMsg.bubble || langMsg.speech || ''
+          speech: langMsg.spoken || langMsg.speech || langMsg.bubble || '',
+          bubble: langMsg.bubble || langMsg.spoken || langMsg.speech || ''
         };
       }
       // Fallback to English
       const enMsg = messagesObj.en || {};
       return {
-        speech: enMsg.speech || enMsg.bubble || '',
-        bubble: enMsg.bubble || enMsg.speech || ''
+        speech: enMsg.spoken || enMsg.speech || enMsg.bubble || '',
+        bubble: enMsg.bubble || enMsg.spoken || enMsg.speech || ''
       };
     }
 
