@@ -1,0 +1,22 @@
+{
+  "sites": [
+    {
+      "id": "parivahan-sarathi-ll",
+      "name": "Parivahan Sarathi - Learner's Licence (Verified for Delhi)",
+      "guidePath": "guides/parivahan/sarathi-ll.json",
+      "verifiedFor": "Delhi",
+      "urlPatterns": [
+        "*://sarathi.parivahan.gov.in/*",
+        "*://parivahan.gov.in/*"
+      ]
+    },
+    {
+      "id": "demo-portal",
+      "name": "GovGuide Demo Portal",
+      "guidePath": "demo/demo-guide.json",
+      "urlPatterns": [
+        "*/demo/demo.html*"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "GovGuide - Indian Government Website Guide",
+  "version": "1.0.0",
+  "description": "A friendly visual guide that helps citizens navigate Indian government portals step by step.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "GovGuide Helper"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://sarathi.parivahan.gov.in/*",
+        "*://parivahan.gov.in/*"
+      ],
+      "all_frames": true,
+      "js": [
+        "assets/mascot-config.js",
+        "engine/shadow-dom.js",
+        "engine/highlighter.js",
+        "engine/element-finder.js",
+        "engine/speech-service.js",
+        "engine/speech-bubble.js",
+        "engine/mascot-ui.js",
+        "engine/step-runner.js",
+        "engine/content-script.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*",
+        "guides/*",
+        "engine/*",
+        "icons/*",
+        "demo/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

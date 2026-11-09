@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovGuide Demo Portal</title>
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="demo-header">
+    <div class="demo-container nav-content">
+      <div class="portal-brand">
+        <span class="emblem-mock">🏛️</span>
+        <div>
+          <h1>Citizen Portal Test Harness</h1>
+          <p class="subtitle">Ministry of Citizen Services & Digital Verification (Mock)</p>
+        </div>
+      </div>
+      <div class="portal-badge">Pilot Environment</div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="demo-container">
+    <div class="portal-hero">
+      <h2>Online Citizen Services</h2>
+      <p>Use this mock portal to test the GovGuide extension: mascot movements, element spotlight, bilingual speech, voice intent matching, and graceful fallbacks.</p>
+    </div>
+
+    <!-- Step 1 Target -->
+    <section class="card">
+      <div class="card-header">
+        <h3>1. State Selection</h3>
+      </div>
+      <div class="card-body">
+        <label for="demoStateSelect" class="form-label">Select Your State / राज्य का चयन करें:</label>
+        <select id="demoStateSelect" class="form-select">
+          <option value="" disabled selected>-- Select State --</option>
+          <option value="DL">Delhi</option>
+          <option value="MH">Maharashtra</option>
+          <option value="KA">Karnataka</option>
+          <option value="GJ">Gujarat</option>
+        </select>
+        <p class="hint-text">Step 1 will spotlight this dropdown and listen for a 'change' event.</p>
+      </div>
+    </section>
+
+    <!-- Step 2 Target -->
+    <section class="services-grid">
+      <div class="service-card" id="demoApplyCard" tabindex="0">
+        <div class="service-icon">📄</div>
+        <h4>New Certificate Application</h4>
+        <p>Apply for a fresh digital citizen identity or learner document.</p>
+        <button class="btn-action">Start Application</button>
+      </div>
+
+      <div class="service-card" tabindex="0">
+        <div class="service-icon">🔍</div>
+        <h4>Track Application Status</h4>
+        <p>Check the live status of your submitted requests.</p>
+        <button class="btn-action" style="background:#64748b;">Check Status</button>
+      </div>
+    </section>
+
+    <!-- Step 4 Target -->
+    <section class="card" id="demoFormSection">
+      <div class="card-header">
+        <h3>2. Verification & Submission</h3>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="form-label">Document Identification / Test Field:</label>
+          <input type="text" class="form-input" placeholder="Enter placeholder ID (GovGuide will NEVER read this)" />
+        </div>
+        <button id="demoSubmitBtn" class="btn-primary">Proceed to Verification</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="demo-footer">
+    <p>GovGuide Test Environment &bull; Purely local mock page</p>
+  </footer>
+
+  <!--
+    Extension content scripts do not automatically run on chrome-extension:// extension pages.
+    Therefore, demo.html loads the engine scripts directly in classic order so it works seamlessly!
+  -->
+  <script src="../assets/mascot-config.js"></script>
+  <script src="../engine/shadow-dom.js"></script>
+  <script src="../engine/highlighter.js"></script>
+  <script src="../engine/element-finder.js"></script>
+  <script src="../engine/speech-service.js"></script>
+  <script src="../engine/speech-bubble.js"></script>
+  <script src="../engine/mascot-ui.js"></script>
+  <script src="../engine/step-runner.js"></script>
+  <script src="../engine/content-script.js"></script>
+</body>
+</html>

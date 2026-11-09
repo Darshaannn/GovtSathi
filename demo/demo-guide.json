@@ -1,0 +1,149 @@
+{
+  "id": "demo-portal",
+  "name": "GovGuide Demo Portal",
+  "description": "Mock government portal designed to test all engine features locally.",
+  "urlPatterns": [
+    "*/demo/demo.html*"
+  ],
+  "defaultLanguage": "en",
+  "supportedLanguages": ["en", "hi"],
+  "flows": [
+    {
+      "flowId": "apply_certificate",
+      "name": {
+        "en": "Apply for Citizen Certificate",
+        "hi": "नागरिक प्रमाण पत्र के लिए आवेदन करें"
+      },
+      "keywords": [
+        "certificate", "apply", "citizen", "licence", "license",
+        "प्रमाण पत्र", "आवेदन", "नागरिक", "लाइसेंस"
+      ],
+      "pages": [
+        {
+          "pageId": "demo_home",
+          "match": {
+            "urlRegex": "demo\\.html",
+            "pageTitle": "GovGuide Demo Portal"
+          },
+          "steps": [
+            {
+              "stepId": "demo_step_state",
+              "order": 1,
+              "actionType": "point_and_click",
+              "target": {
+                "id": "demoStateSelect",
+                "css": "#demoStateSelect",
+                "textMatch": "Select Your State",
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "speech": "Welcome! Please select your state from this dropdown.",
+                  "bubble": "Welcome! Select your state from this dropdown menu to load available services."
+                },
+                "hi": {
+                  "speech": "स्वागत है! कृपया इस ड्रॉपडाउन से अपना राज्य चुनें।",
+                  "bubble": "स्वागत है! उपलब्ध सेवाओं को देखने के लिए इस ड्रॉपडाउन से अपना राज्य चुनें।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "change",
+                "selector": "#demoStateSelect"
+              },
+              "fallback": {
+                "en": "I could not find the State selector. Look for 'Select State' on the page.",
+                "hi": "मुझे राज्य चयनकर्ता नहीं मिला। पृष्ठ पर 'Select State' खोजें।"
+              }
+            },
+            {
+              "stepId": "demo_step_card",
+              "order": 2,
+              "actionType": "point_and_click",
+              "target": {
+                "id": "demoApplyCard",
+                "css": "#demoApplyCard",
+                "textMatch": "New Certificate Application",
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "speech": "Great. Now click on New Certificate Application card.",
+                  "bubble": "Click on the 'New Certificate Application' card to start your process."
+                },
+                "hi": {
+                  "speech": "बहुत बढ़िया। अब नया प्रमाण पत्र आवेदन कार्ड पर क्लिक करें।",
+                  "bubble": "अपनी प्रक्रिया शुरू करने के लिए 'New Certificate Application' कार्ड पर क्लिक करें।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "click",
+                "selector": "#demoApplyCard"
+              },
+              "fallback": {
+                "en": "Look for the card titled 'New Certificate Application' on screen.",
+                "hi": "स्क्रीन पर 'New Certificate Application' शीर्षक वाला कार्ड खोजें।"
+              }
+            },
+            {
+              "stepId": "demo_step_missing_fallback_test",
+              "order": 3,
+              "actionType": "point_and_click",
+              "target": {
+                "id": "non_existent_element_id_for_testing",
+                "css": ".non-existent-selector-test",
+                "textMatch": "This element does not exist anywhere",
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "speech": "Testing fallback handling. If an item is missing, I guide you gently.",
+                  "bubble": "This step tests missing element resilience. Notice how no error is thrown!"
+                },
+                "hi": {
+                  "speech": "फ़ॉलबैक हैंडलिंग का परीक्षण। यदि कोई तत्व गायब है, तो मैं सुरक्षित मार्गदर्शन करता हूँ।",
+                  "bubble": "यह कदम लचीलेपन का परीक्षण करता है। ध्यान दें कि कोई त्रुटि नहीं आई है!"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "manual_next"
+              },
+              "fallback": {
+                "en": "I couldn't locate this specific element on the page, but don't worry! Please review the page section or press Next.",
+                "hi": "मुझे पृष्ठ पर यह विशेष तत्व नहीं मिला, लेकिन चिंता न करें! कृपया पृष्ठ अनुभाग देखें या Next दबाएं।"
+              }
+            },
+            {
+              "stepId": "demo_step_submit_btn",
+              "order": 4,
+              "actionType": "point_and_click",
+              "target": {
+                "id": "demoSubmitBtn",
+                "css": "#demoSubmitBtn",
+                "textMatch": "Proceed to Verification",
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "speech": "Finally, click Proceed to Verification to complete this demo walkthrough.",
+                  "bubble": "Click 'Proceed to Verification'. Notice: Your inputs are never inspected or recorded."
+                },
+                "hi": {
+                  "speech": "अंत में, इस डेमो वॉकथ्रू को पूरा करने के लिए Proceed to Verification पर क्लिक करें।",
+                  "bubble": "'Proceed to Verification' पर क्लिक करें। ध्यान दें: आपके इनपुट कभी नहीं पढ़े जाते हैं।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "click",
+                "selector": "#demoSubmitBtn"
+              },
+              "fallback": {
+                "en": "Click the Proceed button at the bottom of the section.",
+                "hi": "अनुभाग के नीचे दिए गए Proceed बटन पर क्लिक करें।"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

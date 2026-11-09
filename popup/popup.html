@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovGuide Helper</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="popup-header">
+      <div class="brand">
+        <span class="brand-icon">🧭</span>
+        <span class="brand-title">GovGuide</span>
+      </div>
+      <span class="status-badge" id="guideStatus">Ready</span>
+    </div>
+
+    <div class="active-site-info" id="siteInfoBox">
+      <div class="site-label">Current Page Guide:</div>
+      <div class="site-name" id="currentSiteName">Looking for portal...</div>
+    </div>
+
+    <div class="section">
+      <label for="languageSelect" class="section-label">Guide Language / भाषा</label>
+      <select id="languageSelect" class="lang-picker">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी (Hindi)</option>
+      </select>
+    </div>
+
+    <div class="privacy-card">
+      <div class="privacy-title">🔒 Privacy Promise</div>
+      <p class="privacy-text">
+        GovGuide runs locally in your browser. We <strong>never</strong> inspect, read, log, or store Aadhaar numbers, passwords, OTPs, or any form inputs.
+      </p>
+    </div>
+
+    <div class="popup-footer">
+      <span class="independent-badge">Not a government product</span>
+      <a href="../demo/demo.html" target="_blank" class="demo-link">Open Test Portal</a>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+{
+  "id": "parivahan-sarathi-ll",
+  "name": "Parivahan Sarathi - Learner's Licence (Verified for Delhi)",
+  "description": "Step-by-step guidance for applying for a new Learner's Licence on Parivahan Sarathi (verified for Delhi).",
+  "verifiedFor": "Delhi",
+  "urlPatterns": [
+    "*://sarathi.parivahan.gov.in/*",
+    "*://parivahan.gov.in/*"
+  ],
+  "defaultLanguage": "en",
+  "supportedLanguages": ["en", "hi"],
+  "flows": [
+    {
+      "flowId": "apply_ll",
+      "name": {
+        "en": "Apply for New Learner's Licence",
+        "hi": "नए शिक्षार्थी (लर्नर) लाइसेंस के लिए आवेदन करें"
+      },
+      "keywords": [
+        "learner", "licence", "license", "apply", "ll", "new", "learning",
+        "लर्नर", "लाइसेंस", "आवेदन", "नया", "शिक्षार्थी"
+      ],
+      "pages": [
+        {
+          "pageId": "screen_01_state_selection",
+          "captureRef": "captures/parivahan/01-state-selection.html",
+          "match": {
+            "urlRegex": "sarathi\\.parivahan\\.gov\\.in/sarathiservice/(stateSelection\\.do)?(\\?.*)?$",
+            "pageTitle": "Home",
+            "elementPresence": "select#stfNameId, select[name='stName']"
+          },
+          "steps": [
+            {
+              "stepId": "step_01_select_state",
+              "order": 1,
+              "actionType": "point_and_click",
+              "target": {
+                "id": "stfNameId",
+                "css": "select#stfNameId, select[name='stName']",
+                "textMatch": "Select State Name",
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "speech": "Please select your State from this dropdown menu to view services.",
+                  "bubble": "Select your state from this dropdown. The portal will automatically load services for your state."
+                },
+                "hi": {
+                  "speech": "सेवाएं देखने के लिए कृपया इस ड्रॉपडाउन मेनू से अपना राज्य चुनें।",
+                  "bubble": "इस ड्रॉपडाउन से अपना राज्य चुनें। पोर्टल आपके राज्य की सेवाओं को स्वचालित रूप से लोड करेगा।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "change",
+                "selector": "#stfNameId"
+              },
+              "fallback": {
+                "en": "Look for the 'Select State Name' dropdown box in the center of the page to choose your state.",
+                "hi": "अपना राज्य चुनने के लिए पृष्ठ के बीच में 'Select State Name' ड्रॉपडाउन बॉक्स देखें।"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "screen_02_contactless_popup",
+          "captureRef": "captures/parivahan/02-contactless-modal.html",
+          "match": {
+            "urlRegex": "sarathi\\.parivahan\\.gov\\.in/sarathiservice/stateSelectBean\\.do.*",
+            "pageTitle": "Home",
+            "elementPresence": "#contactless_statepopup.in, #contactless_statepopup[style*='display: block']"
+          },
+          "steps": [
+            {
+              "stepId": "step_02_dismiss_popup",
+              "order": 1,
+              "actionType": "point_and_click",
+              "skipIfNotFound": true,
+              "target": {
+                "id": null,
+                "css": "#contactless_statepopup button.close, #contactless_statepopup .popupclose",
+                "textMatch": null,
+                "relativeTo": "#contactless_statepopup"
+              },
+              "messages": {
+                "en": {
+                  "speech": "An information popup about Contactless Licence Services is displayed. Click the cross button to close it.",
+                  "bubble": "This popup announces contactless online services. Click the 'x' button in the top corner to close this dialog."
+                },
+                "hi": {
+                  "speech": "कॉन्टैक्टलेस लाइसेंस सेवाओं के बारे में एक सूचना पॉपअप दिख रहा है। इसे बंद करने के लिए क्रॉस बटन पर क्लिक करें।",
+                  "bubble": "यह पॉपअप संपर्क रहित ऑनलाइन सेवाओं की जानकारी देता है। इस संवाद को बंद करने के लिए कोने में 'x' बटन पर क्लिक करें।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "click",
+                "selector": "#contactless_statepopup button.close"
+              },
+              "fallback": null
+            }
+          ]
+        },
+        {
+          "pageId": "screen_03_state_dashboard",
+          "captureRef": "captures/parivahan/03-state-dashboard.html",
+          "match": {
+            "urlRegex": "sarathi\\.parivahan\\.gov\\.in/sarathiservice/stateSelectBean\\.do.*",
+            "pageTitle": "Home",
+            "elementPresence": ".icon-list a[href='newLLDet.do'], a[href='newLLDet.do']:has(.zoomin)"
+          },
+          "steps": [
+            {
+              "stepId": "step_03_click_apply_ll",
+              "order": 1,
+              "actionType": "point_and_click",
+              "target": {
+                "id": null,
+                "css": "a[href='newLLDet.do']:has(.zoomin), a[href='newLLDet.do']",
+                "textMatch": "Apply for Learner Licence",
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "speech": "Click on 'Apply for Learner Licence' to start a new application.",
+                  "bubble": "Click the 'Apply for Learner Licence' card to proceed with the online application workflow."
+                },
+                "hi": {
+                  "speech": "नया आवेदन शुरू करने के लिए 'Apply for Learner Licence' पर क्लिक करें।",
+                  "bubble": "ऑनलाइन आवेदन प्रक्रिया शुरू करने के लिए 'Apply for Learner Licence' कार्ड पर क्लिक करें।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "click",
+                "selector": "a[href='newLLDet.do']"
+              },
+              "fallback": {
+                "en": "Find and click the service card or menu link titled 'Apply for Learner Licence'.",
+                "hi": "'Apply for Learner Licence' शीर्षक वाले सेवा कार्ड या मेनू लिंक को ढूंढकर उस पर क्लिक करें।"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "screen_04_instructions",
+          "captureRef": "captures/parivahan/04-instructions-page.html",
+          "match": {
+            "urlRegex": "sarathi\\.parivahan\\.gov\\.in/sarathiservice/newLLDet\\.do.*",
+            "pageTitle": "New LL Stage Details",
+            "elementPresence": "input[value='Continue'], input[onclick*='newLL_displayNewLL.do']"
+          },
+          "steps": [
+            {
+              "stepId": "step_04_review_instructions_and_continue",
+              "order": 1,
+              "actionType": "point_and_click",
+              "target": {
+                "id": null,
+                "css": "input[type='button'][value='Continue'], input[onclick*='newLL_displayNewLL.do']",
+                "textMatch": "Continue",
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "speech": "Read the application stages displayed on this page, then click the Continue button at the bottom.",
+                  "bubble": "These are the official application stages (Fill details, upload documents, upload signature, fee payment). Click 'Continue' to proceed."
+                },
+                "hi": {
+                  "speech": "इस पृष्ठ पर दिखाए गए आवेदन चरणों को पढ़ें, फिर नीचे दिए गए Continue बटन पर क्लिक करें।",
+                  "bubble": "ये आधिकारिक आवेदन चरण हैं (विवरण भरें, दस्तावेज अपलोड करें, हस्ताक्षर, शुल्क भुगतान)। आगे बढ़ने के लिए 'Continue' पर क्लिक करें।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "click",
+                "selector": "input[value='Continue']"
+              },
+              "fallback": {
+                "en": "Scroll down to the bottom of the instructions page and click the 'Continue' button.",
+                "hi": "निर्देश पृष्ठ के नीचे तक स्क्रॉल करें और 'Continue' बटन पर क्लिक करें।"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "screen_05_applicant_category",
+          "captureRef": "captures/parivahan/05-applicant-category.html",
+          "match": {
+            "urlRegex": "sarathi\\.parivahan\\.gov\\.in/sarathiservice/newLL_displayNewLL\\.do.*",
+            "pageTitle": "New Licence",
+            "elementPresence": "form#newLL_execute, input#submitOfNewLL"
+          },
+          "steps": [
+            {
+              "stepId": "step_05_select_category",
+              "order": 1,
+              "actionType": "explain_only",
+              "target": null,
+              "messages": {
+                "en": {
+                  "speech": "The Category dropdown is set to General by default. If you do not belong to a special category, leave it as it is.",
+                  "bubble": "The applicant category defaults to 'General'. If you do not belong to a special category (like Divyang or Ex-Servicemen), simply leave this as it is."
+                },
+                "hi": {
+                  "speech": "श्रेणी ड्रॉपडाउन डिफ़ॉल्ट रूप से General पर सेट है। यदि आप किसी विशेष श्रेणी में नहीं हैं, तो इसे ऐसे ही रहने दें।",
+                  "bubble": "आवेदक श्रेणी डिफ़ॉल्ट रूप से 'General' पर सेट है। यदि आप किसी विशेष श्रेणी (जैसे दिव्यांग या भूतपूर्व सैनिक) से नहीं हैं, तो इसे ऐसे ही रहने दें।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "manual_next"
+              },
+              "fallback": null
+            },
+            {
+              "stepId": "step_06_select_licence_status",
+              "order": 2,
+              "actionType": "explain_only",
+              "target": null,
+              "messages": {
+                "en": {
+                  "speech": "The option 'Applicant does not hold any Driving or Learner licence' is already selected by default. Leave it as it is if you hold no licence.",
+                  "bubble": "The first option ('Applicant does not hold any Driving/Learner licence issued in India') is selected by default. If you have no existing licence, leave it selected as it is."
+                },
+                "hi": {
+                  "speech": "'Applicant does not hold any Driving or Learner licence' विकल्प पहले से चुना हुआ है। यदि आपके पास कोई लाइसेंस नहीं है, तो इसे ऐसे ही रहने दें।",
+                  "bubble": "पहला विकल्प ('Applicant does not hold any Driving/Learner licence issued in India') पहले से चुना हुआ है। यदि आपके पास कोई मौजूदा लाइसेंस नहीं है, तो इसे ऐसे ही रहने दें।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "manual_next"
+              },
+              "fallback": null
+            },
+            {
+              "stepId": "step_07_explain_submission_boundary",
+              "order": 3,
+              "actionType": "point_and_click",
+              "target": {
+                "id": "submitOfNewLL",
+                "css": "input#submitOfNewLL[type='submit'], input[name='newll.submit']",
+                "textMatch": "Submit",
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "speech": "Click Submit to proceed to the verification step. We never read or store OTPs or form details.",
+                  "bubble": "Click 'Submit' to proceed. The next screen offers Aadhaar OTP verification or physical RTO testing. GovGuide explains each step safely."
+                },
+                "hi": {
+                  "speech": "सत्यापन चरण पर जाने के लिए Submit पर क्लिक करें। हम कभी भी ओटीपी या फ़ॉर्म विवरण नहीं पढ़ते हैं।",
+                  "bubble": "आगे बढ़ने के लिए 'Submit' पर क्लिक करें। अगला पृष्ठ आधार ओटीपी या आरटीओ परीक्षा का विकल्प प्रदान करता है।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "click",
+                "selector": "#submitOfNewLL"
+              },
+              "fallback": {
+                "en": "Click the 'Submit' button to continue to the identity verification stage.",
+                "hi": "पहचान सत्यापन चरण पर आगे बढ़ने के लिए 'Submit' बटन पर क्लिक करें।"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "screen_06_unverified_ekyc_selection",
+          "captureRef": "unverified",
+          "match": {
+            "urlRegex": "sarathi\\.parivahan\\.gov\\.in/sarathiservice/(newLL_execute|contactlessekyc)\\.do.*",
+            "pageTitle": null,
+            "elementPresence": null
+          },
+          "steps": [
+            {
+              "stepId": "step_08_unverified_choose_ekyc_method",
+              "order": 1,
+              "actionType": "explain_only",
+              "target": null,
+              "messages": {
+                "en": {
+                  "speech": "Choose your verification method. With Aadhaar OTP authentication, you can take the online test from home without visiting an RTO.",
+                  "bubble": "Official rule: 'Applicants using Aadhaar number can take the test from home and obtain e-Learner license instantly. Applicants without Aadhaar must visit the RTO office physically.' Choose your option and proceed."
+                },
+                "hi": {
+                  "speech": "अपनी सत्यापन विधि चुनें। आधार ओटीपी सत्यापन के साथ, आप आरटीओ गए बिना घर से ऑनलाइन परीक्षा दे सकते हैं।",
+                  "bubble": "आधिकारिक नियम: 'आधार नंबर का उपयोग करने वाले आवेदक घर से परीक्षा दे सकते हैं और तुरंत ई-लर्नर लाइसेंस प्राप्त कर सकते हैं। बिना आधार वाले आवेदकों को आरटीओ कार्यालय जाना होगा।' अपना विकल्प चुनें और आगे बढ़ें।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "manual_next"
+              },
+              "fallback": null
+            },
+            {
+              "stepId": "step_09_unverified_explain_aadhaar_otp",
+              "order": 2,
+              "actionType": "explain_only",
+              "target": null,
+              "messages": {
+                "en": {
+                  "speech": "Enter the OTP sent to your Aadhaar-registered mobile number. Important: Never share your OTP with anyone.",
+                  "bubble": "Safety Notice: GovGuide never reads, captures, or transmits OTPs or form inputs. Enter your OTP directly in the portal field."
+                },
+                "hi": {
+                  "speech": "अपने आधार-पंजीकृत मोबाइल नंबर पर भेजा गया ओटीपी दर्ज करें। महत्वपूर्ण: अपना ओटीपी कभी किसी के साथ साझा न करें।",
+                  "bubble": "सुरक्षा सूचना: GovGuide कभी भी ओटीपी या फ़ॉर्म इनपुट को नहीं पढ़ता, कैप्चर या ट्रांसमिट नहीं करता है। अपना ओटीपी सीधे पोर्टल फ़ील्ड में दर्ज करें।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "manual_next"
+              },
+              "fallback": null
+            }
+          ]
+        },
+        {
+          "pageId": "screen_07_unverified_stages_overview",
+          "captureRef": "unverified",
+          "match": {
+            "urlRegex": "sarathi\\.parivahan\\.gov\\.in/sarathiservice/.*appl.*",
+            "pageTitle": null,
+            "elementPresence": null
+          },
+          "steps": [
+            {
+              "stepId": "step_10_unverified_explain_remaining_stages",
+              "order": 1,
+              "actionType": "explain_only",
+              "target": null,
+              "messages": {
+                "en": {
+                  "speech": "The subsequent official stages are: 1. Fill personal details, 2. Upload documents, 3. Upload photo and signature, 4. Fee payment, and 5. Road Safety tutorial and test.",
+                  "bubble": "Official Application Roadmap (from Parivahan):\n1. Fill Application Details\n2. Upload Documents\n3. Upload Photo & Signature (eKYC requires only signature)\n4. Fee Payment & Status Verification\n5. Slot Booking (if without Aadhaar)\n6. Online LL Test."
+                },
+                "hi": {
+                  "speech": "इसके बाद के आधिकारिक चरण हैं: 1. व्यक्तिगत विवरण भरें, 2. दस्तावेज अपलोड करें, 3. फोटो और हस्ताक्षर अपलोड करें, 4. शुल्क भुगतान, और 5. सड़क सुरक्षा ट्यूटोरियल और परीक्षा।",
+                  "bubble": "आधिकारिक आवेदन रूपरेखा (परिवहन अनुसार):\n1. आवेदन विवरण भरें\n2. दस्तावेज अपलोड करें\n3. फोटो और हस्ताक्षर अपलोड करें (eKYC में केवल हस्ताक्षर)\n4. शुल्क भुगतान और स्थिति सत्यापन\n5. स्लॉट बुकिंग (बिना आधार के)\n6. ऑनलाइन लर्नर टेस्ट।"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "manual_next"
+              },
+              "fallback": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
