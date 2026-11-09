@@ -1,0 +1,738 @@
+{
+  "id": "passportseva-main",
+  "name": "Passport Seva - Citizen Services & Application Guide",
+  "description": "Step-by-step guidance for citizens navigating the official Passport Seva portal (Fee Calculator, Document Advisor, PSK Locator, Tracking, and New Application).",
+  "verifiedFor": "Public Information, Fee Calculator, Document Advisor, PSK Locator & Account Boundaries",
+  "urlPatterns": [
+    "*://www.passportindia.gov.in/*",
+    "*://passportindia.gov.in/*",
+    "*://services1.passportindia.gov.in/*"
+  ],
+  "defaultLanguage": "en",
+  "supportedLanguages": [
+    "en",
+    "hi",
+    "mr",
+    "gu",
+    "bn",
+    "ta",
+    "te",
+    "kn",
+    "ml",
+    "pa",
+    "or"
+  ],
+  "flows": [
+    {
+      "flowId": "explore_passport_services",
+      "name": {
+        "en": "Explore Passport Services & Apply",
+        "hi": "पासपोर्ट सेवाएं देखें और आवेदन करें",
+        "mr": "पासपोर्ट सेवा एक्सप्लोर करा आणि अर्ज करा",
+        "gu": "પાસપોર્ટ સેવાઓ જુઓ અને અરજી કરો",
+        "bn": "পাসপোর্ট পরিষেবা অন্বেষণ করুন এবং আবেদন করুন",
+        "ta": "பாஸ்போர்ட் சேவைகளை ஆராய்ந்து விண்ணப்பிக்கவும்",
+        "te": "పాస్‌పోర్ట్ సేవలను అన్వేషించండి మరియు దరఖాస్తు చేయండి",
+        "kn": "ಪಾಸ್‌ಪೋರ್ಟ್ ಸೇವೆಗಳನ್ನು ಅನ್ವೇಷಿಸಿ ಮತ್ತು ಅರ್ಜಿ ಸಲ್ಲಿಸಿ",
+        "ml": "പാസ്പോർട്ട് സേവനങ്ങൾ കണ്ടെത്തുക, അപേക്ഷിക്കുക",
+        "pa": "ਪਾਸਪੋਰਟ ਸੇਵਾਵਾਂ ਦੇਖੋ ਅਤੇ ਅਰਜ਼ੀ ਦਿਓ",
+        "or": "ପାସପୋର୍ଟ ସେବା ଅନ୍ୱେଷଣ କରନ୍ତୁ ଏବଂ ଆବେଦନ କରନ୍ତୁ"
+      },
+      "keywords": [
+        "passport",
+        "seva",
+        "apply",
+        "fee",
+        "advisor",
+        "psk",
+        "track",
+        "login",
+        "register"
+      ],
+      "pages": [
+        {
+          "pageId": "screen_01_advisory_popup",
+          "captureRef": "captures/passportseva/01b-homepage-advisory-popup.html",
+          "match": {
+            "urlRegex": "passportindia\\.gov\\.in/psp/?(\\?.*)?$",
+            "pageTitle": "Passport Seva",
+            "elementPresence": ".homePageModal.modal.show, .homePageModal .btn-close"
+          },
+          "steps": [
+            {
+              "stepId": "step_01_dismiss_advisory",
+              "order": 1,
+              "actionType": "point_and_click",
+              "skipIfNotFound": true,
+              "target": {
+                "id": null,
+                "css": ".homePageModal .btn-close, .homePageModal button[aria-label='Close']",
+                "textMatch": null,
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "spoken": "Alright, there is an advisory notice on the screen. Just click this close button to proceed to the main services.",
+                  "speech": "An advisory popup is displayed on the screen. Click the close button to view the portal.",
+                  "bubble": "This advisory modal contains official notices. Click the 'X' close button to view the Passport Seva portal."
+                },
+                "hi": {
+                  "speech": "स्क्रीन पर एक सलाह (Advisory) पॉपअप दिखाई दे रहा है। पोर्टल देखने के लिए क्लोज़ बटन पर क्लिक करें।",
+                  "bubble": "इस पॉपअप में आधिकारिक सूचनाएं हैं। मुख्य पोर्टल देखने के लिए 'X' क्लोज़ बटन पर क्लिक करें।"
+                },
+                "mr": {
+                  "speech": "स्क्रीनवर एक सूचना पॉपअप दिसत आहे. पोर्टल पाहण्यासाठी क्लोज बटणावर क्लिक करा.",
+                  "bubble": "या पॉपअपमध्ये अधिकृत सूचना आहेत. मुख्य पोर्टल पाहण्यासाठी 'X' बटणावर क्लिक करा."
+                },
+                "gu": {
+                  "speech": "સ્ક્રીન પર એક સલાહ પોપઅપ દેખાય છે. પોર્ટલ જોવા માટે ક્લોઝ બટન પર ક્લિક કરો.",
+                  "bubble": "આ પોપઅપમાં સત્તાવાર સૂચનાઓ છે. મુખ્ય પોર્ટલ જોવા માટે 'X' ક્લોઝ બટન પર ક્લિક કરો."
+                },
+                "bn": {
+                  "speech": "স্ক্রিনে একটি নোটিশ পপআপ প্রদর্শিত হচ্ছে। পোর্টালটি দেখতে বন্ধ করুন বোতামে ক্লিক করুন।",
+                  "bubble": "এই পপআপে অফিসিয়াল বিজ্ঞপ্তি রয়েছে। প্রধান পোর্টাল দেখতে 'X' বোতামে ক্লিক করুন।"
+                },
+                "ta": {
+                  "speech": "திரையில் ஒரு அறிவிப்பு பாப்அப் காட்டப்படுகிறது. போர்ட்டலைப் பார்க்க மூடு பொத்தானைக் கிளிக் செய்யவும்.",
+                  "bubble": "இந்த பாப்அப்பில் அதிகாரப்பூர்வ அறிவிப்புகள் உள்ளன. முக்கிய போர்ட்டலைப் பார்க்க 'X' பொத்தானைக் கிளிக் செய்யவும்."
+                },
+                "te": {
+                  "speech": "స్క్రీన్‌పై సలహా పాపప్ కనిపిస్తోంది. పోర్టల్‌ను వీక్షించడానికి క్లోజ్ బటన్‌ను క్లిక్ చేయండి.",
+                  "bubble": "ఈ పాపప్‌లో అధికారిక నోటీసులు ఉన్నాయి. ప్రధాన పోర్టల్‌ను చూడటానికి 'X' బటన్‌పై క్లిక్ చేయండి."
+                },
+                "kn": {
+                  "speech": "ಪರದೆಯ ಮೇಲೆ ಸೂಚನಾ ಪಾಪ್‌ಅಪ್ ಪ್ರದರ್ಶಿತವಾಗಿದೆ. ಪೋರ್ಟಲ್ ವೀಕ್ಷಿಸಲು ಮುಚ್ಚು ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ.",
+                  "bubble": "ಈ ಪಾಪ್‌ಅಪ್‌ನಲ್ಲಿ ಅಧಿಕೃತ ಸೂಚನೆಗಳಿವೆ. ಮುಖ್ಯ ಪೋರ್ಟಲ್ ನೋಡಲು 'X' ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ."
+                },
+                "ml": {
+                  "speech": "സ്ക്രീനിൽ ഒരു അറിയിപ്പ് പോപ്പ്അപ്പ് കാണാം. പോർട്ടൽ കാണാൻ ക്ലോസ് ബട്ടൺ ക്ലിക്ക് ചെയ്യുക.",
+                  "bubble": "ഈ പോപ്പ്അപ്പിൽ ഔദ്യോഗിക അറിയിപ്പുകളുണ്ട്. പ്രധാന പോർട്ടൽ കാണാൻ 'X' ക്ലിക്ക് ചെയ്യുക."
+                },
+                "pa": {
+                  "speech": "ਸਕ੍ਰੀਨ 'ਤੇ ਇੱਕ ਸੂਚਨਾ ਪੌਪ-ਅੱਪ ਦਿਖਾਈ ਦੇ ਰਿਹਾ ਹੈ। ਪੋਰਟਲ ਦੇਖਣ ਲਈ ਕਲੋਜ਼ ਬਟਨ 'ਤੇ ਕਲਿੱਕ ਕਰੋ।",
+                  "bubble": "ਇਸ ਪੌਪ-ਅੱਪ ਵਿੱਚ ਅਧਿਕਾਰਤ ਨੋਟਿਸ ਹਨ। ਮੁੱਖ ਪੋਰਟਲ ਦੇਖਣ ਲਈ 'X' ਬਟਨ 'ਤੇ ਕਲਿੱਕ ਕਰੋ।"
+                },
+                "or": {
+                  "speech": "ସ୍କ୍ରିନରେ ଏକ ସୂଚନା ପପ୍-ଅପ୍ ଦେଖାଯାଉଛି | ପୋର୍ଟାଲ୍ ଦେଖିବା ପାଇଁ କ୍ଲୋଜ୍ ବଟନ୍ କ୍ଲିକ୍ କରନ୍ତୁ |",
+                  "bubble": "ଏହି ପପ୍-ଅପ୍ ରେ ସରକାରୀ ବିଜ୍ଞପ୍ତି ରହିଛି | ମୁଖ୍ୟ ପୋର୍ଟାଲ୍ ଦେଖିବାକୁ 'X' ବଟନ୍ କ୍ଲିକ୍ କରନ୍ତୁ |"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "click",
+                "selector": ".homePageModal .btn-close, .homePageModal button[aria-label='Close']"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "screen_02_homepage_hub",
+          "captureRef": "captures/passportseva/01-homepage.html",
+          "match": {
+            "urlRegex": "passportindia\\.gov\\.in/psp/?(\\?.*)?$",
+            "pageTitle": "Passport Seva",
+            "elementPresence": ".linksDiv1, .staticHomePageButtons, .staticHomePageButtons1"
+          },
+          "steps": [
+            {
+              "stepId": "step_02_overview_services",
+              "order": 1,
+              "actionType": "point_and_click",
+              "target": {
+                "id": "collasible-nav-dropdown3",
+                "css": "#collasible-nav-dropdown3, a.dropdown-toggle[title='Services']",
+                "textMatch": "Services",
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "spoken": "Okay, so here is the Services menu in the navigation bar. You can click here to find the Fee Calculator, Document Advisory, and PSK Locator.",
+                  "speech": "Click on 'Services' in the navigation bar to access the Fee Calculator, Document Advisory, and Center Locator.",
+                  "bubble": "Click 'Services' in the top menu to view key tools: Fee Calculator, Document Advisory, and Center Locator."
+                },
+                "hi": {
+                  "speech": "शुल्क कैलकुलेटर, दस्तावेज़ सलाहकार और केंद्र लोकेटर देखने के लिए नेविगेशन बार में 'Services' पर क्लिक करें।",
+                  "bubble": "फीस कैलकुलेटर, डॉक्यूमेंट एडवाइजर और सेंटर लोकेटर देखने के लिए ऊपर मेनू में 'Services' पर क्लिक करें।"
+                },
+                "mr": {
+                  "speech": "शुल्क कॅल्क्युलेटर आणि केंद्र लोकेटर पाहण्यासाठी नॅव्हिगेशन बारमधील 'Services' वर क्लिक करा.",
+                  "bubble": "फी कॅल्क्युलेटर आणि डॉक्युमेंट अ‍ॅडव्हायझरी पाहण्यासाठी वरील मेनूमध्ये 'Services' वर क्लिक करा."
+                },
+                "gu": {
+                  "speech": "ફી કેલ્ક્યુલેટર અને કેન્દ્ર લોકેટર ઍક્સેસ કરવા માટે નેવિગેશન બારમાં 'Services' પર ક્લિક કરો.",
+                  "bubble": "ફી કેલ્ક્યુલેટર અને ડોક્યુમેન્ટ એડવાઇઝરી જોવા માટે ટોચના મેનૂમાં 'Services' પર ક્લિક કરો."
+                },
+                "bn": {
+                  "speech": "ফি ক্যালকুলেটর এবং কেন্দ্র লোকেটার অ্যাক্সেস করতে নেভিগেশন বারে 'Services' এ ক্লিক করুন।",
+                  "bubble": "ফি ক্যালকুলেটর এবং ডকুমেন্ট অ্যাডভাইজরি দেখতে শীর্ষ মেনুতে 'Services' এ ক্লিক করুন।"
+                },
+                "ta": {
+                  "speech": "கட்டண கால்குலேட்டர் மற்றும் மைய லொக்கேட்டரை அணுக வழிசெலுத்தல் பட்டியில் 'Services' என்பதைக் கிளிக் செய்யவும்.",
+                  "bubble": "கட்டண கால்குலேட்டர் மற்றும் ஆவண ஆலோசனையைப் பார்க்க மேல் மெனுவில் 'Services' என்பதைக் கிளிக் செய்யவும்."
+                },
+                "te": {
+                  "speech": "ఫీజు కాలిక్యులేటర్ మరియు కేంద్ర లొకేటర్‌ను యాక్సెస్ చేయడానికి నావిగేషన్ బార్‌లో 'Services' పై క్లిక్ చేయండి.",
+                  "bubble": "ఫీజు కాలిక్యులేటర్ మరియు డాక్యుమెంట్ అడ్వైజరీని చూడటానికి ఎగువ మెనూలో 'Services' పై క్లిక్ చేయండి."
+                },
+                "kn": {
+                  "speech": "ಶುಲ್ಕ ಕ್ಯಾಲ್ಕುಲೇಟರ್ ಮತ್ತು ಕೇಂದ್ರ ಲೊಕೇಟರ್ ಅನ್ನು ಪ್ರವೇಶಿಸಲು ನ್ಯಾವಿಗೇಷನ್ ಬಾರ್‌ನಲ್ಲಿ 'Services' ಕ್ಲಿಕ್ ಮಾಡಿ.",
+                  "bubble": "ಶುಲ್ಕ ಕ್ಯಾಲ್ಕುಲೇಟರ್ ಮತ್ತು ಡಾಕ್ಯುಮೆಂಟ್ ಸಲಹೆಗಾರರನ್ನು ನೋಡಲು ಮೇಲಿನ ಮೆನುವಿನಲ್ಲಿ 'Services' ಕ್ಲಿಕ್ ಮಾಡಿ."
+                },
+                "ml": {
+                  "speech": "ഫീസ് കാൽക്കുലേറ്ററും കേന്ദ്ര ലൊക്കേറ്ററും ആക്സസ് ചെയ്യാൻ നാവിഗേഷൻ ബാറിലെ 'Services' ക്ലിക്ക് ചെയ്യുക.",
+                  "bubble": "ഫീസ് കാൽക്കുലേറ്ററും ഡോക്യുമെന്റ് അഡ്വൈസറിയും കാണാൻ മുകളിലെ മെനുവിൽ 'Services' ക്ലിക്ക് ചെയ്യുക."
+                },
+                "pa": {
+                  "speech": "ਫੀਸ ਕੈਲਕੁਲੇਟਰ ਅਤੇ ਕੇਂਦਰ ਲੋਕੇਟਰ ਤੱਕ ਪਹੁੰਚਣ ਲਈ ਨੇਵੀਗੇਸ਼ਨ ਬਾਰ ਵਿੱਚ 'Services' 'ਤੇ ਕਲਿੱਕ ਕਰੋ।",
+                  "bubble": "ਫੀਸ ਕੈਲਕੁਲੇਟਰ ਅਤੇ ਦਸਤਾਵੇਜ਼ ਸਲਾਹਕਾਰ ਦੇਖਣ ਲਈ ਸਿਖਰਲੇ ਮੀਨੂ ਵਿੱਚ 'Services' 'ਤੇ ਕਲਿੱਕ ਕਰੋ।"
+                },
+                "or": {
+                  "speech": "ଫି କାଲକୁଲେଟର ଏବଂ କେନ୍ଦ୍ର ଲୋକେଟର ପାଇଁ ନେଭିଗେସନ୍ ବାରରେ 'Services' କ୍ଲିକ୍ କରନ୍ତୁ |",
+                  "bubble": "ଫି କାଲକୁଲେଟର ଏବଂ ଡକ୍ୟୁମେଣ୍ଟ ପରାମର୍ଶଦାତା ଦେଖିବାକୁ ଶୀର୍ଷ ମେନୁରେ 'Services' କ୍ଲିକ୍ କରନ୍ତୁ |"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "click",
+                "selector": "#collasible-nav-dropdown3, a.dropdown-toggle[title='Services']"
+              }
+            },
+            {
+              "stepId": "step_03_quick_links_apply",
+              "order": 2,
+              "actionType": "point_and_click",
+              "target": {
+                "id": null,
+                "css": ".linksDiv1 .col, p.linksTextName",
+                "textMatch": "Apply For Passport",
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "spoken": "Now, if you want to understand how the passport application process works, click on this card that says Apply For Passport.",
+                  "speech": "Click on 'Apply For Passport' to view the step-by-step application instructions and requirements.",
+                  "bubble": "Click the 'Apply For Passport' card to review official instructions, documents, and application steps."
+                },
+                "hi": {
+                  "speech": "आवेदन प्रक्रिया और दिशानिर्देश देखने के लिए 'Apply For Passport' कार्ड पर क्लिक करें।",
+                  "bubble": "आधिकारिक निर्देश, दस्तावेज और आवेदन चरण देखने के लिए 'Apply For Passport' कार्ड पर क्लिक करें।"
+                },
+                "mr": {
+                  "speech": "अर्ज प्रक्रिया पाहण्यासाठी 'Apply For Passport' कार्डवर क्लिक करा.",
+                  "bubble": "अधिकृत सूचना आणि अर्ज पायऱ्या पाहण्यासाठी 'Apply For Passport' कार्डवर क्लिक करा."
+                },
+                "gu": {
+                  "speech": "અરજી પ્રક્રિયા જોવા માટે 'Apply For Passport' કાર્ડ પર ક્લિક કરો.",
+                  "bubble": "સત્તાવાર સૂચનાઓ અને અરજીના પગલાં જોવા માટે 'Apply For Passport' કાર્ડ પર ક્લિક કરો."
+                },
+                "bn": {
+                  "speech": "আবেদন প্রক্রিয়া দেখতে 'Apply For Passport' কার্ডে ক্লিক করুন।",
+                  "bubble": "অফিসিয়াল নির্দেশাবলী এবং আবেদনের ধাপগুলি পর্যালোচনা করতে 'Apply For Passport' কার্ডে ক্লিক করুন।"
+                },
+                "ta": {
+                  "speech": "விண்ணப்ப செயல்முறையைப் பார்க்க 'Apply For Passport' கார்டைக் கிளிக் செய்யவும்.",
+                  "bubble": "அதிகாரப்பூர்வ வழிமுறைகள் மற்றும் விண்ணப்பப் படிகளைப் பார்க்க 'Apply For Passport' கார்டைக் கிளிக் செய்யவும்."
+                },
+                "te": {
+                  "speech": "దరఖాస్తు ప్రక్రియను చూడటానికి 'Apply For Passport' కార్డ్‌పై క్లిక్ చేయండి.",
+                  "bubble": "అధికారిక సూచనలు మరియు దరఖాస్తు దశలను సమీక్షించడానికి 'Apply For Passport' కార్డ్‌పై క్లిక్ చేయండి."
+                },
+                "kn": {
+                  "speech": "ಅರ್ಜಿ ಪ್ರಕ್ರಿಯೆಯನ್ನು ವೀಕ್ಷಿಸಲು 'Apply For Passport' ಕಾರ್ಡ್ ಕ್ಲಿಕ್ ಮಾಡಿ.",
+                  "bubble": "ಅಧಿಕೃತ ಸೂಚನೆಗಳು ಮತ್ತು ಅರ್ಜಿ ಹಂತಗಳನ್ನು ಪರಿಶೀಲಿಸಲು 'Apply For Passport' ಕಾರ್ಡ್ ಕ್ಲಿಕ್ ಮಾಡಿ."
+                },
+                "ml": {
+                  "speech": "അപേക്ഷാ പ്രക്രിയ കാണാൻ 'Apply For Passport' കാർഡിൽ ക്ലിക്ക് ചെയ്യുക.",
+                  "bubble": "ഔദ്യോഗിക നിർദ്ദേശങ്ങളും അപേക്ഷാ ഘട്ടങ്ങളും കാണാൻ 'Apply For Passport' കാർഡിൽ ക്ലിക്ക് ചെയ്യുക."
+                },
+                "pa": {
+                  "speech": "ਅਰਜ਼ੀ ਪ੍ਰਕਿਰਿਆ ਦੇਖਣ ਲਈ 'Apply For Passport' ਕਾਰਡ 'ਤੇ ਕਲਿੱਕ ਕਰੋ।",
+                  "bubble": "ਅਧਿਕਾਰਤ ਨਿਰਦੇਸ਼ਾਂ ਅਤੇ ਅਰਜ਼ੀ ਦੇ ਕਦਮਾਂ ਦੀ ਸਮੀਖਿਆ ਕਰਨ ਲਈ 'Apply For Passport' ਕਾਰਡ 'ਤੇ ਕਲਿੱਕ ਕਰੋ।"
+                },
+                "or": {
+                  "speech": "ଆବେଦନ ପ୍ରକ୍ରିୟା ଦେଖିବାକୁ 'Apply For Passport' କାର୍ଡ ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ |",
+                  "bubble": "ସରକାରୀ ନିର୍ଦ୍ଦେଶାବଳୀ ଏବଂ ଆବେଦନ ପଦକ୍ଷେପ ଦେଖିବାକୁ 'Apply For Passport' କାର୍ଡ କ୍ଲିକ୍ କରନ୍ତୁ |"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "click",
+                "selector": ".linksDiv1 .col"
+              }
+            },
+            {
+              "stepId": "step_04_register_account_button",
+              "order": 3,
+              "actionType": "point_and_click",
+              "target": {
+                "id": null,
+                "css": ".staticHomePageButtons1, a[href*='registration']",
+                "textMatch": "Register",
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "spoken": "Next, if you are a first-time applicant, click Register in the top right corner to create your official Passport Seva account.",
+                  "speech": "First-time applicants can click on 'Register' to create an account on Passport Seva.",
+                  "bubble": "First-time applicants: Click 'Register' in the top right corner to create your Passport Seva account."
+                },
+                "hi": {
+                  "speech": "यदि आप पहली बार आवेदन कर रहे हैं, तो अपना खाता बनाने के लिए ऊपर दाईं ओर 'Register' पर क्लिक करें।",
+                  "bubble": "पहली बार आवेदक: अपना पासपोर्ट सेवा खाता बनाने के लिए ऊपर दाईं ओर 'Register' पर क्लिक करें।"
+                },
+                "mr": {
+                  "speech": "नवीन अर्जदारांनी आपले खाते तयार करण्यासाठी वर उजव्या कोपऱ्यात 'Register' वर क्लिक करावे.",
+                  "bubble": "प्रथमच अर्जदार: आपले पासपोर्ट सेवा खाते तयार करण्यासाठी वरच्या उजव्या बाजूला 'Register' वर क्लिक करा."
+                },
+                "gu": {
+                  "speech": "નવા અરજદારો પોતાનું એકાઉન્ટ બનાવવા માટે ઉપર જમણી બાજુએ 'Register' પર ક્લિક કરી શકે છે.",
+                  "bubble": "પ્રથમ વખત અરજદારો: તમારું પાસપોર્ટ સેવા એકાઉન્ટ બનાવવા માટે ઉપર જમણી બાજુએ 'Register' પર ક્લિક કરો."
+                },
+                "bn": {
+                  "speech": "নতুন আবেদনকারীরা অ্যাকাউন্ট তৈরি করতে উপরের ডানদিকের কোণায় 'Register' এ ক্লিক করতে পারেন।",
+                  "bubble": "প্রথমবারের আবেদনকারীরা: আপনার পাসপোর্ট সেবা অ্যাকাউন্ট তৈরি করতে উপরের ডানদিকের কোণায় 'Register' এ ক্লিক করুন।"
+                },
+                "ta": {
+                  "speech": "முதல் முறை விண்ணப்பதாரர்கள் கணக்கை உருவாக்க மேல் வலது மூலையில் உள்ள 'Register' என்பதைக் கிளிக் செய்யவும்.",
+                  "bubble": "முதல் முறை விண்ணப்பதாரர்கள்: உங்கள் கணக்கை உருவாக்க மேல் வலது மூலையில் உள்ள 'Register' என்பதைக் கிளிக் செய்யவும்."
+                },
+                "te": {
+                  "speech": "మొదటిసారి దరఖాస్తుదారులు ఖాతాను సృష్టించడానికి ఎగువ కుడి మూలలో ఉన్న 'Register' పై క్లిక్ చేయవచ్చు.",
+                  "bubble": "మొదటిసారి దరఖాస్తుదారులు: మీ పాస్‌పోర్ట్ సేవా ఖాతాను సృష్టించడానికి ఎగువ కుడి మూలలో 'Register' క్లిక్ చేయండి."
+                },
+                "kn": {
+                  "speech": "ಮೊದಲ ಬಾರಿ ಅರ್ಜಿ ಸಲ್ಲಿಸುವವರು ಖಾತೆಯನ್ನು ರಚಿಸಲು ಮೇಲಿನ ಬಲ ಮೂಲೆಯಲ್ಲಿರುವ 'Register' ಕ್ಲಿಕ್ ಮಾಡಿ.",
+                  "bubble": "ಮೊದಲ ಬಾರಿಯ ಅರ್ಜಿದಾರರು: ನಿಮ್ಮ ಖಾತೆಯನ್ನು ರಚಿಸಲು ಮೇಲಿನ ಬಲಭಾಗದಲ್ಲಿರುವ 'Register' ಕ್ಲಿಕ್ ಮಾಡಿ."
+                },
+                "ml": {
+                  "speech": "ആദ്യമായി അപേക്ഷിക്കുന്നവർ അക്കൗണ്ട് സൃഷ്ടിക്കാൻ മുകളിൽ വലതുവശത്തുള്ള 'Register' ക്ലിക്ക് ചെയ്യുക.",
+                  "bubble": "ആദ്യമായി അപേക്ഷിക്കുന്നവർ: അക്കൗണ്ട് സൃഷ്ടിക്കാൻ മുകളിൽ വലതുവശത്തുള്ള 'Register' ക്ലിക്ക് ചെയ്യുക."
+                },
+                "pa": {
+                  "speech": "ਨਵੇਂ ਬਿਨੈਕਾਰ ਖਾਤਾ ਬਣਾਉਣ ਲਈ ਉੱਪਰ ਸੱਜੇ ਕੋਨੇ ਵਿੱਚ 'Register' 'ਤੇ ਕਲਿੱਕ ਕਰ ਸਕਦੇ ਹਨ।",
+                  "bubble": "ਪਹਿਲੀ ਵਾਰ ਬਿਨੈਕਾਰ: ਆਪਣਾ ਪਾਸਪੋਰਟ ਸੇਵਾ ਖਾਤਾ ਬਣਾਉਣ ਲਈ ਉੱਪਰ ਸੱਜੇ ਪਾਸੇ 'Register' 'ਤੇ ਕਲਿੱਕ ਕਰੋ।"
+                },
+                "or": {
+                  "speech": "ନୂତନ ଆବେଦନକାରୀମାନେ ଆକାଉଣ୍ଟ ତିଆରି କରିବା ପାଇଁ ଉପରେ ଡାହାଣ କୋଣରେ 'Register' କ୍ଲିକ୍ କରିପାରିବେ |",
+                  "bubble": "ପ୍ରଥମ ଥର ଆବେଦନକାରୀ: ଆପଣଙ୍କ ପାସପୋର୍ଟ ସେବା ଆକାଉଣ୍ଟ ତିଆରି କରିବାକୁ ଉପରେ ଡାହାଣ ପାର୍ଶ୍ୱରେ 'Register' କ୍ଲିକ୍ କରନ୍ତୁ |"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "click",
+                "selector": ".staticHomePageButtons1, a[href*='registration']"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "screen_03_fee_calculator",
+          "captureRef": "captures/passportseva/02-fee-calculator.html",
+          "match": {
+            "urlRegex": "passportindia\\.gov\\.in/psp/FeeCalculator.*",
+            "pageTitle": "Passport Seva",
+            "elementPresence": ".titleNameValue, select.locatePskBoxShape1, .checkAppointmentButton"
+          },
+          "steps": [
+            {
+              "stepId": "step_05_select_fee_application_type",
+              "order": 1,
+              "actionType": "point_and_click",
+              "target": {
+                "id": null,
+                "css": "select.locatePskBoxShape1, select",
+                "textMatch": null,
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "spoken": "Okay, so this is the official Fee Calculator. Select your application type from this dropdown menu to calculate your passport fee.",
+                  "speech": "Select your application type, such as Passport or PCC, from this dropdown to calculate the exact government fee.",
+                  "bubble": "Select your Application Type from this dropdown (e.g. Passport, PCC, or Surrender Certificate) to view fees."
+                },
+                "hi": {
+                  "speech": "सरकारी शुल्क जानने के लिए इस ड्रॉपडाउन से अपने आवेदन का प्रकार (जैसे पासपोर्ट या PCC) चुनें।",
+                  "bubble": "सटीक सरकारी फीस की गणना करने के लिए इस ड्रॉपडाउन से अपने आवेदन का प्रकार चुनें।"
+                },
+                "mr": {
+                  "speech": "अचूक सरकारी शुल्क तपासण्यासाठी या ड्रॉपडाउनमधून अर्जाचा प्रकार निवडा.",
+                  "bubble": "सरकारी फी तपासण्यासाठी या ड्रॉपडाउनमधून अर्जाचा प्रकार निवडा."
+                },
+                "gu": {
+                  "speech": "ચોક્કસ સરકારી ફી જાણવા માટે આ ડ્રોપડાઉનમાંથી તમારા અરજીનો પ્રકાર પસંદ કરો.",
+                  "bubble": "સરકારી ફીની ગણતરી કરવા માટે આ ડ્રોપડાઉનમાંથી તમારા અરજીનો પ્રકાર પસંદ કરો."
+                },
+                "bn": {
+                  "speech": "সঠিক সরকারি ফি গণনা করতে এই ড্রপডাউন থেকে আপনার আবেদনের ধরন নির্বাচন করুন।",
+                  "bubble": "সরকারি ফি জানতে এই ড্রপডাউন থেকে আপনার আবেদনের ধরন নির্বাচন করুন।"
+                },
+                "ta": {
+                  "speech": "துல்லியமான கட்டணத்தைக் கணக்கிட இந்த கீழ்தோன்றும் மெனுவிலிருந்து உங்கள் விண்ணப்ப வகையைத் தேர்ந்தெடுக்கவும்.",
+                  "bubble": "அரசு கட்டணத்தை அறிய இந்த கீழ்தோன்றும் மெனுவிலிருந்து உங்கள் விண்ணப்ப வகையைத் தேர்ந்தெடுக்கவும்."
+                },
+                "te": {
+                  "speech": "ఖచ్చితమైన ప్రభుత్వ రుసుమును లెక్కించడానికి ఈ డ్రాప్‌డౌన్ నుండి మీ దరఖాస్తు రకాన్ని ఎంచుకోండి.",
+                  "bubble": "ప్రభుత్వ రుసుమును తెలుసుకోవడానికి ఈ డ్రాప్‌డౌన్ నుండి మీ దరఖాస్తు రకాన్ని ఎంచుకోండి."
+                },
+                "kn": {
+                  "speech": "ನಿಖರವಾದ ಶುಲ್ಕವನ್ನು ಲೆಕ್ಕಹಾಕಲು ಈ ಡ್ರಾಪ್‌ಡೌನ್‌ನಿಂದ ನಿಮ್ಮ ಅರ್ಜಿ ಪ್ರಕಾರವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+                  "bubble": "ಸರ್ಕಾರಿ ಶುಲ್ಕವನ್ನು ಲೆಕ್ಕಹಾಕಲು ಈ ಡ್ರಾಪ್‌ಡೌನ್‌ನಿಂದ ನಿಮ್ಮ ಅರ್ಜಿ ಪ್ರಕಾರವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
+                },
+                "ml": {
+                  "speech": "കൃത്യമായ സർക്കാർ ഫീസ് കണക്കാക്കാൻ ഈ ഡ്രോപ്പ്ഡൗണിൽ നിന്ന് നിങ്ങളുടെ അപേക്ഷാ തരം തിരഞ്ഞെടുക്കുക.",
+                  "bubble": "സർക്കാർ ഫീസ് അറിയാൻ ഈ ഡ്രോപ്പ്ഡൗണിൽ നിന്ന് നിങ്ങളുടെ അപേക്ഷാ തരം തിരഞ്ഞെടുക്കുക."
+                },
+                "pa": {
+                  "speech": "ਸਹੀ ਸਰਕਾਰੀ ਫੀਸ ਦੀ ਗਣਨਾ ਕਰਨ ਲਈ ਇਸ ਡ੍ਰੌਪਡਾਉਨ ਤੋਂ ਆਪਣੀ ਅਰਜ਼ੀ ਦੀ ਕਿਸਮ ਚੁਣੋ।",
+                  "bubble": "ਸਰਕਾਰੀ ਫੀਸ ਜਾਣਨ ਲਈ ਇਸ ਡ੍ਰੌਪਡਾਉਨ ਤੋਂ ਆਪਣੀ ਅਰਜ਼ੀ ਦੀ ਕਿਸਮ ਚੁਣੋ।"
+                },
+                "or": {
+                  "speech": "ସଠିକ୍ ସରକାରୀ ଫି ଜାଣିବା ପାଇଁ ଏହି ଡ୍ରପଡାଉନ୍ ରୁ ଆପଣଙ୍କ ଆବେଦନ ପ୍ରକାର ଚୟନ କରନ୍ତୁ |",
+                  "bubble": "ସରକାରୀ ଫି ଜାଣିବା ପାଇଁ ଏହି ଡ୍ରପଡାଉନ୍ ରୁ ଆପଣଙ୍କ ଆବେଦନ ପ୍ରକାର ବାଛନ୍ତୁ |"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "change",
+                "selector": "select.locatePskBoxShape1, select"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "screen_04_document_advisor",
+          "captureRef": "captures/passportseva/04-document-advisor-fresh.html",
+          "match": {
+            "urlRegex": "passportindia\\.gov\\.in/psp/docAdvisor/attachmentAdvFreshInp.*",
+            "pageTitle": "Passport Seva",
+            "elementPresence": ".titleNameValue, input#Normal, input#Adult, .locatePskButton1"
+          },
+          "steps": [
+            {
+              "stepId": "step_06_explain_doc_advisor",
+              "order": 1,
+              "actionType": "explain_only",
+              "target": null,
+              "messages": {
+                "en": {
+                  "spoken": "Here, Document Advisor tells you exactly what papers you need for a fresh passport based on your age and whether you qualify for Non-ECR.",
+                  "speech": "Document Advisor lists the exact official papers required for your application based on your age and category.",
+                  "bubble": "Document Advisor: Select your scheme and age category to see the exact valid documents needed (Proof of Date of Birth and Proof of Address)."
+                },
+                "hi": {
+                  "speech": "डॉक्यूमेंट एडवाइजर आपकी आयु और श्रेणी के अनुसार आवश्यक दस्तावेजों की सूची प्रदान करता है।",
+                  "bubble": "डॉक्यूमेंट एडवाइजर: जन्मतिथि और पते के प्रमाण के लिए आवश्यक आधिकारिक दस्तावेजों की सूची देखने के लिए अपनी श्रेणी चुनें।"
+                },
+                "mr": {
+                  "speech": "डॉक्युमेंट अ‍ॅडव्हायझर आपल्या वयानुसार आवश्यक कागदपत्रांची यादी दाखवतो.",
+                  "bubble": "डॉक्युमेंट अ‍ॅडव्हायझर: पत्ता आणि जन्मतारीख पुराव्यासाठी लागणारी कागदपत्रे पाहण्यासाठी आपली श्रेणी निवडा."
+                },
+                "gu": {
+                  "speech": "ડોક્યુમેન્ટ એડવાઇઝર તમારી ઉંમર અનુસાર જરૂરી દસ્તાવેજોની યાદી આપે છે.",
+                  "bubble": "ડોક્યુમેન્ટ એડવાઇઝર: જન્મ તારીખ અને સરનામાના પુરાવા માટે જરૂરી સત્તાવાર દસ્તાવેજો જોવા માટે તમારી શ્રેણી પસંદ કરો."
+                },
+                "bn": {
+                  "speech": "ডকুমেন্ট অ্যাডভাইজরি আপনার বয়স এবং বিভাগ অনুযায়ী প্রয়োজনীয় নথির তালিকা দেখায়।",
+                  "bubble": "ডকুমেন্ট অ্যাডভাইজরি: জন্মতারিখ এবং ঠিকানার প্রমাণের জন্য প্রয়োজনীয় নথির তালিকা দেখতে আপনার বিভাগ নির্বাচন করুন।"
+                },
+                "ta": {
+                  "speech": "ஆவண ஆலோசகர் உங்கள் வயது மற்றும் வகைக்கு ஏற்ப தேவையான ஆவணங்களின் பட்டியலை வழங்குகிறது.",
+                  "bubble": "ஆவண ஆலோசகர்: பிறந்த தேதி மற்றும் முகவரி சான்றுக்கு தேவையான அதிகாரப்பூர்வ ஆவணங்களைப் பார்க்க உங்கள் வகையைத் தேர்ந்தெடுக்கவும்."
+                },
+                "te": {
+                  "speech": "డాక్యుమెంట్ అడ్వైజర్ మీ వయస్సు మరియు వర్గానికి అవసరమైన పత్రాల జాబితాను అందిస్తుంది.",
+                  "bubble": "డాక్యుమెంట్ అడ్వైజర్: పుట్టిన తేదీ మరియు చిరునామా రుజువు కోసం అవసరమైన పత్రాలను చూడటానికి మీ వర్గాన్ని ఎంచుకోండి."
+                },
+                "kn": {
+                  "speech": "ಡಾಕ್ಯುಮೆಂಟ್ ಸಲಹೆಗಾರರು ನಿಮ್ಮ ವಯಸ್ಸು ಮತ್ತು ವರ್ಗಕ್ಕೆ ಅನುಗುಣವಾಗಿ ಅಗತ್ಯ ದಾಖಲೆಗಳ ಪಟ್ಟಿಯನ್ನು ತೋರಿಸುತ್ತದೆ.",
+                  "bubble": "ಡಾಕ್ಯುಮೆಂಟ್ ಸಲಹೆಗಾರರು: ಹುಟ್ಟಿದ ದಿನಾಂಕ ಮತ್ತು ವಿಳಾಸದ ಪುರಾವೆಗಾಗಿ ಅಗತ್ಯ ದಾಖಲೆಗಳನ್ನು ವೀಕ್ಷಿಸಲು ನಿಮ್ಮ ವರ್ಗವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
+                },
+                "ml": {
+                  "speech": "ഡോക്യുമെന്റ് അഡ്വൈസർ നിങ്ങളുടെ വയസ്സിനും വിഭാഗത്തിനും അനുസരിച്ച് ആവശ്യമായ രേഖകൾ കാണിക്കുന്നു.",
+                  "bubble": "ഡോക്യുമെന്റ് അഡ്വൈസർ: ജനനത്തീയതിക്കും വിലാസത്തിനും തെളിവായി ആവശ്യമായ രേഖകൾ കാണാൻ നിങ്ങളുടെ വിഭാഗം തിരഞ്ഞെടുക്കുക."
+                },
+                "pa": {
+                  "speech": "ਦਸਤਾਵੇਜ਼ ਸਲਾਹਕਾਰ ਤੁਹਾਡੀ ਉਮਰ ਅਤੇ ਸ਼੍ਰੇਣੀ ਅਨੁਸਾਰ ਲੋੜੀਂਦੇ ਦਸਤਾਵੇਜ਼ਾਂ ਦੀ ਸੂਚੀ ਦਿੰਦਾ ਹੈ।",
+                  "bubble": "ਦਸਤਾਵੇਜ਼ ਸਲਾਹਕਾਰ: ਜਨਮ ਮਿਤੀ ਅਤੇ ਪਤੇ ਦੇ ਸਬੂਤ ਲਈ ਲੋੜੀਂਦੇ ਅਧਿਕਾਰਤ ਦਸਤਾਵੇਜ਼ ਦੇਖਣ ਲਈ ਆਪਣੀ ਸ਼੍ਰੇਣੀ ਚੁਣੋ।"
+                },
+                "or": {
+                  "speech": "ଡକ୍ୟୁମେଣ୍ଟ ପରାମର୍ଶଦାତା ଆପଣଙ୍କ ବୟସ ଏବଂ ବର୍ଗ ଅନୁଯାୟୀ ଆବଶ୍ୟକ କାଗଜପତ୍ରର ତାଲିକା ପ୍ରଦାନ କରେ |",
+                  "bubble": "ଡକ୍ୟୁମେଣ୍ଟ ପରାମର୍ଶଦାତା: ଜନ୍ମ ତାରିଖ ଏବଂ ଠିକଣା ପ୍ରମାଣ ପାଇଁ ଆବଶ୍ୟକ କାଗଜପତ୍ର ଦେଖିବାକୁ ଆପଣଙ୍କ ବର୍ଗ ବାଛନ୍ତୁ |"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "screen_05_locate_psk",
+          "captureRef": "captures/passportseva/03-locate-psk.html",
+          "match": {
+            "urlRegex": "passportindia\\.gov\\.in/psp/LocatePsk.*",
+            "pageTitle": "Passport Seva",
+            "elementPresence": ".titleNameValue, select.locatePskBoxShape, .locatePskButton"
+          },
+          "steps": [
+            {
+              "stepId": "step_07_select_psk_office",
+              "order": 1,
+              "actionType": "point_and_click",
+              "target": {
+                "id": null,
+                "css": "select.locatePskBoxShape, select",
+                "textMatch": null,
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "spoken": "Now, to find your nearest Passport Seva Kendra or Post Office Kendra, choose your Passport Office from this dropdown list.",
+                  "speech": "Select your Passport Office from this dropdown menu to locate all operational Passport Seva Kendras in your jurisdiction.",
+                  "bubble": "Select your Passport Office from this dropdown to locate all Passport Seva Kendras (PSK) and Post Office PSKs near you."
+                },
+                "hi": {
+                  "speech": "अपने निकटतम पासपोर्ट सेवा केंद्र (PSK) को खोजने के लिए इस ड्रॉपडाउन से अपना पासपोर्ट कार्यालय चुनें।",
+                  "bubble": "अपने क्षेत्र के सभी पासपोर्ट सेवा केंद्र और डाकघर केंद्र देखने के लिए इस ड्रॉपडाउन से अपना पासपोर्ट कार्यालय चुनें।"
+                },
+                "mr": {
+                  "speech": "आपल्या जवळचे पासपोर्ट सेवा केंद्र शोधण्यासाठी या ड्रॉपडाउनमधून आपले पासपोर्ट कार्यालय निवडा.",
+                  "bubble": "आपल्या भागातील पासपोर्ट सेवा केंद्र (PSK) शोधण्यासाठी या ड्रॉपडाउनमधून आपले पासपोर्ट कार्यालय निवडा."
+                },
+                "gu": {
+                  "speech": "તમારા નજીકના પાસપોર્ટ સેવા કેન્દ્રને શોધવા માટે આ ડ્રોપડાઉનમાંથી તમારી પાસપોર્ટ ઑફિસ પસંદ કરો.",
+                  "bubble": "તમારા વિસ્તારના પાસપોર્ટ સેવા કેન્દ્રો (PSK) જોવા માટે આ ડ્રોપડાઉનમાંથી તમારી પાસપોર્ટ ઑફિસ પસંદ કરો."
+                },
+                "bn": {
+                  "speech": "আপনার নিকটতম পাসপোর্ট সেবা কেন্দ্র খুঁজে পেতে এই ড্রপডাউন থেকে আপনার পাসপোর্ট অফিস নির্বাচন করুন।",
+                  "bubble": "আপনার এলাকার পাসপোর্ট সেবা কেন্দ্র (PSK) সনাক্ত করতে এই ড্রপডাউন থেকে আপনার পাসপোর্ট অফিস নির্বাচন করুন।"
+                },
+                "ta": {
+                  "speech": "உங்கள் அருகிலுள்ள பாஸ்போர்ட் சேவா கேந்திராவைக் கண்டறிய இந்த கீழ்தோன்றும் மெனுவிலிருந்து உங்கள் பாஸ்போர்ட் அலுவலகத்தைத் தேர்ந்தெடுக்கவும்.",
+                  "bubble": "உங்கள் அருகிலுள்ள பாஸ்போர்ட் சேவா கேந்திராக்களை (PSK) கண்டறிய இந்த கீழ்தோன்றும் மெனுவிலிருந்து உங்கள் பாஸ்போர்ட் அலுவலகத்தைத் தேர்ந்தெடுக்கவும்."
+                },
+                "te": {
+                  "speech": "మీ సమీప పాస్‌పోర్ట్ సేవా కేంద్రాన్ని కనుగొనడానికి ఈ డ్రాప్‌డౌన్ నుండి మీ పాస్‌పోర్ట్ కార్యాలయాన్ని ఎంచుకోండి.",
+                  "bubble": "మీ సమీపంలోని పాస్‌పోర్ట్ సేవా కేంద్రాలను (PSK) గుర్తించడానికి ఈ డ్రాప్‌డౌన్ నుండి మీ పాస్‌పోర్ట్ కార్యాలయాన్ని ఎంచుకోండి."
+                },
+                "kn": {
+                  "speech": "ನಿಮ್ಮ ಹತ್ತಿರದ ಪಾಸ್‌ಪೋರ್ಟ್ ಸೇವಾ ಕೇಂದ್ರವನ್ನು ಹುಡುಕಲು ಈ ಡ್ರಾಪ್‌ಡೌನ್‌ನಿಂದ ನಿಮ್ಮ ಪಾಸ್‌ಪೋರ್ಟ್ ಕಚೇರಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+                  "bubble": "ನಿಮ್ಮ ಸಮೀಪದ ಪಾಸ್‌ಪೋರ್ಟ್ ಸೇವಾ ಕೇಂದ್ರಗಳನ್ನು (PSK) ಹುಡುಕಲು ಈ ಡ್ರಾಪ್‌ಡೌನ್‌ನಿಂದ ನಿಮ್ಮ ಪಾಸ್‌ಪೋರ್ಟ್ ಕಚೇರಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ."
+                },
+                "ml": {
+                  "speech": "നിങ്ങളുടെ അടുത്തുള്ള പാസ്പോർട്ട് സേവാ കേന്ദ്രം കണ്ടെത്താൻ ഈ ഡ്രോപ്പ്ഡൗണിൽ നിന്ന് നിങ്ങളുടെ പാസ്പോർട്ട് ഓഫീസ് തിരഞ്ഞെടുക്കുക.",
+                  "bubble": "നിങ്ങളുടെ അടുത്തുള്ള പാസ്പോർട്ട് സേവാ കേന്ദ്രങ്ങൾ (PSK) കണ്ടെത്താൻ ഈ ഡ്രോപ്പ്ഡൗണിൽ നിന്ന് നിങ്ങളുടെ പാസ്പോർട്ട് ഓഫീസ് തിരഞ്ഞെടുക്കുക."
+                },
+                "pa": {
+                  "speech": "ਆਪਣੇ ਨਜ਼ਦੀਕੀ ਪਾਸਪੋਰਟ ਸੇਵਾ ਕੇਂਦਰ ਨੂੰ ਲੱਭਣ ਲਈ ਇਸ ਡ੍ਰੌਪਡਾਉਨ ਤੋਂ ਆਪਣਾ ਪਾਸਪੋਰਟ ਦਫਤਰ ਚੁਣੋ।",
+                  "bubble": "ਆਪਣੇ ਨੇੜਲੇ ਪਾਸਪੋਰਟ ਸੇਵਾ ਕੇਂਦਰਾਂ (PSK) ਨੂੰ ਲੱਭਣ ਲਈ ਇਸ ਡ੍ਰੌਪਡਾਉਨ ਤੋਂ ਆਪਣਾ ਪਾਸਪੋਰਟ ਦਫਤਰ ਚੁਣੋ।"
+                },
+                "or": {
+                  "speech": "ଆପଣଙ୍କର ନିକଟତମ ପାସପୋର୍ଟ ସେବା କେନ୍ଦ୍ର ଖୋଜିବା ପାଇଁ ଏହି ଡ୍ରପଡାଉନ୍ ରୁ ଆପଣଙ୍କ ପାସପୋର୍ଟ କାର୍ଯ୍ୟାଳୟ ବାଛନ୍ତୁ |",
+                  "bubble": "ଆପଣଙ୍କ ନିକଟରେ ଥିବା ପାସପୋର୍ଟ ସେବା କେନ୍ଦ୍ର (PSK) ଖୋଜିବା ପାଇଁ ଏହି ଡ୍ରପଡାଉନ୍ ରୁ ଆପଣଙ୍କ ପାସପୋର୍ଟ କାର୍ଯ୍ୟାଳୟ ଚୟନ କରନ୍ତୁ |"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "change",
+                "selector": "select.locatePskBoxShape, select"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "screen_06_track_status",
+          "captureRef": "captures/passportseva/03-track-status.html",
+          "match": {
+            "urlRegex": "passportindia\\.gov\\.in/psp/trackApplicationService.*",
+            "pageTitle": "Passport Seva",
+            "elementPresence": ".titleNameValue, select.form-select, input#formBasicEmail, .checkAppointmentButton"
+          },
+          "steps": [
+            {
+              "stepId": "step_08_explain_status_tracking",
+              "order": 1,
+              "actionType": "point_and_click",
+              "target": {
+                "id": "formBasicEmail",
+                "css": "input#formBasicEmail, input[placeholder*='file number']",
+                "textMatch": null,
+                "relativeTo": null
+              },
+              "messages": {
+                "en": {
+                  "spoken": "On this tracking page, choose your application type, and then enter your file number and date of birth to check your passport status.",
+                  "speech": "Select your application type here, then enter your official File Number and Date of Birth to track your passport status.",
+                  "bubble": "Track Passport: Select Application Type, then enter your 15-digit File Number and Date of Birth. GovGuide never inspects or logs your details."
+                },
+                "hi": {
+                  "speech": "पासपोर्ट की स्थिति जानने के लिए यहां अपने आवेदन का प्रकार चुनें, और फिर अपना फाइल नंबर और जन्मतिथि दर्ज करें।",
+                  "bubble": "आवेदन स्थिति ट्रैक करें: आवेदन प्रकार चुनें, फिर अपना 15 अंकों का फाइल नंबर दर्ज करें। हम आपके विवरण कभी नहीं पढ़ते।"
+                },
+                "mr": {
+                  "speech": "आपल्या पासपोर्टची स्थिती तपासण्यासाठी अर्जाचा प्रकार निवडा आणि फाइल नंबर प्रविष्ट करा.",
+                  "bubble": "स्थिती ट्रॅक करा: अर्जाचा प्रकार निवडा, नंतर 15 अंकी फाइल नंबर टाका. आम्ही तुमचे वैयक्तिक तपशील वाचत नाही."
+                },
+                "gu": {
+                  "speech": "તમારા પાસપોર્ટની સ્થિતિ તપાસવા માટે અરજીનો પ્રકાર પસંદ કરો અને ફાઇલ નંબર દાખલ કરો.",
+                  "bubble": "સ્થિતિ ટ્રેક કરો: અરજીનો પ્રકાર પસંદ કરો, પછી તમારો 15 અંકનો ફાઇલ નંબર દાખલ કરો."
+                },
+                "bn": {
+                  "speech": "পাসপোর্টের স্থিতি ট্র্যাক করতে আবেদনের ধরন নির্বাচন করুন এবং ফাইল নম্বর লিখুন।",
+                  "bubble": "আবেদন ট্র্যাক করুন: আবেদনের ধরন নির্বাচন করুন, তারপর আপনার ফাইল নম্বর লিখুন।"
+                },
+                "ta": {
+                  "speech": "பாஸ்போர்ட் நிலையை அறிய விண்ணப்ப வகையைத் தேர்ந்தெடுத்து கோப்பு எண்ணை உள்ளிடவும்.",
+                  "bubble": "நிலையைக் கண்காணிக்கவும்: விண்ணப்ப வகையைத் தேர்ந்தெடுத்து 15 இலக்க கோப்பு எண்ணை உள்ளிடவும்."
+                },
+                "te": {
+                  "speech": "పాస్‌పోర్ట్ స్థితిని తెలుసుకోవడానికి దరఖాస్తు రకాన్ని ఎంచుకుని ఫైల్ నంబర్‌ను నమోదు చేయండి.",
+                  "bubble": "స్థితిని ట్రాక్ చేయండి: దరఖాస్తు రకాన్ని ఎంచుకుని, మీ 15 అంకెల ఫైల్ నంబర్‌ను నమోదు చేయండి."
+                },
+                "kn": {
+                  "speech": "ಪಾಸ್‌ಪೋರ್ಟ್ ಸ್ಥಿತಿಯನ್ನು ಪರಿಶೀಲಿಸಲು ಅರ್ಜಿ ಪ್ರಕಾರವನ್ನು ಆಯ್ಕೆಮಾಡಿ ಮತ್ತು ಫೈಲ್ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ.",
+                  "bubble": "ಸ್ಥಿತಿ ಟ್ರ್ಯಾಕ್ ಮಾಡಿ: ಅರ್ಜಿ ಪ್ರಕಾರವನ್ನು ಆಯ್ಕೆಮಾಡಿ, ನಂತರ ನಿಮ್ಮ 15 ಅಂಕಿಗಳ ಫೈಲ್ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ."
+                },
+                "ml": {
+                  "speech": "പാസ്പോർട്ട് നില പരിശോധിക്കാൻ അപേക്ഷാ തരം തിരഞ്ഞെടുത്ത് ഫയൽ നമ്പർ നൽകുക.",
+                  "bubble": "നില പരിശോധിക്കുക: അപേക്ഷാ തരം തിരഞ്ഞെടുത്ത് 15 അക്ക ഫയൽ നമ്പർ നൽകുക."
+                },
+                "pa": {
+                  "speech": "ਪਾਸਪੋਰਟ ਸਥਿਤੀ ਦੇਖਣ ਲਈ ਅਰਜ਼ੀ ਦੀ ਕਿਸਮ ਚੁਣੋ ਅਤੇ ਫਾਈਲ ਨੰਬਰ ਦਾਖਲ ਕਰੋ।",
+                  "bubble": "ਸਥਿਤੀ ਟ੍ਰੈਕ ਕਰੋ: ਅਰਜ਼ੀ ਦੀ ਕਿਸਮ ਚੁਣੋ, ਫਿਰ ਆਪਣਾ 15 ਅੰਕਾਂ ਦਾ ਫਾਈਲ ਨੰਬਰ ਦਰਜ ਕਰੋ।"
+                },
+                "or": {
+                  "speech": "ପାସପୋର୍ଟ ସ୍ଥିତି ଯାଞ୍ଚ କରିବା ପାଇଁ ଆବେଦନ ପ୍ରକାର ବାଛନ୍ତୁ ଏବଂ ଫାଇଲ୍ ନମ୍ବର ପ୍ରବେଶ କରନ୍ତୁ |",
+                  "bubble": "ସ୍ଥିତି ଟ୍ରାକ୍ କରନ୍ତୁ: ଆବେଦନ ପ୍ରକାର ବାଛନ୍ତୁ, ତାପରେ ଫାଇଲ୍ ନମ୍ବର ଦର୍ଜ କରନ୍ତୁ |"
+                }
+              },
+              "stepDoneTrigger": {
+                "type": "focus",
+                "selector": "input#formBasicEmail"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "screen_07_user_registration",
+          "captureRef": "captures/passportseva/05-registration.html",
+          "match": {
+            "urlRegex": "services1\\.passportindia\\.gov\\.in/forms/registration.*",
+            "pageTitle": "Registration",
+            "elementPresence": "input[data-testid='text-input-outlined'], input"
+          },
+          "steps": [
+            {
+              "stepId": "step_09_registration_boundary",
+              "order": 1,
+              "actionType": "explain_only",
+              "target": null,
+              "messages": {
+                "en": {
+                  "spoken": "This is the official account registration page. Please fill in your name, date of birth, and email directly. GovGuide never reads or captures any of your private passwords or details.",
+                  "speech": "This is the official account registration screen. Fill in your details directly. GovGuide is completely private and never reads typed values.",
+                  "bubble": "Account Creation Boundary: Enter your personal details, email, and password directly. GovGuide strictly respects privacy and never reads form values."
+                },
+                "hi": {
+                  "speech": "यह आधिकारिक पंजीकरण स्क्रीन है। अपना विवरण सीधे दर्ज करें। GovGuide पूर्णतः निजी है और आपके विवरण कभी नहीं पढ़ता।",
+                  "bubble": "खाता निर्माण सीमा: अपना नाम, ईमेल और पासवर्ड सीधे दर्ज करें। GovGuide गोपनीयता का पालन करता है और इनपुट फ़ील्ड कभी नहीं पढ़ता।"
+                },
+                "mr": {
+                  "speech": "ही अधिकृत नोंदणी स्क्रीन आहे. आपले तपशील थेट प्रविष्ट करा. GovGuide पूर्णपणे खाजगी आहे.",
+                  "bubble": "खाते नोंदणी: आपले नाव, ईमेल आणि पासवर्ड थेट टाका. GovGuide फॉर्ममधील माहिती कधीही वाचत नाही."
+                },
+                "gu": {
+                  "speech": "આ સત્તાવાર નોંધણી સ્ક્રીન છે. તમારી વિગતો સીધી દાખલ કરો. GovGuide સંપૂર્ણપણે ખાનગી છે.",
+                  "bubble": "એકાઉન્ટ નોંધણી: તમારી અંગત વિગતો અને પાસવર્ડ સીધો દાખલ કરો. GovGuide તમારી વિગતો ક્યારેય વાંચતું નથી."
+                },
+                "bn": {
+                  "speech": "এটি অফিসিয়াল নিবন্ধন পর্দা। আপনার বিবরণ সরাসরি লিখুন। GovGuide সম্পূর্ণ ব্যক্তিগত।",
+                  "bubble": "অ্যাকাউন্ট নিবন্ধন: আপনার নাম, ইমেল এবং পাসওয়ার্ড সরাসরি লিখুন। GovGuide ফর্মের মান কখনো পড়ে না।"
+                },
+                "ta": {
+                  "speech": "இது அதிகாரப்பூர்வ பதிவு திரை. உங்கள் விவரங்களை நேரடியாக உள்ளிடவும். GovGuide முற்றிலும் தனிப்பட்டது.",
+                  "bubble": "கணக்குப் பதிவு: உங்கள் பெயர், மின்னஞ்சல் மற்றும் கடவுச்சொல்லை நேரடியாக உள்ளிடவும். GovGuide எந்த தகவலையும் படிக்காது."
+                },
+                "te": {
+                  "speech": "ఇది అధికారిక రిజిస్ట్రేషన్ స్క్రీన్. మీ వివరాలను నేరుగా నమోదు చేయండి. GovGuide పూర్తిగా గోప్యమైనది.",
+                  "bubble": "ఖాతా నమోదు: మీ పేరు, ఇమెయిల్ మరియు పాస్‌వర్డ్‌ను నేరుగా నమోదు చేయండి. GovGuide వివరాలను చదవదు."
+                },
+                "kn": {
+                  "speech": "ಇದು ಅಧಿಕೃತ ನೋಂದಣಿ ಪರದೆ. ನಿಮ್ಮ ವಿವರಗಳನ್ನು ನೇರವಾಗಿ ನಮೂದಿಸಿ. GovGuide ಸಂಪೂರ್ಣವಾಗಿ ಗೌಪ್ಯವಾಗಿದೆ.",
+                  "bubble": "ಖಾತೆ ನೋಂದಣಿ: ನಿಮ್ಮ ಹೆಸರು, ಇಮೇಲ್ ಮತ್ತು ಪಾಸ್‌ವರ್ಡ್ ಅನ್ನು ನೇರವಾಗಿ ನಮೂದಿಸಿ. GovGuide ನಿಮ್ಮ ವಿವರಗಳನ್ನು ಓದುವುದಿಲ್ಲ."
+                },
+                "ml": {
+                  "speech": "ഇത് ഔദ്യോഗിക രജിസ്ട്രേഷൻ സ്ക്രീൻ ആണ്. നിങ്ങളുടെ വിവരങ്ങൾ നേരിട്ട് നൽകുക. GovGuide പൂർണ്ണമായും സ്വകാര്യമാണ്.",
+                  "bubble": "അക്കൗണ്ട് രജിസ്ട്രേഷൻ: നിങ്ങളുടെ വിവരങ്ങളും പാസ്‌വേഡും നേരിട്ട് നൽകുക. GovGuide വിവരങ്ങൾ വായിക്കില്ല."
+                },
+                "pa": {
+                  "speech": "ਇਹ ਅਧਿਕਾਰਤ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਸਕ੍ਰੀਨ ਹੈ। ਆਪਣੇ ਵੇਰਵੇ ਸਿੱਧੇ ਦਰਜ ਕਰੋ। GovGuide ਪੂਰੀ ਤਰ੍ਹਾਂ ਨਿੱਜੀ ਹੈ।",
+                  "bubble": "ਖਾਤਾ ਰਜਿਸਟ੍ਰੇਸ਼ਨ: ਆਪਣੇ ਵੇਰਵੇ ਅਤੇ ਪਾਸਵਰਡ ਸਿੱਧੇ ਦਰਜ ਕਰੋ। GovGuide ਤੁਹਾਡੇ ਵੇਰਵੇ ਕਦੇ ਨਹੀਂ ਪੜ੍ਹਦਾ।"
+                },
+                "or": {
+                  "speech": "ଏହା ସରକାରୀ ପଞ୍ଜୀକରଣ ସ୍କ୍ରିନ୍ | ଆପଣଙ୍କ ବିବରଣୀ ସିଧାସଳଖ ପ୍ରବେଶ କରନ୍ତୁ | GovGuide ସମ୍ପୂର୍ଣ୍ଣ ବ୍ୟକ୍ତିଗତ |",
+                  "bubble": "ଆକାଉଣ୍ଟ ପଞ୍ଜୀକରଣ: ଆପଣଙ୍କ ନାମ ଏବଂ ପାସୱାର୍ଡ ସିଧାସଳଖ ଦର୍ଜ କରନ୍ତୁ | GovGuide କୌଣସି ତଥ୍ୟ ପଢ଼େ ନାହିଁ |"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "screen_08_existing_user_login",
+          "captureRef": "captures/passportseva/06-login.html",
+          "match": {
+            "urlRegex": "services1\\.passportindia\\.gov\\.in/forms/PreLogin.*",
+            "pageTitle": "PreLogin",
+            "elementPresence": "input[data-testid='text-input-outlined'], input"
+          },
+          "steps": [
+            {
+              "stepId": "step_10_login_boundary",
+              "order": 1,
+              "actionType": "explain_only",
+              "target": null,
+              "messages": {
+                "en": {
+                  "spoken": "Great, this is the login screen for existing registered users. Just enter your Login ID to access your passport dashboard and manage your applications.",
+                  "speech": "Enter your registered Login ID here to sign into your Passport Seva dashboard.",
+                  "bubble": "User Login: Enter your registered Login ID and click Continue. GovGuide is an independent helper and never captures passwords or logins."
+                },
+                "hi": {
+                  "speech": "अपने पासपोर्ट सेवा डैशबोर्ड में प्रवेश करने के लिए अपनी पंजीकृत लॉगिन आईडी यहां दर्ज करें।",
+                  "bubble": "उपयोगकर्ता लॉगिन: अपनी पंजीकृत लॉगिन आईडी दर्ज करें और Continue पर क्लिक करें। GovGuide लॉगिन विवरण कभी नहीं पढ़ता।"
+                },
+                "mr": {
+                  "speech": "आपल्या पासपोर्ट सेवा डॅशबोर्डमध्ये प्रवेश करण्यासाठी आपला नोंदणीकृत लॉगिन आयडी टाका.",
+                  "bubble": "वापरकर्ता लॉगिन: आपला लॉगिन आयडी प्रविष्ट करा आणि Continue वर क्लिक करा."
+                },
+                "gu": {
+                  "speech": "તમારા પાસપોર્ટ સેવા ડેશબોર્ડમાં પ્રવેશવા માટે તમારો નોંધાયેલ લૉગિન ID અહીં દાખલ કરો.",
+                  "bubble": "વપરાશકર્તા લૉગિન: તમારો લૉગિન ID દાખલ કરો અને Continue પર ક્લિક કરો."
+                },
+                "bn": {
+                  "speech": "আপনার পাসপোর্ট সেবা ড্যাশবোর্ডে প্রবেশ করতে আপনার নিবন্ধিত লগইন আইডি লিখুন।",
+                  "bubble": "ব্যবহারকারী লগইন: আপনার লগইন আইডি লিখুন এবং Continue এ ক্লিক করুন।"
+                },
+                "ta": {
+                  "speech": "உங்கள் பாஸ்போர்ட் சேவா டாஷ்போர்டில் உள்நுழைய உங்கள் பதிவுசெய்த உள்நுழைவு ஐடியை உள்ளிடவும்.",
+                  "bubble": "பயனர் உள்நுழைவு: உங்கள் உள்நுழைவு ஐடியை உள்ளிட்டு Continue என்பதைக் கிளிக் செய்யவும்."
+                },
+                "te": {
+                  "speech": "మీ పాస్‌పోర్ట్ సేవా డాష్‌బోర్డ్‌లోకి లాగిన్ చేయడానికి మీ రిజిస్టర్డ్ లాగిన్ IDని నమోదు చేయండి.",
+                  "bubble": "వినియోగదారు లాగిన్: మీ లాగిన్ IDని నమోదు చేసి Continue పై క్లిక్ చేయండి."
+                },
+                "kn": {
+                  "speech": "ನಿಮ್ಮ ಪಾಸ್‌ಪೋರ್ಟ್ ಸೇವಾ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ಪ್ರವೇಶಿಸಲು ನಿಮ್ಮ ನೋಂದಾಯಿತ ಲಾಗಿನ್ ಐಡಿಯನ್ನು ನಮೂದಿಸಿ.",
+                  "bubble": "ಬಳಕೆದಾರರ ಲಾಗಿನ್: ನಿಮ್ಮ ಲಾಗಿನ್ ಐಡಿಯನ್ನು ನಮೂದಿಸಿ ಮತ್ತು Continue ಕ್ಲಿಕ್ ಮಾಡಿ."
+                },
+                "ml": {
+                  "speech": "നിങ്ങളുടെ പാസ്പോർട്ട് സേവാ ഡാഷ്‌ബോർഡിലേക്ക് പ്രവേശിക്കാൻ രജിസ്റ്റർ ചെയ്ത ലോഗിൻ ഐഡി നൽകുക.",
+                  "bubble": "ഉപയോക്തൃ ലോഗിൻ: നിങ്ങളുടെ ലോഗിൻ ഐഡി നൽകി Continue ക്ലിക്ക് ചെയ്യുക."
+                },
+                "pa": {
+                  "speech": "ਆਪਣੇ ਪਾਸਪੋਰਟ ਸੇਵਾ ਡੈਸ਼ਬੋਰਡ ਵਿੱਚ ਦਾਖਲ ਹੋਣ ਲਈ ਆਪਣੀ ਰਜਿਸਟਰਡ ਲੌਗਇਨ ਆਈਡੀ ਦਰਜ ਕਰੋ।",
+                  "bubble": "ਯੂਜ਼ਰ ਲੌਗਇਨ: ਆਪਣੀ ਲੌਗਇਨ ਆਈਡੀ ਦਰਜ ਕਰੋ ਅਤੇ Continue 'ਤੇ ਕਲਿੱਕ ਕਰੋ।"
+                },
+                "or": {
+                  "speech": "ଆପଣଙ୍କର ପାସପୋର୍ଟ ସେବା ଡ୍ୟାସବୋର୍ଡରେ ପ୍ରବେଶ କରିବାକୁ ପଞ୍ଜୀକୃତ ଲଗଇନ୍ ID ପ୍ରବେଶ କରନ୍ତୁ |",
+                  "bubble": "ବ୍ୟବହାରକାରୀ ଲଗଇନ୍: ଆପଣଙ୍କର ଲଗଇନ୍ ID ଦର୍ଜ କରନ୍ତୁ ଏବଂ Continue କ୍ଲିକ୍ କରନ୍ତୁ |"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

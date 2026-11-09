@@ -11,6 +11,17 @@
       ]
     },
     {
+      "id": "passportseva-main",
+      "name": "Passport Seva - Citizen Services & Application Guide",
+      "guidePath": "guides/passportseva/passportseva-main.json",
+      "verifiedFor": "Public Information, Fee Calculator, Document Advisor, PSK Locator & Account Boundaries",
+      "urlPatterns": [
+        "*://www.passportindia.gov.in/*",
+        "*://passportindia.gov.in/*",
+        "*://services1.passportindia.gov.in/*"
+      ]
+    },
+    {
       "id": "demo-portal",
       "name": "GovGuide Demo Portal",
       "guidePath": "demo/demo-guide.json",

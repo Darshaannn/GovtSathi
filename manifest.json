@@ -19,7 +19,10 @@
     {
       "matches": [
         "*://sarathi.parivahan.gov.in/*",
-        "*://parivahan.gov.in/*"
+        "*://parivahan.gov.in/*",
+        "*://www.passportindia.gov.in/*",
+        "*://passportindia.gov.in/*",
+        "*://services1.passportindia.gov.in/*"
       ],
       "all_frames": true,
       "js": [

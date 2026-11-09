@@ -39,3 +39,4 @@
 - Conversational phrasing: Gentle, human Indian-English cadence ("Okay, so", "Alright, now", "Just").
 - Hesitation rate: Light natural hesitation ("uh", "hmm") appears on exactly 2 out of 10 steps (~1 in 5 steps).
 - Critical step isolation: Steps involving Aadhaar OTP, verification boundaries, and application stages contain **zero** hesitations or ambiguities for maximum clarity and safety.
+

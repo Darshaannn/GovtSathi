@@ -234,6 +234,23 @@ GovGuide includes complete, verified guidance for:
   - Explains default selections (*General* category and *Applicant does not hold any licence*).
   - Runs in **Explain-Only Mode** (no intrusive pointers, purely informative).
 
+### 2. Passport Seva - Citizen Services & Application Guide (`passportseva-main.json`)
+*Verified for Ministry of External Affairs Passport Seva Portal (`passportindia.gov.in`):*
+- **Page 1: Advisory Modal** (`/psp`)
+  - Detects the initial advisory popup dialog (`.homePageModal.modal.show`) and guides the user to dismiss it safely (`.btn-close`).
+- **Page 2: Homepage Launchpad** (`/psp`)
+  - Highlights the **"Services"** navigation menu (`#collasible-nav-dropdown3`), the **"Apply For Passport"** quick card, and the **"Register"** button (`.staticHomePageButtons1`).
+- **Page 3: Fee Calculator** (`/psp/FeeCalculator`)
+  - Highlights the Application Type dropdown (`select.locatePskBoxShape1`) to calculate government passport fees.
+- **Page 4: Document Advisor** (`/psp/docAdvisor/attachmentAdvFreshInp`)
+  - Guides citizens on selecting their scheme (Normal vs. Tatkaal) and age category to see required address & date of birth proofs. Runs in **Explain-Only Mode**.
+- **Page 5: Locate PSK / POPSK** (`/psp/LocatePsk`)
+  - Points out the Passport Office selector (`select.locatePskBoxShape`) to locate nearest operational Passport Seva Kendras.
+- **Page 6: Track Application Status** (`/psp/trackApplicationService`)
+  - Highlights the 15-digit File Number input (`input#formBasicEmail`) and explains status checking.
+- **Pages 7 & 8: Registration & Login Boundaries** (`services1.passportindia.gov.in/forms/*`)
+  - Safety boundary screens: Explains account creation and login in **Explain-Only Mode** with zero field reading.
+
 ---
 
 ## 🔒 Privacy & Safety Guarantees
