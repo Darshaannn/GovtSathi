@@ -1,7 +1,13 @@
 /**
  * GovGuide - Step Runner
  * State machine managing current flow, pages, steps, triggers, and language.
- * Strict Privacy & Safety: Listens ONLY to events (click/change) and NEVER inspects input values.
+ * Upgraded Features:
+ * - Robust Fallback to English on missing translation keys (never blank or undefined)
+ * - Safe pre-recorded audio playback handling (`step.audio[lang]`)
+ * - Mascot speaking animation synchronization
+ * - Notice presentation when language voice is not supported on user's device
+ * - Persisted language & session state
+ * - Strict Privacy & Safety: Listens ONLY to events (click/change) and NEVER inspects input values.
  */
 (function() {
   const PREF_LANG_KEY = 'govguide_user_lang_pref';
@@ -33,6 +39,19 @@
       this.currentEventType = null;
       this.observer = null;
       this.observerThrottleTimer = null;
+
+      // Connect speech state to mascot speaking animation
+      this.speech.onSpeakingChange = (isSpeaking) => {
+        this.mascot.setSpeaking(isSpeaking);
+      };
+
+      // Connect voice absence alert
+      this.speech.onNoVoiceAvailable = (langCode) => {
+        const msg = (window.GovGuideLanguages && window.GovGuideLanguages.LanguageRegistry)
+          ? window.GovGuideLanguages.LanguageRegistry.getString('noVoiceNotice', langCode)
+          : 'Voice reading is unavailable for this language on your device. Displaying text instructions.';
+        this.bubble.showNotice(msg);
+      };
 
       // Immediate synchronous detection
       this.detectAndApplyPage();
@@ -145,217 +164,202 @@
 
       if (matchedPage) {
         if (!this.currentPage || this.currentPage.pageId !== matchedPage.pageId) {
-          log('Switching to page:', matchedPage.pageId);
-          this.setPage(matchedPage);
+          this.currentPage = matchedPage;
+          this.currentStepIndex = 0;
+          this._saveSessionProgress();
+          this.runStep(this.currentStepIndex);
         }
       } else {
-        log('No page rule matched for URL:', currentUrl);
+        log('No matching page rule found for current URL:', currentUrl);
       }
     }
 
-    setPage(page) {
-      this.currentPage = page;
-      this.currentStepIndex = 0;
-      this._saveSessionProgress(this.currentFlow ? this.currentFlow.flowId : null, page.pageId);
-      this.executeStep(0);
-    }
-
-    setFlow(flow) {
-      this.currentFlow = flow;
-      this.detectAndApplyPage();
-    }
-
-    executeStep(index) {
-      if (!this.currentPage || !this.currentPage.steps) return;
-      if (index < 0 || index >= this.currentPage.steps.length) {
-        if (index >= this.currentPage.steps.length) {
-          this._handleFlowComplete();
-        }
+    runStep(index) {
+      if (!this.currentPage || !this.currentPage.steps || this.currentPage.steps.length === 0) {
         return;
       }
 
+      this._cleanupCurrentListener();
+
+      if (index < 0) index = 0;
+      if (index >= this.currentPage.steps.length) {
+        this._showCompletionState();
+        return;
+      }
+
+      this.currentStepIndex = index;
       const step = this.currentPage.steps[index];
-      log('Executing step:', step.stepId, '(Order:', step.order, ')');
+      log('Running step:', step.stepId, '| Order:', step.order);
 
       // Check skipIfNotFound
-      if (step.skipIfNotFound && step.target) {
-        const testEl = window.GovGuideElementFinder.find(step.target);
-        if (!testEl) {
-          log('Step', step.stepId, 'has skipIfNotFound=true and target is missing. Skipping silently.');
-          this.executeStep(index + 1);
-          return;
-        }
+      let targetEl = null;
+      if (step.target) {
+        targetEl = window.GovGuideElementFinder.find(step.target);
       }
 
-      this._detachCurrentTrigger();
-      this.currentStepIndex = index;
-      const isLastStep = index === this.currentPage.steps.length - 1;
-
-      // Safe Element Lookup (only if target specified and actionType is not explain_only)
-      let targetElement = null;
-      if (step.target && step.actionType !== 'explain_only') {
-        targetElement = window.GovGuideElementFinder.find(step.target);
+      if (!targetEl && step.skipIfNotFound) {
+        log('Step', step.stepId, 'has skipIfNotFound and element was not found. Skipping to next step.');
+        this.runStep(index + 1);
+        return;
       }
 
-      // Retrieve messages
-      const lang = this.currentLanguage;
-      const msgs = step.messages && step.messages[lang] ? step.messages[lang] : (step.messages?.en || {});
-      const fallbackMsgs = step.fallback && step.fallback[lang] ? step.fallback[lang] : (step.fallback?.en || 'Please review this step.');
-      const flowTitle = (this.currentFlow.name && this.currentFlow.name[lang]) || this.guide.name;
+      // Safe bilingual translation extraction with fallback to English
+      const messages = this._resolveStepMessage(step.messages);
+      const fallbackText = this._resolveFallbackText(step.fallback);
 
-      if (step.actionType === 'explain_only' || !step.target) {
-        // Explain-only mode: no spotlight, no highlight ring, mascot moves to corner
+      const title = this.currentFlow.name ? this._resolveLocalizedText(this.currentFlow.name) : 'GovGuide';
+      const isLast = (index === this.currentPage.steps.length - 1);
+
+      // Audio configuration if provided
+      const audioUrl = (step.audio && (step.audio[this.currentLanguage] || step.audio.en)) || null;
+
+      if (step.actionType === 'explain_only') {
+        // Explain only: no spotlight, position mascot in corner
         this.highlighter.clear();
+        this.bubble.setHighlightedTargetRect(null);
         this.mascot.moveToCorner();
+        this.bubble.setContent(messages.bubble, title, index, this.currentPage.steps.length, isLast, this.currentLanguage);
+        this.bubble.positionNear(this.mascot.currentX, this.mascot.currentY, 90, 90);
+        this.speech.speak(messages.speech, { audioUrl });
+        return;
+      }
 
-        this.bubble.setContent(
-          msgs.bubble || msgs.speech || 'Please follow this explanation.',
-          flowTitle,
-          index,
-          this.currentPage.steps.length,
-          isLastStep
-        );
-
-        this.speech.speak(msgs.speech || msgs.bubble);
-      } else if (targetElement) {
-        // Spotlight & ring
-        this.highlighter.highlight(targetElement, true);
-        this.mascot.moveToTarget(targetElement);
-
-        this.bubble.setContent(
-          msgs.bubble || msgs.speech || 'Follow this step.',
-          flowTitle,
-          index,
-          this.currentPage.steps.length,
-          isLastStep
-        );
-
-        this.speech.speak(msgs.speech || msgs.bubble);
-        this._attachTrigger(step.stepDoneTrigger, targetElement);
+      // Action type: point_and_click / focus / change
+      if (targetEl) {
+        const targetRect = targetEl.getBoundingClientRect();
+        this.highlighter.highlight(targetEl, true);
+        this.mascot.moveToTarget(targetEl);
+        this.bubble.setHighlightedTargetRect({
+          left: targetRect.left - 10,
+          top: targetRect.top - 10,
+          right: targetRect.right + 10,
+          bottom: targetRect.bottom + 10,
+          width: targetRect.width + 20,
+          height: targetRect.height + 20
+        });
+        this.bubble.setContent(messages.bubble, title, index, this.currentPage.steps.length, isLast, this.currentLanguage);
+        this.bubble.positionNear(this.mascot.currentX, this.mascot.currentY, 90, 90);
+        this.speech.speak(messages.speech, { audioUrl });
+        this._bindStepDoneTrigger(step.stepDoneTrigger, targetEl);
       } else {
-        // Fallback behavior: graceful notification without crash
+        // Target element not found: graceful fallback
+        log('Target element not found for step:', step.stepId);
         this.highlighter.clear();
+        this.bubble.setHighlightedTargetRect(null);
         this.mascot.moveToCorner();
-
-        this.bubble.setContent(
-          fallbackMsgs,
-          flowTitle,
-          index,
-          this.currentPage.steps.length,
-          isLastStep
-        );
-
-        this.speech.speak(fallbackMsgs);
+        const displayMsg = fallbackText || messages.bubble;
+        this.bubble.setContent(displayMsg, title, index, this.currentPage.steps.length, isLast, this.currentLanguage);
+        this.bubble.positionNear(this.mascot.currentX, this.mascot.currentY, 90, 90);
+        this.speech.speak(displayMsg, { audioUrl });
       }
     }
 
-    /**
-     * Attaches step-done triggers (click, change).
-     * Strictly listens for the event occurrence ONLY — never reads target.value!
-     */
-    _attachTrigger(trigger, targetElement) {
-      if (!trigger || trigger.type === 'manual_next') return;
-
-      let el = targetElement;
-      if (trigger.selector && !trigger.selector.startsWith('TODO:')) {
-        try {
-          const matched = document.querySelector(trigger.selector);
-          if (matched) el = matched;
-        } catch (e) {
-          // ignore
-        }
+    _resolveStepMessage(messagesObj) {
+      if (!messagesObj) {
+        return { speech: '', bubble: '' };
       }
+      const langMsg = messagesObj[this.currentLanguage];
+      if (langMsg && (langMsg.bubble || langMsg.speech)) {
+        return {
+          speech: langMsg.speech || langMsg.bubble || '',
+          bubble: langMsg.bubble || langMsg.speech || ''
+        };
+      }
+      // Fallback to English
+      const enMsg = messagesObj.en || {};
+      return {
+        speech: enMsg.speech || enMsg.bubble || '',
+        bubble: enMsg.bubble || enMsg.speech || ''
+      };
+    }
 
-      if (!el) return;
+    _resolveFallbackText(fallbackObj) {
+      if (!fallbackObj) return null;
+      if (typeof fallbackObj === 'string') return fallbackObj;
+      if (fallbackObj[this.currentLanguage]) return fallbackObj[this.currentLanguage];
+      return fallbackObj.en || null;
+    }
 
-      const eventType = trigger.type === 'change' ? 'change' : 'click';
-      const listener = () => {
-        // Strictly event detection only, zero inspection of input values
-        this._detachCurrentTrigger();
-        // Advance to next step
-        this.executeStep(this.currentStepIndex + 1);
+    _resolveLocalizedText(textObj) {
+      if (!textObj) return '';
+      if (typeof textObj === 'string') return textObj;
+      if (textObj[this.currentLanguage]) return textObj[this.currentLanguage];
+      return textObj.en || '';
+    }
+
+    _bindStepDoneTrigger(trigger, element) {
+      if (!trigger) return;
+
+      const eventType = trigger.type || 'click';
+      const targetElement = element || (trigger.selector ? document.querySelector(trigger.selector) : null);
+      if (!targetElement) return;
+
+      this.currentEventElement = targetElement;
+      this.currentEventType = eventType;
+
+      this.currentEventListener = () => {
+        log('StepDone trigger detected:', eventType);
+        this._cleanupCurrentListener();
+        setTimeout(() => this.nextStep(), 400);
       };
 
-      el.addEventListener(eventType, listener, { once: true });
-      this.currentEventElement = el;
-      this.currentEventType = eventType;
-      this.currentEventListener = listener;
+      try {
+        targetElement.addEventListener(eventType, this.currentEventListener, { once: true });
+      } catch (e) {
+        log('Failed to bind step trigger:', e.message);
+      }
     }
 
-    _detachCurrentTrigger() {
-      if (this.currentEventElement && this.currentEventType && this.currentEventListener) {
-        this.currentEventElement.removeEventListener(this.currentEventType, this.currentEventListener);
+    _cleanupCurrentListener() {
+      if (this.currentEventElement && this.currentEventListener && this.currentEventType) {
+        try {
+          this.currentEventElement.removeEventListener(this.currentEventType, this.currentEventListener);
+        } catch (e) {}
       }
+      this.currentEventListener = null;
       this.currentEventElement = null;
       this.currentEventType = null;
-      this.currentEventListener = null;
     }
 
     nextStep() {
-      if (!this.currentPage || !this.currentPage.steps) return;
-      if (this.currentStepIndex < this.currentPage.steps.length - 1) {
-        this.executeStep(this.currentStepIndex + 1);
-      } else {
-        this._handleFlowComplete();
-      }
+      this.runStep(this.currentStepIndex + 1);
     }
 
     prevStep() {
       if (this.currentStepIndex > 0) {
-        this.executeStep(this.currentStepIndex - 1);
+        this.runStep(this.currentStepIndex - 1);
       }
     }
 
     repeatCurrentStep() {
-      this.executeStep(this.currentStepIndex);
+      this.runStep(this.currentStepIndex);
     }
 
-    async switchLanguage(langCode) {
+    switchLanguage(langCode) {
       this.currentLanguage = langCode;
-      this.bubble.setLanguage(langCode);
       this.speech.setLanguage(langCode);
-      await this._saveLangPreference(langCode);
-      this.executeStep(this.currentStepIndex);
+      this.bubble.setLanguage(langCode);
+      this._saveLangPreference(langCode);
+      this.repeatCurrentStep();
     }
 
-    matchVoiceIntent(phrase) {
-      if (!phrase || !this.guide.flows) return false;
-      const cleanPhrase = phrase.toLowerCase();
-
-      for (const flow of this.guide.flows) {
-        if (!flow.keywords) continue;
-        const matched = flow.keywords.some(kw => cleanPhrase.includes(kw.toLowerCase()));
-        if (matched) {
-          this.setFlow(flow);
-          return true;
-        }
-      }
-
-      // If no flow keyword matched, give feedback
-      const notice = this.currentLanguage === 'hi'
-        ? `"${phrase}" के लिए कोई गाइड नहीं मिला।`
-        : `No guide flow found for "${phrase}".`;
-      this.bubble.showNotice(notice);
-      setTimeout(() => this.bubble.hideNotice(), 4000);
-      return false;
-    }
-
-    _handleFlowComplete() {
+    _showCompletionState() {
       this.highlighter.clear();
+      this.bubble.setHighlightedTargetRect(null);
       this.mascot.moveToCorner();
       const doneText = this.currentLanguage === 'hi'
-        ? 'इस गाइड के सभी चरण पूरे हो गए हैं। यदि आवश्यक हो तो आप "Back" दबा सकते हैं।'
+        ? 'इस गाइड के सभी चरण पूरे हो गए हैं! यदि आपको कोई चरण दोबारा देखना है, तो आप "पीछे" पर क्लिक कर सकते हैं।'
         : 'All steps in this guide are complete! You can click "Back" if you need to revisit any step.';
-      const title = (this.currentFlow && this.currentFlow.name && this.currentFlow.name[this.currentLanguage]) || this.guide.name;
-      this.bubble.setContent(doneText, title, this.currentPage.steps.length - 1, this.currentPage.steps.length, true);
-      this.speech.speak(doneText);
+      const title = this.currentFlow.name ? this._resolveLocalizedText(this.currentFlow.name) : 'GovGuide';
+      this.bubble.setContent(doneText, title, this.currentStepIndex, this.currentStepIndex + 1, true, this.currentLanguage);
+      this.bubble.positionNear(this.mascot.currentX, this.mascot.currentY, 90, 90);
     }
 
     async _loadLangPreference() {
       return new Promise((resolve) => {
         if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
           chrome.storage.local.get([PREF_LANG_KEY], (res) => {
-            resolve(res[PREF_LANG_KEY]);
+            resolve(res[PREF_LANG_KEY] || null);
           });
         } else {
           resolve(localStorage.getItem(PREF_LANG_KEY));
@@ -363,47 +367,35 @@
       });
     }
 
-    async _saveLangPreference(langCode) {
-      return new Promise((resolve) => {
-        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
-          chrome.storage.local.set({ [PREF_LANG_KEY]: langCode }, () => resolve());
-        } else {
-          localStorage.setItem(PREF_LANG_KEY, langCode);
-          resolve();
-        }
-      });
+    _saveLangPreference(lang) {
+      if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+        chrome.storage.local.set({ [PREF_LANG_KEY]: lang });
+      } else {
+        localStorage.setItem(PREF_LANG_KEY, lang);
+      }
     }
 
     async _loadSessionProgress() {
       return new Promise((resolve) => {
         if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.session) {
           chrome.storage.session.get([SESSION_PROGRESS_KEY], (res) => {
-            resolve(res[SESSION_PROGRESS_KEY]);
+            resolve(res[SESSION_PROGRESS_KEY] || null);
           });
         } else {
-          try {
-            const data = sessionStorage.getItem(SESSION_PROGRESS_KEY);
-            resolve(data ? JSON.parse(data) : null);
-          } catch (e) {
-            resolve(null);
-          }
+          resolve(null);
         }
       });
     }
 
-    async _saveSessionProgress(flowId, pageId) {
-      // Strictly stores only flowId and pageId identifiers, never form values
-      const data = { flowId, pageId };
-      return new Promise((resolve) => {
-        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.session) {
-          chrome.storage.session.set({ [SESSION_PROGRESS_KEY]: data }, () => resolve());
-        } else {
-          try {
-            sessionStorage.setItem(SESSION_PROGRESS_KEY, JSON.stringify(data));
-          } catch (e) {}
-          resolve();
-        }
-      });
+    _saveSessionProgress() {
+      if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.session) {
+        chrome.storage.session.set({
+          [SESSION_PROGRESS_KEY]: {
+            flowId: this.currentFlow ? this.currentFlow.flowId : null,
+            pageId: this.currentPage ? this.currentPage.pageId : null
+          }
+        });
+      }
     }
   }
 

@@ -1,6 +1,6 @@
 /**
  * GovGuide - Highlighter & Spotlight
- * Creates a dim background with a transparent spotlight cutout and a pulse ring over target elements.
+ * Creates a soft dim background with a transparent spotlight cutout and an animated pulse ring over target elements.
  * Critical: Clicks MUST cleanly pass through to the real page element (pointer-events: none).
  */
 (function() {
@@ -21,13 +21,13 @@
       svg.innerHTML = `
         <defs>
           <mask id="govguide-spotlight-mask">
-            <!-- White reveals the dim backdrop -->
+            <!-- White reveals the soft dim backdrop -->
             <rect x="0" y="0" width="100%" height="100%" fill="white"/>
-            <!-- Black cuts a transparent hole for the spotlight -->
-            <rect id="govguide-cutout-rect" x="0" y="0" width="0" height="0" rx="8" ry="8" fill="black"/>
+            <!-- Black cuts a transparent hole for the spotlight with rounded corners -->
+            <rect id="govguide-cutout-rect" x="0" y="0" width="0" height="0" rx="10" ry="10" fill="black"/>
           </mask>
         </defs>
-        <rect x="0" y="0" width="100%" height="100%" fill="rgba(15, 23, 42, 0.45)" mask="url(#govguide-spotlight-mask)"/>
+        <rect x="0" y="0" width="100%" height="100%" fill="rgba(15, 23, 42, 0.42)" mask="url(#govguide-spotlight-mask)"/>
       `;
       this.shadowRoot.appendChild(svg);
       this.svgElement = svg;
@@ -83,10 +83,15 @@
 
       // Update pulse ring
       this.pulseRing.style.display = 'block';
-      this.pulseRing.style.left = `${x}px`;
-      this.pulseRing.style.top = `${y}px`;
-      this.pulseRing.style.width = `${width}px`;
-      this.pulseRing.style.height = `${height}px`;
+      this.pulseRing.style.left = `${Math.round(x)}px`;
+      this.pulseRing.style.top = `${Math.round(y)}px`;
+      this.pulseRing.style.width = `${Math.round(width)}px`;
+      this.pulseRing.style.height = `${Math.round(height)}px`;
+    }
+
+    getTargetRect() {
+      if (!this.currentTarget) return null;
+      return this.currentTarget.getBoundingClientRect();
     }
 
     clear() {

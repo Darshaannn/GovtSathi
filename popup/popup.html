@@ -10,7 +10,7 @@
   <div class="popup-container">
     <div class="popup-header">
       <div class="brand">
-        <span class="brand-icon">🧭</span>
+        <span class="brand-icon" aria-hidden="true">🧭</span>
         <span class="brand-title">GovGuide</span>
       </div>
       <span class="status-badge" id="guideStatus">Ready</span>
@@ -21,14 +21,58 @@
       <div class="site-name" id="currentSiteName">Looking for portal...</div>
     </div>
 
+    <!-- Language Picker -->
     <div class="section">
       <label for="languageSelect" class="section-label">Guide Language / भाषा</label>
-      <select id="languageSelect" class="lang-picker">
+      <select id="languageSelect" class="styled-select" aria-label="Select Guide Language">
         <option value="en">English</option>
         <option value="hi">हिन्दी (Hindi)</option>
+        <option value="mr">मराठी (Marathi)</option>
+        <option value="gu">ગુજરાતી (Gujarati)</option>
+        <option value="bn">বাংলা (Bengali)</option>
+        <option value="ta">தமிழ் (Tamil)</option>
+        <option value="te">తెలుగు (Telugu)</option>
+        <option value="kn">ಕನ್ನಡ (Kannada)</option>
+        <option value="ml">മലയാളം (Malayalam)</option>
+        <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+        <option value="or">ଓଡ଼ିଆ (Odia)</option>
       </select>
     </div>
 
+    <!-- Voice Selection & Testing -->
+    <div class="section">
+      <label for="voiceSelect" class="section-label">Voice / आवाज़</label>
+      <div class="voice-row">
+        <select id="voiceSelect" class="styled-select" aria-label="Select Voice">
+          <option value="">Default Recommended Voice</option>
+        </select>
+        <button id="testVoiceBtn" class="action-btn" title="Test Voice" aria-label="Test Voice">
+          <span>🔊 Test</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Voice Speed & Text Size Controls -->
+    <div class="section controls-grid">
+      <div class="control-col">
+        <label for="speedSelect" class="section-label">Speech Speed</label>
+        <select id="speedSelect" class="styled-select" aria-label="Speech Speed">
+          <option value="slow">Slow (0.85x)</option>
+          <option value="normal" selected>Normal (1.0x)</option>
+          <option value="fast">Fast (1.2x)</option>
+        </select>
+      </div>
+      <div class="control-col">
+        <label for="textSizeSelect" class="section-label">Text Size</label>
+        <select id="textSizeSelect" class="styled-select" aria-label="Text Size">
+          <option value="small">Small</option>
+          <option value="normal" selected>Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Privacy Card -->
     <div class="privacy-card">
       <div class="privacy-title">🔒 Privacy Promise</div>
       <p class="privacy-text">

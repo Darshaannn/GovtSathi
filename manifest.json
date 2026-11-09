@@ -24,6 +24,7 @@
       "all_frames": true,
       "js": [
         "assets/mascot-config.js",
+        "engine/languages.js",
         "engine/shadow-dom.js",
         "engine/highlighter.js",
         "engine/element-finder.js",

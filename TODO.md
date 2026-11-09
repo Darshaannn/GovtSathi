@@ -1,10 +1,25 @@
-# TODO List - GovGuide Parivahan LL Bugfix & Full Verification
+# GovGuide Upgrade TODO List
 
-- [x] 1. DIAGNOSE: compare each captured page's real URL/title (captures/parivahan/notes.txt) against the match rules in guides/parivahan/sarathi-ll.json. Check how the engine picks the current page after load. Check each capture for iframes. Write findings to DEBUG.md.
-- [x] 2. FIX ROOT CAUSES: Page detection on load & DOM changes, iframe handling, silent popup skip, explain-only steps for defaults & unverified steps.
-- [x] 3. Add "[GovGuide]" debug logging behind ONE flag (default off in final build).
-- [x] 4. TEST PHASE 1 (offline, local test harness): Assert matching, target element finding, spotlight rect, single mascot mounting, fallback resilience, EN/HI messages, privacy grep (.value). Save results to TEST-PHASE-1.md.
-- [ ] 5. TEST PHASE 2 (live, read-only): Run Playwright with --load-extension against live Sarathi site, walk Delhi flow, verify all pages, screenshots. Save results to TEST-PHASE-2.md.
-- [ ] 6. Iterative fix if Phase 2 fails, re-running Phase 1 and Phase 2.
-- [ ] 7. CLEANUP: turn debug flag off, update README (Delhi-only, limitations), confirm captures excluded.
-- [ ] 8. FINAL REPORT: Short, honest status of tested vs assumed.
+- [x] 1. Read current code; write short plan to PLAN.md.
+- [x] 2. Implement Upgrades A, B, and C:
+  - [x] C. Central Languages Definition & Translations (`engine/languages.js`, `guides/parivahan/sarathi-ll.json`, `manifest.json`).
+  - [x] A. UI Polish & Shadow DOM Styling (`engine/shadow-dom.js`, `engine/speech-bubble.js`, `engine/mascot-ui.js`, `engine/highlighter.js`).
+  - [x] B. Voice Engine Improvements (`engine/speech-service.js`, `engine/step-runner.js`, `popup/popup.html`, `popup/popup.css`, `popup/popup.js`).
+- [x] 3. TEST PHASE 1 (Offline verification suite):
+  - Check all 11 languages for every guide step and UI string (no blank or undefined).
+  - Verify English fallback works.
+  - Verify layout responsiveness (360px & desktop, long Tamil/Malayalam strings).
+  - Verify bubble never covers target element.
+  - Spotlight alignment on scroll/resize and click-through.
+  - Single mascot mount.
+  - Voice picker and fallback when no voice exists.
+  - Mute/repeat/speed/text-size controls persist.
+  - Keyboard focus & accessibility.
+  - Dark mode & prefers-reduced-motion.
+  - Privacy grep (`.value` lookups).
+  - Save results to TEST-PHASE-1.md.
+- [x] 4. TEST PHASE 2 (Live read-only test):
+  - Walk Delhi flow in Chromium with loaded extension (English, Hindi, and 2 new languages).
+  - Document results and screenshots in TEST-PHASE-2.md.
+- [x] 5. Fix any failures and verify.
+- [x] 6. Update README.md with voice quality, OS voice install instructions, language contribution guide, and final summary report.

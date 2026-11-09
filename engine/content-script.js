@@ -115,6 +115,9 @@
           if (msg && msg.type === 'GOVGUIDE_SET_LANGUAGE') {
             stepRunner.switchLanguage(msg.language);
             sendResponse({ status: 'ok' });
+          } else if (msg && msg.type === 'GOVGUIDE_SET_TEXT_SIZE') {
+            bubble.setTextSize(msg.textSize);
+            sendResponse({ status: 'ok' });
           } else if (msg && msg.type === 'GOVGUIDE_GET_STATUS') {
             sendResponse({
               status: 'active',
