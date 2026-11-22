@@ -123,6 +123,19 @@ To guide citizens beyond reachable public screens without fabricating facts, Gov
 - If `retrievedOn` is older than 180 days, GovGuide automatically displays a cautionary note: *"This may have changed. Check the portal."*
 - `whatsNext` items **never** create a spotlight, target pulse ring, or step-done trigger.
 
+### Official Source Whitelist & Pre-Citation Verification:
+- **Allowed Domains**: Strictly limited to official government domains:
+  - `parivahan.gov.in`
+  - `sarathi.parivahan.gov.in`
+  - `transport.delhi.gov.in`
+  - `services.india.gov.in`
+  - `passportindia.gov.in`
+  - `mea.gov.in`
+- **Pre-Citation Verification**: Before citing any URL in a guide, contributors must open the URL and verify that it loads with HTTP 200 and matches the item's statements. Any link that fails, times out, or returns a 404 must be dropped.
+- **Cross-State Documents**: State-department documents from other states (e.g. `transport.py.gov.in`, `vswsonline.ap.gov.in`) may only be used to confirm general sequencing, must be tagged `"other state, may differ"`, and must never be used for Delhi-specific facts.
+- **Fees & Limits**: Never state exact fees, validity periods, age limits, or document lists unless an official source for the exact state and portal states them. Otherwise, mark the item as `trust: "unverified"`.
+
+
 ---
 
 ## 6. Security & Privacy Rules for Contributors
