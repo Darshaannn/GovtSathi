@@ -5,8 +5,11 @@
  * - Step progress indicator ("Step X of Y")
  * - Smart anti-collision positioning: never covers highlighted element
  * - Text size switcher (small, medium, large) persisted to storage
+ * - Quick-Reply chips: "What is this page?", "What documents do I need?", "I'm stuck", "What's next?", "Say it again"
+ * - Explain-This-Field toggle button
+ * - Collapsible Document Checklist with persistent tick states
  * - Unreviewed language disclaimer notice
- * - Fully accessible: aria-live, tooltips, visible focus, min 44px targets
+ * - Fully accessible: aria-live, tooltips, visible focus, min hit targets
  */
 (function() {
   const PREF_TEXT_SIZE_KEY = 'govguide_text_size_pref';
@@ -25,15 +28,22 @@
       this.repeatBtn = null;
       this.micBtn = null;
       this.textSizeBtn = null;
+      this.explainFieldBtn = null;
       this.langSelect = null;
       this.noticeBox = null;
       this.nextBtn = null;
       this.prevBtn = null;
       this.minimizeBtn = null;
 
+      this.chipsBar = null;
+      this.checklistDrawer = null;
+      this.checklistItemsContainer = null;
+      this.checklistHeaderTitle = null;
+
       this.currentTextSize = 'medium'; // 'small' | 'medium' | 'large'
       this.currentLang = 'en';
       this.highlightedRect = null;
+      this.isExplainFieldActive = false;
 
       this.onNext = options.onNext || (() => {});
       this.onPrev = options.onPrev || (() => {});
@@ -43,6 +53,9 @@
       this.onLangChange = options.onLangChange || (() => {});
       this.onMinimize = options.onMinimize || (() => {});
       this.onTextSizeChange = options.onTextSizeChange || (() => {});
+      this.onChipClick = options.onChipClick || (() => {});
+      this.onExplainFieldToggle = options.onExplainFieldToggle || (() => {});
+      this.onChecklistTick = options.onChecklistTick || (() => {});
 
       this._buildUI();
       this._loadTextSizePreference();
@@ -51,7 +64,7 @@
     async _loadTextSizePreference() {
       if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
         chrome.storage.local.get([PREF_TEXT_SIZE_KEY], (res) => {
-          if (res[PREF_TEXT_SIZE_KEY]) {
+          if (res && res[PREF_TEXT_SIZE_KEY]) {
             this.setTextSize(res[PREF_TEXT_SIZE_KEY]);
           }
         });
@@ -104,8 +117,11 @@
             <select class="govguide-lang-select" title="Switch Language" aria-label="Switch Language">
               ${langOptionsHtml}
             </select>
+            <button class="govguide-icon-btn govguide-explain-field-btn" title="Explain This Field Mode" aria-label="Toggle Explain-This-Field Mode">
+              <span aria-hidden="true">🔍</span>
+            </button>
             <button class="govguide-icon-btn govguide-text-size-btn" title="Text Size: Small / Medium / Large" aria-label="Toggle Text Size">
-              <span style="font-size:13px; font-weight:700;">aA</span>
+              <span style="font-size:12px; font-weight:700;">aA</span>
             </button>
             <button class="govguide-icon-btn govguide-mute-btn" title="Mute/Unmute Voice" aria-label="Toggle Voice Mute">🔊</button>
             <button class="govguide-icon-btn govguide-repeat-btn" title="Repeat Step" aria-label="Repeat Step Instruction">🔄</button>
@@ -119,6 +135,35 @@
         </div>
         <div class="govguide-notice-box" style="display: none;" role="alert"></div>
         <div class="govguide-bubble-body" aria-live="polite" aria-atomic="true">Loading guide...</div>
+        
+        <!-- Document Checklist Drawer (Collapsible) -->
+        <div class="govguide-checklist-drawer" style="display: none;" role="region" aria-label="Document Checklist">
+          <div class="govguide-checklist-header">
+            <span class="govguide-checklist-title-text">📋 Required Documents</span>
+            <button class="govguide-checklist-close-btn" style="background:none;border:none;cursor:pointer;font-size:14px;color:var(--gg-text-muted);" title="Close checklist">✕</button>
+          </div>
+          <div class="govguide-checklist-items"></div>
+        </div>
+
+        <!-- Quick Reply Chips Bar -->
+        <div class="govguide-chips-bar" role="toolbar" aria-label="Quick questions">
+          <button class="govguide-chip" data-chip="what-is-page" aria-label="What is this page?">
+            <span aria-hidden="true">❓</span> <span class="chip-label">What is this page?</span>
+          </button>
+          <button class="govguide-chip" data-chip="documents" aria-label="What documents do I need?">
+            <span aria-hidden="true">📄</span> <span class="chip-label">Documents?</span>
+          </button>
+          <button class="govguide-chip" data-chip="stuck" aria-label="I am stuck">
+            <span aria-hidden="true">🆘</span> <span class="chip-label">I'm stuck</span>
+          </button>
+          <button class="govguide-chip" data-chip="next" aria-label="What is next?">
+            <span aria-hidden="true">⏩</span> <span class="chip-label">What's next?</span>
+          </button>
+          <button class="govguide-chip" data-chip="say-again" aria-label="Say it again">
+            <span aria-hidden="true">🔊</span> <span class="chip-label">Say again</span>
+          </button>
+        </div>
+
         <div class="govguide-bubble-footer">
           <div class="govguide-step-progress">
             <span class="govguide-step-counter">Step 1 of 1</span>
@@ -144,10 +189,16 @@
       this.repeatBtn = bubble.querySelector('.govguide-repeat-btn');
       this.micBtn = bubble.querySelector('.govguide-mic-btn');
       this.textSizeBtn = bubble.querySelector('.govguide-text-size-btn');
+      this.explainFieldBtn = bubble.querySelector('.govguide-explain-field-btn');
       this.langSelect = bubble.querySelector('.govguide-lang-select');
       this.minimizeBtn = bubble.querySelector('.govguide-min-btn');
       this.nextBtn = bubble.querySelector('.govguide-next-btn');
       this.prevBtn = bubble.querySelector('.govguide-prev-btn');
+
+      this.chipsBar = bubble.querySelector('.govguide-chips-bar');
+      this.checklistDrawer = bubble.querySelector('.govguide-checklist-drawer');
+      this.checklistItemsContainer = bubble.querySelector('.govguide-checklist-items');
+      this.checklistHeaderTitle = bubble.querySelector('.govguide-checklist-title-text');
 
       // Bind events
       this.muteBtn.addEventListener('click', () => this.onMuteToggle());
@@ -158,15 +209,138 @@
       this.nextBtn.addEventListener('click', () => this.onNext());
       this.prevBtn.addEventListener('click', () => this.onPrev());
 
+      this.explainFieldBtn.addEventListener('click', () => {
+        this.toggleExplainFieldMode();
+      });
+
+      this.checklistDrawer.querySelector('.govguide-checklist-close-btn').addEventListener('click', () => {
+        this.checklistDrawer.style.display = 'none';
+      });
+
+      this.chipsBar.querySelectorAll('.govguide-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const chipType = chip.getAttribute('data-chip');
+          if (chipType === 'say-again') {
+            this.onRepeat();
+          } else {
+            this.onChipClick(chipType);
+          }
+        });
+      });
+
       this.langSelect.addEventListener('change', (e) => {
         this.onLangChange(e.target.value);
       });
+    }
+
+    toggleExplainFieldMode(forceState = null) {
+      if (typeof forceState === 'boolean') {
+        this.isExplainFieldActive = forceState;
+      } else {
+        this.isExplainFieldActive = !this.isExplainFieldActive;
+      }
+
+      if (this.isExplainFieldActive) {
+        this.explainFieldBtn.classList.add('mode-active');
+        const activeNotice = (window.GovGuideLanguages && window.GovGuideLanguages.LanguageRegistry)
+          ? window.GovGuideLanguages.LanguageRegistry.getString('explainFieldActive', this.currentLang)
+          : 'Click any form field or label to hear what it means. GovGuide never reads your input.';
+        this.showNotice(activeNotice);
+      } else {
+        this.explainFieldBtn.classList.remove('mode-active');
+        this.hideNotice();
+      }
+
+      this.onExplainFieldToggle(this.isExplainFieldActive);
+    }
+
+    setExplainFieldActive(active) {
+      this.isExplainFieldActive = !!active;
+      if (this.isExplainFieldActive) {
+        this.explainFieldBtn.classList.add('mode-active');
+      } else {
+        this.explainFieldBtn.classList.remove('mode-active');
+      }
+    }
+
+    /**
+     * Renders Document Checklist
+     */
+    showChecklist(docList = [], savedTicks = {}, onTickChange = null) {
+      if (!docList || docList.length === 0) {
+        this.checklistDrawer.style.display = 'none';
+        return;
+      }
+
+      const langCode = this.currentLang;
+      const titleStr = (window.GovGuideLanguages && window.GovGuideLanguages.LanguageRegistry)
+        ? window.GovGuideLanguages.LanguageRegistry.getString('checklistTitle', langCode)
+        : 'Document Checklist';
+      this.checklistHeaderTitle.textContent = `📋 ${titleStr}`;
+
+      this.checklistItemsContainer.innerHTML = '';
+      docList.forEach((doc, idx) => {
+        const itemEl = document.createElement('label');
+        itemEl.className = 'govguide-checklist-item';
+        const docId = `doc_${idx}`;
+        const isChecked = !!savedTicks[docId];
+        if (isChecked) itemEl.classList.add('checked');
+
+        const docText = typeof doc === 'object' ? (doc[langCode] || doc.en || '') : String(doc);
+
+        itemEl.innerHTML = `
+          <input type="checkbox" data-doc-id="${docId}" ${isChecked ? 'checked' : ''} />
+          <span>${docText}</span>
+        `;
+
+        const cb = itemEl.querySelector('input');
+        cb.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            itemEl.classList.add('checked');
+          } else {
+            itemEl.classList.remove('checked');
+          }
+          if (onTickChange) onTickChange(docId, e.target.checked);
+          this.onChecklistTick(docId, e.target.checked);
+        });
+
+        this.checklistItemsContainer.appendChild(itemEl);
+      });
+
+      this.checklistDrawer.style.display = 'block';
+    }
+
+    hideChecklist() {
+      this.checklistDrawer.style.display = 'none';
+    }
+
+    updateChipLabels(langCode) {
+      const getStr = (k, fb) => (window.GovGuideLanguages && window.GovGuideLanguages.LanguageRegistry)
+        ? window.GovGuideLanguages.LanguageRegistry.getString(k, langCode)
+        : fb;
+
+      const pageChip = this.chipsBar.querySelector('[data-chip="what-is-page"] .chip-label');
+      if (pageChip) pageChip.textContent = getStr('chipWhatIsPage', 'What is this page?');
+
+      const docsChip = this.chipsBar.querySelector('[data-chip="documents"] .chip-label');
+      if (docsChip) docsChip.textContent = getStr('chipDocuments', 'Documents?');
+
+      const stuckChip = this.chipsBar.querySelector('[data-chip="stuck"] .chip-label');
+      if (stuckChip) stuckChip.textContent = getStr('chipImStuck', "I'm stuck");
+
+      const nextChip = this.chipsBar.querySelector('[data-chip="next"] .chip-label');
+      if (nextChip) nextChip.textContent = getStr('chipWhatsNext', "What's next?");
+
+      const sayChip = this.chipsBar.querySelector('[data-chip="say-again"] .chip-label');
+      if (sayChip) sayChip.textContent = getStr('chipSayAgain', 'Say again');
     }
 
     setContent(text, title, stepIndex, totalSteps, isLastStep, langCode = 'en') {
       this.currentLang = langCode;
       this.bodyEl.textContent = text || '';
       if (title) this.titleEl.textContent = title;
+
+      this.updateChipLabels(langCode);
 
       // Localize Step Progress counter
       const stepStr = (window.GovGuideLanguages && window.GovGuideLanguages.LanguageRegistry)
@@ -254,6 +428,7 @@
       if (this.langSelect) {
         this.langSelect.value = langCode;
       }
+      this.updateChipLabels(langCode);
     }
 
     /**
@@ -264,9 +439,9 @@
      * 4. Aligns directional tail towards the mascot.
      */
     positionNear(mascotX, mascotY, mascotWidth, mascotHeight) {
-      const bubbleWidth = Math.min(340, window.innerWidth - 20);
+      const bubbleWidth = Math.min(360, window.innerWidth - 20);
       this.container.style.width = `${bubbleWidth}px`;
-      const bubbleHeight = this.container.offsetHeight || 180;
+      const bubbleHeight = this.container.offsetHeight || 220;
       const margin = 16;
 
       const overlaps = (ax, ay, aw, ah, b) => {
@@ -279,12 +454,6 @@
         );
       };
 
-      // Candidate placements:
-      // 1. Right of mascot
-      // 2. Left of mascot
-      // 3. Below mascot
-      // 4. Above mascot
-      // 5. Far bottom-right or top-right quadrant if target is center
       const candidates = [
         { x: mascotX + mascotWidth + margin, y: mascotY, tail: 'tail-left' },
         { x: mascotX - bubbleWidth - margin, y: mascotY, tail: 'tail-right' },
@@ -296,20 +465,17 @@
 
       let bestPos = null;
       for (const pos of candidates) {
-        // Clamp pos to viewport
         const clampedX = Math.max(10, Math.min(window.innerWidth - bubbleWidth - 10, pos.x));
         const clampedY = Math.max(10, Math.min(window.innerHeight - bubbleHeight - 10, pos.y));
 
-        // Highlighted element collision check
         if (this.highlightedRect && overlaps(clampedX, clampedY, bubbleWidth, bubbleHeight, this.highlightedRect)) {
-          continue; // Overlaps target element, discard candidate
+          continue;
         }
 
         bestPos = { x: clampedX, y: clampedY, tail: pos.tail };
         break;
       }
 
-      // If all overlap, find position with maximum vertical distance from target
       if (!bestPos) {
         let fx = Math.max(10, Math.min(window.innerWidth - bubbleWidth - 10, mascotX));
         let fy = 20;
@@ -326,7 +492,6 @@
       this.container.style.left = `${Math.round(bestPos.x)}px`;
       this.container.style.top = `${Math.round(bestPos.y)}px`;
 
-      // Update tail class
       if (this.tailEl) {
         this.tailEl.className = `govguide-bubble-tail ${bestPos.tail}`;
       }

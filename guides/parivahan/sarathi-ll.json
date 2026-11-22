@@ -139,7 +139,52 @@
                 "en": "assets/audio/en/step_01_select_state.mp3"
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "This is the state selection screen. Choosing your state customizes the portal rules and available transport services.",
+              "spoken": "This is the state selection screen. Choose Delhi from the dropdown to unlock state-specific learner licence services."
+            },
+            "hi": {
+              "bubble": "यह राज्य चयन स्क्रीन है। अपना राज्य चुनने से पोर्टल आपके राज्य की सेवाओं को लोड करता है।"
+            }
+          },
+          "documents": [
+            {
+              "en": "Proof of Age (Birth Certificate, 10th Marksheet, or PAN card)",
+              "hi": "आयु प्रमाण (जन्म प्रमाण पत्र, 10वीं की मार्कशीट या पैन कार्ड)"
+            },
+            {
+              "en": "Proof of Address (Aadhaar, Voter ID, Electricity Bill, or Passport)",
+              "hi": "पता प्रमाण (आधार कार्ड, वोटर आईडी, बिजली बिल या पासपोर्ट)"
+            },
+            {
+              "en": "Passport-sized photographs & signature scan",
+              "hi": "पासपोर्ट आकार की तस्वीर और हस्ताक्षर स्कैन"
+            },
+            {
+              "en": "Medical Certificate (Form 1 / 1-A if required by age/category)",
+              "hi": "चिकित्सा प्रमाण पत्र (फॉर्म 1 / 1-ए यदि आवश्यक हो)"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "If the state list does not respond, click the dropdown again or ensure your internet connection is active.",
+              "spoken": "If the state dropdown is not opening, try clicking it once more or check your network."
+            },
+            "hi": {
+              "bubble": "यदि ड्रॉपडाउन नहीं खुल रहा है, तो कृपया उस पर दोबारा क्लिक करें या इंटरनेट कनेक्शन जांचें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "Next, the portal will load the state dashboard and may present a contactless advisory pop-up.",
+              "spoken": "Next up, the portal will open the Delhi dashboard and show you a contactless services advisory."
+            },
+            "hi": {
+              "bubble": "इसके बाद, पोर्टल राज्य डैशबोर्ड और संपर्क रहित सेवाओं का संदेश प्रदर्शित करेगा।"
+            }
+          }
         },
         {
           "pageId": "screen_02_contactless_popup",
@@ -217,7 +262,40 @@
                 "en": "assets/audio/en/step_02_dismiss_popup.mp3"
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "This pop-up notifies you about Aadhaar-based contactless online services that do not require visiting the RTO.",
+              "spoken": "This pop-up lets you know that Delhi provides contactless licence services from home using Aadhaar authentication."
+            },
+            "hi": {
+              "bubble": "यह पॉप-अप आपको आधार-आधारित संपर्क रहित (contactless) सेवाओं की जानकारी देता है।"
+            }
+          },
+          "documents": [
+            {
+              "en": "Aadhaar Card linked to mobile number for OTP",
+              "hi": "ओटीपी के लिए मोबाइल से जुड़ा आधार कार्ड"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "Click the yellow cross icon or the Skip button to close this notice and continue to the dashboard.",
+              "spoken": "Just click the yellow close button at the top right of this box to get back to the dashboard."
+            },
+            "hi": {
+              "bubble": "इस सूचना को बंद करने के लिए पीले क्रॉस आइकन या स्किप बटन पर क्लिक करें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "Next, you will be on the Delhi transport home dashboard where you can click Apply for Learner Licence.",
+              "spoken": "Next, you will see the main menu where you can start your Learner Licence application."
+            },
+            "hi": {
+              "bubble": "इसके बाद, आप मुख्य डैशबोर्ड पर शिक्षार्थी लाइसेंस आवेदन बटन देख सकेंगे।"
+            }
+          }
         },
         {
           "pageId": "screen_03_state_dashboard",
@@ -306,7 +384,52 @@
                 "en": "assets/audio/en/step_03_click_apply_ll.mp3"
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "This is the main state transport dashboard listing all online driving and licence facilities.",
+              "spoken": "Here is the Delhi transport dashboard where all driving licence services are listed."
+            },
+            "hi": {
+              "bubble": "यह मुख्य राज्य परिवहन डैशबोर्ड है जहाँ सभी ड्राइविंग लाइसेंस सुविधाएं सूचीबद्ध हैं।"
+            }
+          },
+          "documents": [
+            {
+              "en": "Proof of Age (Birth Certificate, 10th Marksheet, or PAN card)",
+              "hi": "आयु प्रमाण (जन्म प्रमाण पत्र, 10वीं की मार्कशीट या पैन कार्ड)"
+            },
+            {
+              "en": "Proof of Address (Aadhaar, Voter ID, Electricity Bill, or Passport)",
+              "hi": "पता प्रमाण (आधार कार्ड, वोटर आईडी, बिजली बिल या पासपोर्ट)"
+            },
+            {
+              "en": "Passport-sized photographs & signature scan",
+              "hi": "पासपोर्ट आकार की तस्वीर और हस्ताक्षर स्कैन"
+            },
+            {
+              "en": "Medical Certificate (Form 1 / 1-A if required by age/category)",
+              "hi": "चिकित्सा प्रमाण पत्र (फॉर्म 1 / 1-ए यदि आवश्यक हो)"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "Look for the icon titled \"Apply for Learner Licence\" in the top row or the Driving Licence dropdown.",
+              "spoken": "If you do not see the icon, check under the Driving Licence menu at the top."
+            },
+            "hi": {
+              "bubble": "यदि आइकन दिखाई नहीं देता, तो शीर्ष मेनू में ड्राइविंग लाइसेंस विकल्प देखें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "Next, the portal displays standard application submission instructions and required stages.",
+              "spoken": "Next, the portal will show you the step-by-step application instructions and stages."
+            },
+            "hi": {
+              "bubble": "इसके बाद, पोर्टल आवेदन के निर्देश और चरण प्रदर्शित करेगा।"
+            }
+          }
         },
         {
           "pageId": "screen_04_instructions",
@@ -395,7 +518,52 @@
                 "en": "assets/audio/en/step_04_review_instructions_and_continue.mp3"
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "This screen outlines the stages of the Learner Licence application from form filling to slot booking.",
+              "spoken": "This screen lays out the steps you will go through: entering details, uploading documents, photo, and fee payment."
+            },
+            "hi": {
+              "bubble": "यह स्क्रीन आवेदन भरने से लेकर शुल्क भुगतान तक के सभी चरणों की रूपरेखा देती है।"
+            }
+          },
+          "documents": [
+            {
+              "en": "Proof of Age (Birth Certificate, 10th Marksheet, or PAN card)",
+              "hi": "आयु प्रमाण (जन्म प्रमाण पत्र, 10वीं की मार्कशीट या पैन कार्ड)"
+            },
+            {
+              "en": "Proof of Address (Aadhaar, Voter ID, Electricity Bill, or Passport)",
+              "hi": "पता प्रमाण (आधार कार्ड, वोटर आईडी, बिजली बिल या पासपोर्ट)"
+            },
+            {
+              "en": "Passport-sized photographs & signature scan",
+              "hi": "पासपोर्ट आकार की तस्वीर और हस्ताक्षर स्कैन"
+            },
+            {
+              "en": "Medical Certificate (Form 1 / 1-A if required by age/category)",
+              "hi": "चिकित्सा प्रमाण पत्र (फॉर्म 1 / 1-ए यदि आवश्यक हो)"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "Review the stages on screen, then click the blue \"Continue\" button at the bottom to proceed.",
+              "spoken": "Take a quick look at the stages, then click Continue at the bottom to move forward."
+            },
+            "hi": {
+              "bubble": "चरणों की समीक्षा करें और आगे बढ़ने के लिए नीचे दिए गए \"Continue\" बटन पर क्लिक करें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "Next, you will select your applicant category and whether you currently hold a driving licence.",
+              "spoken": "Next, you will select whether you are an ordinary citizen or another category."
+            },
+            "hi": {
+              "bubble": "इसके बाद, आप अपनी आवेदक श्रेणी का चयन करेंगे।"
+            }
+          }
         },
         {
           "pageId": "screen_05_applicant_category",
@@ -604,7 +772,52 @@
                 "en": "assets/audio/en/step_07_explain_submission_boundary.mp3"
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "Here you specify your applicant category (such as General) and confirm if you already hold any licence.",
+              "spoken": "On this page, choose your applicant category, like General, and confirm that you do not already hold a licence."
+            },
+            "hi": {
+              "bubble": "यहाँ आप अपनी आवेदक श्रेणी (जैसे General) चुनते हैं।"
+            }
+          },
+          "documents": [
+            {
+              "en": "Proof of Age (Birth Certificate, 10th Marksheet, or PAN card)",
+              "hi": "आयु प्रमाण (जन्म प्रमाण पत्र, 10वीं की मार्कशीट या पैन कार्ड)"
+            },
+            {
+              "en": "Proof of Address (Aadhaar, Voter ID, Electricity Bill, or Passport)",
+              "hi": "पता प्रमाण (आधार कार्ड, वोटर आईडी, बिजली बिल या पासपोर्ट)"
+            },
+            {
+              "en": "Passport-sized photographs & signature scan",
+              "hi": "पासपोर्ट आकार की तस्वीर और हस्ताक्षर स्कैन"
+            },
+            {
+              "en": "Medical Certificate (Form 1 / 1-A if required by age/category)",
+              "hi": "चिकित्सा प्रमाण पत्र (फॉर्म 1 / 1-ए यदि आवश्यक हो)"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "Keep General selected in the dropdown and leave the first radio option selected, then click Submit.",
+              "spoken": "For most applicants, keep General selected and click Submit."
+            },
+            "hi": {
+              "bubble": "अधिकांश आवेदकों के लिए श्रेणी General रखें और सबमिट पर क्लिक करें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "Next, you will choose between Aadhaar-based authentication (from home) or physical RTO visit.",
+              "spoken": "Next, you will choose whether to apply from home with Aadhaar or visit the RTO."
+            },
+            "hi": {
+              "bubble": "इसके बाद, आप आधार प्रमाणीकरण (घर से) या आरटीओ जाने का विकल्प चुनेंगे।"
+            }
+          }
         },
         {
           "pageId": "screen_06_unverified_ekyc_selection",
@@ -735,7 +948,40 @@
                 "en": "assets/audio/en/step_09_unverified_explain_aadhaar_otp.mp3"
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "This screen allows choosing between Aadhaar contactless application or non-Aadhaar verification.",
+              "spoken": "Here you choose whether you want to authenticate through Aadhaar OTP or submit documents at the RTO."
+            },
+            "hi": {
+              "bubble": "यह स्क्रीन आधार संपर्क रहित आवेदन या बिना आधार के आरटीओ सत्यापन के बीच चयन करने की सुविधा देती है।"
+            }
+          },
+          "documents": [
+            {
+              "en": "Aadhaar Card with linked active phone number",
+              "hi": "सक्रिय फोन नंबर से जुड़ा आधार कार्ड"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "GovGuide does not fill confidential Aadhaar details. Choose your preferred option to proceed.",
+              "spoken": "GovGuide never reads or enters Aadhaar details. Select your option and enter details directly."
+            },
+            "hi": {
+              "bubble": "GovGuide कभी भी आधार विवरण नहीं पढ़ता। आगे बढ़ने के लिए अपना पसंदीदा विकल्प चुनें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "Next, the application form will load where you enter your personal, address, and vehicle class details.",
+              "spoken": "Next, the full application form will open for personal and vehicle category details."
+            },
+            "hi": {
+              "bubble": "इसके बाद, आवेदन पत्र खुलेगा जहाँ व्यक्तिगत और वाहन श्रेणी का विवरण भरा जाएगा।"
+            }
+          }
         },
         {
           "pageId": "screen_07_unverified_stages_overview",
@@ -806,7 +1052,70 @@
                 "en": "assets/audio/en/step_10_unverified_explain_remaining_stages.mp3"
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "Overview of remaining application milestones: document upload, fee payment, and test slot booking.",
+              "spoken": "Here is an overview of the remaining stages: document upload, fee payment, and test scheduling."
+            },
+            "hi": {
+              "bubble": "शेष चरणों का विवरण: दस्तावेज़ अपलोड, शुल्क भुगतान, और टेस्ट स्लॉट बुकिंग।"
+            }
+          },
+          "documents": [
+            {
+              "en": "Proof of Age (Birth Certificate, 10th Marksheet, or PAN card)",
+              "hi": "आयु प्रमाण (जन्म प्रमाण पत्र, 10वीं की मार्कशीट या पैन कार्ड)"
+            },
+            {
+              "en": "Proof of Address (Aadhaar, Voter ID, Electricity Bill, or Passport)",
+              "hi": "पता प्रमाण (आधार कार्ड, वोटर आईडी, बिजली बिल या पासपोर्ट)"
+            },
+            {
+              "en": "Passport-sized photographs & signature scan",
+              "hi": "पासपोर्ट आकार की तस्वीर और हस्ताक्षर स्कैन"
+            },
+            {
+              "en": "Medical Certificate (Form 1 / 1-A if required by age/category)",
+              "hi": "चिकित्सा प्रमाण पत्र (फॉर्म 1 / 1-ए यदि आवश्यक हो)"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "Click through to open the pending milestone (Upload Documents or Pay Fee).",
+              "spoken": "Click on the next pending milestone when you are ready."
+            },
+            "hi": {
+              "bubble": "तैयार होने पर अगले लंबित चरण पर क्लिक करें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "After paying fees and uploading documents, you can take the online Learner Licence test from home.",
+              "spoken": "After completing payments, you can take the online test from home if you applied via Aadhaar."
+            },
+            "hi": {
+              "bubble": "दस्तावेज़ और शुल्क पूर्ण होने के बाद, आप घर से ऑनलाइन टेस्ट दे सकते हैं।"
+            }
+          }
+        }
+      ],
+      "documents": [
+        {
+          "en": "Proof of Age (Birth Certificate, 10th Marksheet, or PAN card)",
+          "hi": "आयु प्रमाण (जन्म प्रमाण पत्र, 10वीं की मार्कशीट या पैन कार्ड)"
+        },
+        {
+          "en": "Proof of Address (Aadhaar, Voter ID, Electricity Bill, or Passport)",
+          "hi": "पता प्रमाण (आधार कार्ड, वोटर आईडी, बिजली बिल या पासपोर्ट)"
+        },
+        {
+          "en": "Passport-sized photographs & signature scan",
+          "hi": "पासपोर्ट आकार की तस्वीर और हस्ताक्षर स्कैन"
+        },
+        {
+          "en": "Medical Certificate (Form 1 / 1-A if required by age/category)",
+          "hi": "चिकित्सा प्रमाण पत्र (फॉर्म 1 / 1-ए यदि आवश्यक हो)"
         }
       ]
     }

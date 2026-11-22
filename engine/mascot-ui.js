@@ -1,9 +1,18 @@
 /**
  * GovGuide - Mascot UI Component
  * Handles the rendering, natural movement, dragging, idle floating,
- * speaking animation, and minimize/restore of the guide mascot.
+ * speaking animation, expression states, and minimize/restore of the guide mascot.
+ * 
+ * Supported Expression States:
+ * - 'idle': Natural calm resting pose with gentle floating bob
+ * - 'pointing': Alert forward posture indicating the active element
+ * - 'thinking': Look upward with raised brow / sparkle thinking indicator
+ * - 'happy': Cheerful celebratory expression with curved happy eyes and bounce
+ * - 'confused': Asymmetrical tilted brow with gentle perplexed tilt
  */
 (function() {
+  const PREF_MASCOT_POS_KEY = 'govguide_mascot_pos';
+
   class MascotUI {
     constructor(shadowRoot, options = {}) {
       this.shadowRoot = shadowRoot;
@@ -22,20 +31,22 @@
       this.currentY = 40;
       this.isMinimized = false;
       this.isSpeaking = false;
+      this.currentExpression = 'idle'; // 'idle' | 'pointing' | 'thinking' | 'happy' | 'confused'
       this.onPositionChange = options.onPositionChange || (() => {});
       this.onMinimizeToggled = options.onMinimizeToggled || (() => {});
 
       this._buildUI();
       this._initDraggable();
+      this._loadSavedPosition();
     }
 
     _buildUI() {
       // Mascot element
       const mascot = document.createElement('div');
-      mascot.className = 'govguide-mascot-container idle-bobbing';
+      mascot.className = 'govguide-mascot-container idle-bobbing expression-idle';
       mascot.title = 'GovGuide Mascot (Drag to reposition)';
       mascot.setAttribute('role', 'img');
-      mascot.setAttribute('aria-label', `${this.config.name} Guide Mascot`);
+      mascot.setAttribute('aria-label', `${this.config.name} Guide Mascot - idle state`);
 
       const assetUrl = this._resolveAssetUrl(this.config.assetPath);
       mascot.innerHTML = `<img class="govguide-mascot-img" src="${assetUrl}" alt="${this.config.name}" draggable="false" />`;
@@ -43,7 +54,7 @@
       this.shadowRoot.appendChild(mascot);
       this.container = mascot;
 
-      // Initial corner position (bottom-right area default)
+      // Initial corner position default
       this.currentX = Math.max(20, window.innerWidth - this.config.defaultWidth - 380);
       this.currentY = Math.max(20, window.innerHeight - this.config.defaultHeight - 90);
       this._updateTransform();
@@ -67,6 +78,32 @@
       this.restorePill = pill;
     }
 
+    _loadSavedPosition() {
+      if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+        chrome.storage.local.get([PREF_MASCOT_POS_KEY], (res) => {
+          if (res && res[PREF_MASCOT_POS_KEY]) {
+            const pos = res[PREF_MASCOT_POS_KEY];
+            // Ensure position is within current viewport boundaries
+            const maxX = Math.max(10, window.innerWidth - this.config.defaultWidth - 10);
+            const maxY = Math.max(10, window.innerHeight - this.config.defaultHeight - 10);
+            if (typeof pos.x === 'number' && typeof pos.y === 'number') {
+              this.currentX = Math.max(10, Math.min(maxX, pos.x));
+              this.currentY = Math.max(10, Math.min(maxY, pos.y));
+              this._updateTransform();
+            }
+          }
+        });
+      }
+    }
+
+    _savePosition() {
+      if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+        chrome.storage.local.set({
+          [PREF_MASCOT_POS_KEY]: { x: this.currentX, y: this.currentY }
+        });
+      }
+    }
+
     _resolveAssetUrl(relPath) {
       if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.getURL) {
         return chrome.runtime.getURL(relPath);
@@ -78,6 +115,45 @@
       this.container.style.left = `${this.currentX}px`;
       this.container.style.top = `${this.currentY}px`;
       this.onPositionChange(this.currentX, this.currentY, this.config.defaultWidth, this.config.defaultHeight);
+    }
+
+    /**
+     * Updates mascot expression state:
+     * - 'idle'
+     * - 'pointing'
+     * - 'thinking'
+     * - 'happy'
+     * - 'confused'
+     */
+    setExpression(state) {
+      const validStates = ['idle', 'pointing', 'thinking', 'happy', 'confused'];
+      if (!validStates.includes(state)) state = 'idle';
+      this.currentExpression = state;
+
+      validStates.forEach(s => this.container.classList.remove(`expression-${s}`));
+      this.container.classList.add(`expression-${state}`);
+      this.container.setAttribute('aria-label', `${this.config.name} Guide Mascot - ${state} state`);
+
+      // Modify SVG elements inside image if rendered inline or via SVG filters/transforms
+      this._applySvgExpressionStyles(state);
+    }
+
+    _applySvgExpressionStyles(state) {
+      // The CSS in shadow-dom handles transitions and animations for expression classes.
+    }
+
+    /**
+     * Celebrates step completion:
+     * Briefly triggers the happy celebratory state and returns to idle/pointing.
+     */
+    celebrate(durationMs = 2000) {
+      const prevExpression = this.currentExpression;
+      this.setExpression('happy');
+      setTimeout(() => {
+        if (this.currentExpression === 'happy') {
+          this.setExpression(prevExpression === 'happy' ? 'idle' : prevExpression);
+        }
+      }, durationMs);
     }
 
     setSpeaking(speaking) {
@@ -116,6 +192,7 @@
       this.currentX = Math.round(destX);
       this.currentY = Math.round(destY);
       this._updateTransform();
+      this.setExpression('pointing');
     }
 
     moveToCorner() {
@@ -123,6 +200,7 @@
       this.currentX = Math.max(20, window.innerWidth - this.config.defaultWidth - 380);
       this.currentY = Math.max(20, window.innerHeight - this.config.defaultHeight - 90);
       this._updateTransform();
+      this.setExpression('idle');
     }
 
     _initDraggable() {
@@ -150,8 +228,11 @@
       };
 
       const onMouseUp = () => {
-        isDragging = false;
-        this.container.style.transition = ''; // Restore smooth CSS transition
+        if (isDragging) {
+          isDragging = false;
+          this.container.style.transition = ''; // Restore smooth CSS transition
+          this._savePosition();
+        }
         document.removeEventListener('mousemove', onMouseMove);
         document.removeEventListener('mouseup', onMouseUp);
       };
@@ -180,8 +261,11 @@
       }, { passive: true });
 
       this.container.addEventListener('touchend', () => {
-        isDragging = false;
-        this.container.style.transition = '';
+        if (isDragging) {
+          isDragging = false;
+          this.container.style.transition = '';
+          this._savePosition();
+        }
       });
     }
 

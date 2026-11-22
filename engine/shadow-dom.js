@@ -5,6 +5,9 @@
  * - Rounded soft-shadow modern speech bubble with directional tail
  * - System Light / Dark mode
  * - Text size modes: small (13px), medium (15px), large (17px)
+ * - Quick-Reply chips bar and expandable Document Checklist drawer
+ * - Explain-This-Field active mode styling
+ * - Mascot expressions: idle, pointing, thinking, happy, confused
  * - Accessibility: visible focus ring, min 44px touch targets, aria support
  * - prefers-reduced-motion compliance
  * - Non-blocking spotlight & pulsating target ring
@@ -108,7 +111,7 @@
         }
 
         /* Focus rings for keyboard navigation */
-        button:focus-visible, select:focus-visible, a:focus-visible {
+        button:focus-visible, select:focus-visible, a:focus-visible, input:focus-visible {
           outline: var(--gg-focus-outline);
           outline-offset: 2px;
         }
@@ -183,7 +186,7 @@
           z-index: 2147483644;
           pointer-events: auto;
           cursor: grab;
-          transition: left 0.45s cubic-bezier(0.25, 1, 0.5, 1), top 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+          transition: left 0.45s cubic-bezier(0.25, 1, 0.5, 1), top 0.45s cubic-bezier(0.25, 1, 0.5, 1), transform 0.35s ease;
           filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.22));
           user-select: none;
         }
@@ -200,6 +203,28 @@
           animation: govguide-speaking 0.6s ease-in-out infinite alternate;
         }
 
+        /* Mascot Expression States */
+        .govguide-mascot-container.expression-idle {
+          transform: rotate(0deg) scale(1);
+        }
+
+        .govguide-mascot-container.expression-pointing {
+          transform: rotate(-3deg) scale(1.03);
+        }
+
+        .govguide-mascot-container.expression-thinking {
+          animation: govguide-thinking 2.5s ease-in-out infinite;
+        }
+
+        .govguide-mascot-container.expression-happy {
+          animation: govguide-celebrate 0.6s ease-in-out 3 alternate;
+        }
+
+        .govguide-mascot-container.expression-confused {
+          transform: rotate(7deg) scale(0.98);
+          animation: govguide-confused 1.8s ease-in-out infinite alternate;
+        }
+
         @keyframes govguide-idle {
           0%, 100% { transform: translateY(0) rotate(0deg); }
           50% { transform: translateY(-7px) rotate(1.2deg); }
@@ -208,6 +233,22 @@
         @keyframes govguide-speaking {
           0% { transform: scale(1) translateY(0); }
           100% { transform: scale(1.05) translateY(-4px); }
+        }
+
+        @keyframes govguide-thinking {
+          0%, 100% { transform: translateY(-3px) rotate(2deg); }
+          50% { transform: translateY(-8px) rotate(-1deg); }
+        }
+
+        @keyframes govguide-celebrate {
+          0% { transform: translateY(0) scale(1) rotate(0deg); }
+          50% { transform: translateY(-16px) scale(1.12) rotate(4deg); }
+          100% { transform: translateY(-6px) scale(1.08) rotate(-4deg); }
+        }
+
+        @keyframes govguide-confused {
+          0% { transform: rotate(5deg) translateY(0); }
+          100% { transform: rotate(9deg) translateY(-4px); }
         }
 
         .govguide-mascot-img {
@@ -219,13 +260,13 @@
         /* Modern Speech Bubble */
         .govguide-speech-bubble {
           position: fixed;
-          width: 340px;
+          width: 360px;
           max-width: calc(100vw - 24px);
           background: var(--gg-bg);
           color: var(--gg-text-primary);
           border-radius: 18px;
           box-shadow: var(--gg-shadow-lg);
-          padding: 18px 20px;
+          padding: 16px 18px;
           z-index: 2147483644;
           pointer-events: auto;
           transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), top 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.25s ease;
@@ -276,9 +317,9 @@
           align-items: center;
           justify-content: space-between;
           border-bottom: 1px solid var(--gg-border);
-          padding-bottom: 10px;
-          margin-bottom: 12px;
-          gap: 8px;
+          padding-bottom: 8px;
+          margin-bottom: 10px;
+          gap: 6px;
         }
 
         .govguide-bubble-title {
@@ -306,16 +347,16 @@
           background: var(--gg-surface);
           border: 1px solid var(--gg-border);
           border-radius: 8px;
-          min-width: 44px;
-          min-height: 44px;
-          width: 44px;
-          height: 44px;
+          min-width: 38px;
+          min-height: 38px;
+          width: 38px;
+          height: 38px;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
           color: var(--gg-text-secondary);
-          font-size: 16px;
+          font-size: 15px;
           padding: 0;
           transition: all 0.15s ease;
         }
@@ -331,6 +372,12 @@
           color: #ffffff;
           border-color: #dc2626;
           animation: govguide-rec-pulse 1.2s infinite;
+        }
+
+        .govguide-icon-btn.mode-active {
+          background: var(--gg-primary);
+          color: #ffffff;
+          border-color: var(--gg-primary-hover);
         }
 
         @keyframes govguide-rec-pulse {
@@ -355,10 +402,95 @@
 
         .govguide-bubble-body {
           color: var(--gg-text-primary);
-          margin-bottom: 14px;
-          min-height: 50px;
+          margin-bottom: 10px;
+          min-height: 44px;
           word-break: break-word;
           overflow-wrap: break-word;
+        }
+
+        /* Quick-Reply Chips Bar */
+        .govguide-chips-bar {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          margin-bottom: 12px;
+          padding-top: 6px;
+          border-top: 1px dashed var(--gg-border);
+        }
+
+        .govguide-chip {
+          background: var(--gg-surface);
+          border: 1px solid var(--gg-border);
+          color: var(--gg-text-secondary);
+          border-radius: 9999px;
+          padding: 5px 11px;
+          font-size: 11.5px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.15s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          min-height: 28px;
+        }
+
+        .govguide-chip:hover {
+          background: var(--gg-surface-hover);
+          color: var(--gg-primary);
+          border-color: var(--gg-primary);
+          transform: translateY(-1px);
+        }
+
+        .govguide-chip:active {
+          transform: translateY(0);
+        }
+
+        /* Document Checklist Drawer */
+        .govguide-checklist-drawer {
+          background: var(--gg-surface);
+          border: 1px solid var(--gg-border);
+          border-radius: 10px;
+          padding: 10px 12px;
+          margin-bottom: 12px;
+          font-size: 12.5px;
+        }
+
+        .govguide-checklist-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-weight: 600;
+          color: var(--gg-text-primary);
+          margin-bottom: 6px;
+        }
+
+        .govguide-checklist-items {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          max-height: 140px;
+          overflow-y: auto;
+        }
+
+        .govguide-checklist-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          cursor: pointer;
+          color: var(--gg-text-secondary);
+        }
+
+        .govguide-checklist-item input[type="checkbox"] {
+          margin-top: 3px;
+          cursor: pointer;
+          accent-color: var(--gg-primary);
+          width: 15px;
+          height: 15px;
+        }
+
+        .govguide-checklist-item.checked span {
+          text-decoration: line-through;
+          color: var(--gg-text-muted);
         }
 
         /* Review warning note */
@@ -427,7 +559,7 @@
           border: none;
           border-radius: 8px;
           padding: 8px 16px;
-          min-height: 44px;
+          min-height: 40px;
           font-size: 13.5px;
           font-weight: 600;
           cursor: pointer;
@@ -460,14 +592,14 @@
           background: var(--gg-surface);
           border: 1px solid var(--gg-border);
           border-radius: 8px;
-          min-height: 44px;
-          height: 44px;
-          padding: 4px 8px;
-          font-size: 12.5px;
+          min-height: 38px;
+          height: 38px;
+          padding: 4px 6px;
+          font-size: 12px;
           color: var(--gg-text-primary);
           font-weight: 600;
           cursor: pointer;
-          max-width: 90px;
+          max-width: 82px;
         }
 
         /* Floating Restore Pill */
@@ -506,6 +638,9 @@
           }
           .govguide-mascot-container.idle-bobbing,
           .govguide-mascot-container.is-speaking,
+          .govguide-mascot-container.expression-thinking,
+          .govguide-mascot-container.expression-happy,
+          .govguide-mascot-container.expression-confused,
           .govguide-target-ring {
             animation: none !important;
           }

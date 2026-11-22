@@ -122,7 +122,52 @@
                 "selector": ".homePageModal .btn-close, .homePageModal button[aria-label='Close']"
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "This is the official Passport Seva portal homepage advisory notice detailing security announcements and alerts.",
+              "spoken": "This is an advisory notice on the official Passport Seva portal. It shares important announcements regarding fraudulent websites."
+            },
+            "hi": {
+              "bubble": "यह आधिकारिक पासपोर्ट सेवा पोर्टल का मुख्य सलाहकार नोटिस है।"
+            }
+          },
+          "documents": [
+            {
+              "en": "Proof of Date of Birth (Birth Certificate, 10th Certificate, or Aadhaar)",
+              "hi": "जन्म तिथि प्रमाण (जन्म प्रमाण पत्र, 10वीं का प्रमाण पत्र या आधार)"
+            },
+            {
+              "en": "Proof of Present Address (Aadhaar, Voter ID, Utility Bill, or Bank Passbook)",
+              "hi": "वर्तमान पता प्रमाण (आधार, वोटर आईडी, बिजली बिल या बैंक पासबुक)"
+            },
+            {
+              "en": "Standard Annexures / Affidavits (if applicable for minor/re-issue)",
+              "hi": "मानक अनुलग्नक / शपथ पत्र (यदि लागू हो)"
+            },
+            {
+              "en": "Old Passport (original + self-attested copies) for re-issue",
+              "hi": "पुनर्जागरण के लिए पुराना पासपोर्ट (मूल + स्व-सत्यापित प्रतियां)"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "Click the close button (✕) at the top-right corner of the dialog to continue to the main portal services.",
+              "spoken": "Simply click the close button at the top right of this popup box to reach the main menu."
+            },
+            "hi": {
+              "bubble": "मुख्य पोर्टल पर जाने के लिए संवाद के ऊपरी दाएं कोने में बंद करें बटन (✕) पर क्लिक करें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "Next, you will access the homepage hub to explore Document Advisor, Fee Calculator, and Appointment Locator.",
+              "spoken": "Next, you will be on the main homepage where all passport advisory and booking tools are available."
+            },
+            "hi": {
+              "bubble": "इसके बाद, आप मुख्य पृष्ठ पर दस्तावेज़ सलाहकार, शुल्क कैलकुलेटर और केंद्र खोजक देख सकेंगे।"
+            }
+          }
         },
         {
           "pageId": "screen_02_homepage_hub",
@@ -319,7 +364,52 @@
                 "selector": ".staticHomePageButtons1, a[href*='registration']"
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "The Passport Seva portal hub provides self-service tools for fees, document requirements, and appointment slots.",
+              "spoken": "This is the Passport Seva central hub. Here you can check exact fee amounts, required documents, or locate nearby centres."
+            },
+            "hi": {
+              "bubble": "यह पासपोर्ट सेवा पोर्टल हब है जो शुल्क, दस्तावेज़ आवश्यकताओं और अपॉइंटमेंट के लिए उपकरण प्रदान करता है।"
+            }
+          },
+          "documents": [
+            {
+              "en": "Proof of Date of Birth (Birth Certificate, 10th Certificate, or Aadhaar)",
+              "hi": "जन्म तिथि प्रमाण (जन्म प्रमाण पत्र, 10वीं का प्रमाण पत्र या आधार)"
+            },
+            {
+              "en": "Proof of Present Address (Aadhaar, Voter ID, Utility Bill, or Bank Passbook)",
+              "hi": "वर्तमान पता प्रमाण (आधार, वोटर आईडी, बिजली बिल या बैंक पासबुक)"
+            },
+            {
+              "en": "Standard Annexures / Affidavits (if applicable for minor/re-issue)",
+              "hi": "मानक अनुलग्नक / शपथ पत्र (यदि लागू हो)"
+            },
+            {
+              "en": "Old Passport (original + self-attested copies) for re-issue",
+              "hi": "पुनर्जागरण के लिए पुराना पासपोर्ट (मूल + स्व-सत्यापित प्रतियां)"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "Use the quick action buttons or top navigation to select Document Advisor, Fee Calculator, or Register to apply.",
+              "spoken": "If you want to know what documents are needed, click Document Advisor, or click Register if you are ready to apply."
+            },
+            "hi": {
+              "bubble": "दस्तावेज़ सलाहकार, शुल्क कैलकुलेटर, या नया खाता बनाने के लिए त्वरित बटन का उपयोग करें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "Next, you can calculate the exact government fee or find the nearest Passport Seva Kendra in your district.",
+              "spoken": "Next, you can choose to calculate your passport fee or find your nearest application centre."
+            },
+            "hi": {
+              "bubble": "इसके बाद, आप पासपोर्ट शुल्क की गणना कर सकते हैं या निकटतम पासपोर्ट केंद्र खोज सकते हैं।"
+            }
+          }
         },
         {
           "pageId": "screen_03_fee_calculator",
@@ -392,7 +482,35 @@
                 "selector": "select.locatePskBoxShape1, select"
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "The Fee Calculator calculates official passport fees based on application type (Fresh / Re-issue, Normal / Tatkaal).",
+              "spoken": "This official tool calculates the exact fees for your passport application based on your age and scheme."
+            },
+            "hi": {
+              "bubble": "शुल्क कैलकुलेटर आवेदन प्रकार (नया / पुनः जारी, सामान्य / तत्काल) के आधार पर आधिकारिक पासपोर्ट शुल्क की गणना करता है।"
+            }
+          },
+          "documents": [],
+          "stuck": {
+            "en": {
+              "bubble": "Select your Application Type, Service, Age Group, and Scheme, then click Calculate Fee.",
+              "spoken": "Choose whether you want a Fresh passport or Re-issue, select your age group, and click Calculate Fee."
+            },
+            "hi": {
+              "bubble": "अपना आवेदन प्रकार, सेवा और आयु वर्ग चुनें, फिर शुल्क गणना पर क्लिक करें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "Next, check the Document Advisor to ensure you have valid original papers ready before booking.",
+              "spoken": "Next, check the Document Advisor to verify all required papers before applying."
+            },
+            "hi": {
+              "bubble": "इसके बाद, आवेदन करने से पहले आवश्यक कागजात देखने के लिए दस्तावेज़ सलाहकार देखें।"
+            }
+          }
         },
         {
           "pageId": "screen_04_document_advisor",
@@ -456,7 +574,52 @@
                 }
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "Document Advisor lists mandatory and acceptable supporting documents for your specific passport category.",
+              "spoken": "The Document Advisor tells you exactly which original documents and self-attested photocopies you will need."
+            },
+            "hi": {
+              "bubble": "दस्तावेज़ सलाहकार आपकी विशिष्ट पासपोर्ट श्रेणी के लिए आवश्यक और स्वीकार्य सहायक दस्तावेज़ों की सूची देता है।"
+            }
+          },
+          "documents": [
+            {
+              "en": "Proof of Date of Birth (Birth Certificate, 10th Certificate, or Aadhaar)",
+              "hi": "जन्म तिथि प्रमाण (जन्म प्रमाण पत्र, 10वीं का प्रमाण पत्र या आधार)"
+            },
+            {
+              "en": "Proof of Present Address (Aadhaar, Voter ID, Utility Bill, or Bank Passbook)",
+              "hi": "वर्तमान पता प्रमाण (आधार, वोटर आईडी, बिजली बिल या बैंक पासबुक)"
+            },
+            {
+              "en": "Standard Annexures / Affidavits (if applicable for minor/re-issue)",
+              "hi": "मानक अनुलग्नक / शपथ पत्र (यदि लागू हो)"
+            },
+            {
+              "en": "Old Passport (original + self-attested copies) for re-issue",
+              "hi": "पुनर्जागरण के लिए पुराना पासपोर्ट (मूल + स्व-सत्यापित प्रतियां)"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "Choose your application type (Fresh or Re-issue) and citizen category to see the checklist.",
+              "spoken": "Select Fresh or Reissue to view the exact document checklist."
+            },
+            "hi": {
+              "bubble": "चेकलिस्ट देखने के लिए अपना आवेदन प्रकार (नया या पुनः जारी) चुनें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "Next, verify appointment availability at your nearest Passport Seva Kendra or Post Office PSK.",
+              "spoken": "Next, find out which Passport Seva Kendra has appointments available near you."
+            },
+            "hi": {
+              "bubble": "इसके बाद, अपने निकटतम पासपोर्ट सेवा केंद्र पर अपॉइंटमेंट उपलब्धता देखें।"
+            }
+          }
         },
         {
           "pageId": "screen_05_locate_psk",
@@ -529,7 +692,35 @@
                 "selector": "select.locatePskBoxShape, select"
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "Locate Passport Seva Kendra (PSK) helps find operational PSKs and Post Office PSKs in your state and city.",
+              "spoken": "This locator helps you find your nearest PSK or Post Office Passport Seva Kendra."
+            },
+            "hi": {
+              "bubble": "पासपोर्ट सेवा केंद्र (PSK) लोकेटर आपके राज्य और शहर में नजदीकी पासपोर्ट केंद्र खोजने में मदद करता है।"
+            }
+          },
+          "documents": [],
+          "stuck": {
+            "en": {
+              "bubble": "Select your state from the dropdown to list all regional passport offices and service centres.",
+              "spoken": "Select your state from the dropdown list to see all centres nearby."
+            },
+            "hi": {
+              "bubble": "पास के सभी केंद्रों को देखने के लिए ड्रॉपडाउन से अपना राज्य चुनें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "Next, when you are ready to begin an application, visit the New User Registration screen.",
+              "spoken": "Next, when you are ready to apply, you can register for an account."
+            },
+            "hi": {
+              "bubble": "इसके बाद, जब आप आवेदन शुरू करने के लिए तैयार हों, तो नया उपयोगकर्ता पंजीकरण स्क्रीन देखें।"
+            }
+          }
         },
         {
           "pageId": "screen_06_track_status",
@@ -602,7 +793,44 @@
                 "selector": "button.checkAppointmentButton"
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "Application Status Tracker allows citizens to check the real-time processing and dispatch status of their passport file.",
+              "spoken": "Track your passport application status here by choosing your application type and entering your file number."
+            },
+            "hi": {
+              "bubble": "आवेदन स्थिति ट्रैकर नागरिकों को अपने पासपोर्ट की रीयल-टाइम स्थिति की जांच करने की सुविधा देता है।"
+            }
+          },
+          "documents": [
+            {
+              "en": "15-character Passport File Number",
+              "hi": "15-अक्षर का पासपोर्ट फ़ाइल नंबर"
+            },
+            {
+              "en": "Date of Birth (DD/MM/YYYY)",
+              "hi": "जन्म तिथि (दिन/माह/वर्ष)"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "Select Passport / PCC in the dropdown and enter your 15-digit File Number received during PSK visit.",
+              "spoken": "Select application type, then enter your file number and date of birth."
+            },
+            "hi": {
+              "bubble": "ड्रॉपडाउन में पासपोर्ट का चयन करें और अपना फ़ाइल नंबर दर्ज करें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "After tracking, you can review dispatch tracking with Speed Post tracking number.",
+              "spoken": "Once approved and printed, your speed post tracking number will appear here."
+            },
+            "hi": {
+              "bubble": "अनुमोदित होने के बाद, आपका स्पीड पोस्ट ट्रैकिंग नंबर यहाँ दिखाई देगा।"
+            }
+          }
         },
         {
           "pageId": "screen_07_user_registration",
@@ -666,7 +894,44 @@
                 }
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "This is the official user registration screen to create a Passport Seva online account.",
+              "spoken": "This is the registration screen for creating your Passport Seva account. GovGuide never reads or enters your personal details."
+            },
+            "hi": {
+              "bubble": "यह पासपोर्ट सेवा ऑनलाइन खाता बनाने के लिए आधिकारिक उपयोगकर्ता पंजीकरण स्क्रीन है।"
+            }
+          },
+          "documents": [
+            {
+              "en": "Active email address for verification link",
+              "hi": "सत्यापन लिंक के लिए सक्रिय ईमेल पता"
+            },
+            {
+              "en": "Mobile number for SMS updates",
+              "hi": "एसएमएस अपडेट के लिए मोबाइल नंबर"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "GovGuide does not read personal credentials. Enter your name, email, login ID, and security question safely.",
+              "spoken": "GovGuide never reads or types your credentials. Fill in your details independently and safely."
+            },
+            "hi": {
+              "bubble": "GovGuide व्यक्तिगत साख नहीं पढ़ता। अपना विवरण सुरक्षित रूप से स्वयं दर्ज करें।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "After submitting registration, check your registered email inbox to activate your account.",
+              "spoken": "After submitting, check your email inbox to click the activation link."
+            },
+            "hi": {
+              "bubble": "पंजीकरण जमा करने के बाद, अपना खाता सक्रिय करने के लिए अपने ईमेल की जांच करें।"
+            }
+          }
         },
         {
           "pageId": "screen_08_existing_user_login",
@@ -730,7 +995,58 @@
                 }
               }
             }
-          ]
+          ],
+          "about": {
+            "en": {
+              "bubble": "Existing User Login portal for registered applicants to access submitted forms and slot appointments.",
+              "spoken": "Here registered users log in to their account to fill forms, pay fees, or schedule appointments."
+            },
+            "hi": {
+              "bubble": "पंजीकृत आवेदकों के लिए फॉर्म भरने और अपॉइंटमेंट बुक करने हेतु मौजूदा उपयोगकर्ता लॉगिन पोर्टल।"
+            }
+          },
+          "documents": [
+            {
+              "en": "Passport Seva Login ID and Password",
+              "hi": "पासपोर्ट सेवा लॉगिन आईडी और पासवर्ड"
+            }
+          ],
+          "stuck": {
+            "en": {
+              "bubble": "Enter your registered Login ID and click Continue. GovGuide never accesses your credentials.",
+              "spoken": "Enter your login ID and continue. GovGuide never reads or inspects your credentials."
+            },
+            "hi": {
+              "bubble": "अपनी पंजीकृत लॉगिन आईडी दर्ज करें और जारी रखें। GovGuide कभी भी आपकी साख तक नहीं पहुंचता।"
+            }
+          },
+          "next": {
+            "en": {
+              "bubble": "Once logged in, you will reach the Applicant Home where you can click \"Apply for Fresh Passport\".",
+              "spoken": "Once logged in, click Apply for Fresh Passport on your applicant dashboard."
+            },
+            "hi": {
+              "bubble": "लॉग इन करने के बाद, आप आवेदक होम पर पहुंचेंगे जहाँ आप \"Apply for Fresh Passport\" पर क्लिक कर सकते हैं।"
+            }
+          }
+        }
+      ],
+      "documents": [
+        {
+          "en": "Proof of Date of Birth (Birth Certificate, 10th Certificate, or Aadhaar)",
+          "hi": "जन्म तिथि प्रमाण (जन्म प्रमाण पत्र, 10वीं का प्रमाण पत्र या आधार)"
+        },
+        {
+          "en": "Proof of Present Address (Aadhaar, Voter ID, Utility Bill, or Bank Passbook)",
+          "hi": "वर्तमान पता प्रमाण (आधार, वोटर आईडी, बिजली बिल या बैंक पासबुक)"
+        },
+        {
+          "en": "Standard Annexures / Affidavits (if applicable for minor/re-issue)",
+          "hi": "मानक अनुलग्नक / शपथ पत्र (यदि लागू हो)"
+        },
+        {
+          "en": "Old Passport (original + self-attested copies) for re-issue",
+          "hi": "पुनर्जागरण के लिए पुराना पासपोर्ट (मूल + स्व-सत्यापित प्रतियां)"
         }
       ]
     }

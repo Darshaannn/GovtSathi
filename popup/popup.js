@@ -1,12 +1,13 @@
 /**
  * GovGuide - Popup Script
- * Handles language persistence, voice picker, speech rate, text size, and test preview.
+ * Handles language persistence, voice picker, speech rate, text size, inactivity nudge toggle, and test preview.
  */
 document.addEventListener('DOMContentLoaded', async () => {
   const PREF_LANG_KEY = 'govguide_user_lang_pref';
   const PREF_VOICE_KEY = 'govguide_selected_voice_uri';
   const PREF_SPEED_KEY = 'govguide_speech_speed_pref';
   const PREF_TEXT_SIZE_KEY = 'govguide_text_size_pref';
+  const PREF_NUDGE_KEY = 'govguide_nudge_enabled';
 
   const langSelect = document.getElementById('languageSelect');
   const voiceSelect = document.getElementById('voiceSelect');
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const testVoiceBtn = document.getElementById('testVoiceBtn');
   const speedSelect = document.getElementById('speedSelect');
   const textSizeSelect = document.getElementById('textSizeSelect');
+  const nudgeToggle = document.getElementById('nudgeToggle');
   const siteNameEl = document.getElementById('currentSiteName');
   const statusBadge = document.getElementById('guideStatus');
 
@@ -22,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Load preferences from storage
   if (chrome.storage && chrome.storage.local) {
-    chrome.storage.local.get([PREF_LANG_KEY, PREF_VOICE_KEY, PREF_SPEED_KEY, PREF_TEXT_SIZE_KEY], (res) => {
+    chrome.storage.local.get([PREF_LANG_KEY, PREF_VOICE_KEY, PREF_SPEED_KEY, PREF_TEXT_SIZE_KEY, PREF_NUDGE_KEY], (res) => {
       if (res[PREF_LANG_KEY]) {
         currentLang = res[PREF_LANG_KEY];
         langSelect.value = currentLang;
@@ -35,6 +37,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
       if (res[PREF_TEXT_SIZE_KEY]) {
         textSizeSelect.value = res[PREF_TEXT_SIZE_KEY];
+      }
+      if (typeof res[PREF_NUDGE_KEY] === 'boolean') {
+        nudgeToggle.checked = res[PREF_NUDGE_KEY];
       }
       populateVoices(currentLang);
     });
@@ -148,57 +153,62 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
       }
 
-      if (response.status === 'active') {
-        siteNameEl.textContent = response.siteName || 'Government Portal';
-        statusBadge.textContent = 'Active';
-        statusBadge.style.background = '#dcfce7';
-        statusBadge.style.color = '#15803d';
+      siteNameEl.textContent = response.guideName || 'Active';
+      statusBadge.textContent = response.pageTitle || 'Active';
+      statusBadge.style.background = '#dcfce7';
+      statusBadge.style.color = '#15803d';
 
-        if (response.language) {
-          langSelect.value = response.language;
-          populateVoices(response.language);
-        }
+      if (response.currentLanguage) {
+        langSelect.value = response.currentLanguage;
+        currentLang = response.currentLanguage;
+        populateVoices(currentLang);
       }
     });
   });
 
-  // Language Change Listener
-  langSelect.addEventListener('change', (e) => {
-    const newLang = e.target.value;
-    currentLang = newLang;
-    chrome.storage.local.set({ [PREF_LANG_KEY]: newLang });
-    populateVoices(newLang);
+  // Handle language switch
+  langSelect.addEventListener('change', () => {
+    currentLang = langSelect.value;
+    savedVoiceURI = ''; // reset voice preference when switching language
+    if (chrome.storage && chrome.storage.local) {
+      chrome.storage.local.set({ [PREF_LANG_KEY]: currentLang, [PREF_VOICE_KEY]: '' });
+    }
+    populateVoices(currentLang);
 
-    // Notify active tab
+    // Broadcast to active tab
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (tabs && tabs.length > 0) {
+      if (tabs && tabs[0]) {
         chrome.tabs.sendMessage(tabs[0].id, {
           type: 'GOVGUIDE_SET_LANGUAGE',
-          language: newLang
+          language: currentLang
         });
       }
     });
   });
 
-  // Voice Selection Listener
-  voiceSelect.addEventListener('change', (e) => {
-    const selectedURI = e.target.value;
-    savedVoiceURI = selectedURI;
-    chrome.storage.local.set({ [PREF_VOICE_KEY]: selectedURI });
+  // Handle voice selection
+  voiceSelect.addEventListener('change', () => {
+    savedVoiceURI = voiceSelect.value;
+    if (chrome.storage && chrome.storage.local) {
+      chrome.storage.local.set({ [PREF_VOICE_KEY]: savedVoiceURI });
+    }
   });
 
-  // Speed Selection Listener
-  speedSelect.addEventListener('change', (e) => {
-    const speed = e.target.value;
-    chrome.storage.local.set({ [PREF_SPEED_KEY]: speed });
+  // Handle speed selection
+  speedSelect.addEventListener('change', () => {
+    if (chrome.storage && chrome.storage.local) {
+      chrome.storage.local.set({ [PREF_SPEED_KEY]: speedSelect.value });
+    }
   });
 
-  // Text Size Listener
-  textSizeSelect.addEventListener('change', (e) => {
-    const size = e.target.value;
-    chrome.storage.local.set({ [PREF_TEXT_SIZE_KEY]: size });
+  // Handle text size selection
+  textSizeSelect.addEventListener('change', () => {
+    const size = textSizeSelect.value;
+    if (chrome.storage && chrome.storage.local) {
+      chrome.storage.local.set({ [PREF_TEXT_SIZE_KEY]: size });
+    }
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (tabs && tabs.length > 0) {
+      if (tabs && tabs[0]) {
         chrome.tabs.sendMessage(tabs[0].id, {
           type: 'GOVGUIDE_SET_TEXT_SIZE',
           textSize: size
@@ -207,40 +217,55 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // Test Voice Preview
+  // Handle inactivity nudge toggle
+  nudgeToggle.addEventListener('change', () => {
+    const enabled = nudgeToggle.checked;
+    if (chrome.storage && chrome.storage.local) {
+      chrome.storage.local.set({ [PREF_NUDGE_KEY]: enabled });
+    }
+  });
+
+  // Voice Test preview
   testVoiceBtn.addEventListener('click', () => {
     if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
 
     const sampleTexts = {
-      en: 'Welcome to GovGuide. I am here to assist you step by step.',
-      hi: 'GovGuide में आपका स्वागत है। मैं हर कदम पर आपकी सहायता करूँगा।',
-      mr: 'GovGuide मध्ये आपले स्वागत आहे. मी आपल्याला मार्गदर्शन करेन.',
-      gu: 'GovGuide માં તમારું સ્વાગત છે. હું દરેક પગલે તમારી મદદ કરીશ.',
-      bn: 'GovGuide এ আপনাকে স্বাগতম। আমি প্রতিটি পদক্ষেপে আপনাকে সাহায্য করব।',
-      ta: 'GovGuide-க்கு உங்களை வரவேற்கிறோம். நான் உங்களுக்கு உதவுவேன்.',
-      te: 'GovGuide కు స్వాగతం. నేను ప్రతి దశలో మీకు సహాయం చేస్తాను.',
-      kn: 'GovGuide ಗೆ ಸುಸ್ವಾಗತ. ನಾನು ನಿಮಗೆ ಹಂತ ಹಂತವಾಗಿ ಸಹಾಯ ಮಾಡುತ್ತೇನೆ.',
-      ml: 'GovGuide-ലേക്ക് സ്വാഗതം. ഞാൻ ഓരോ ഘട്ടത്തിലും സഹായിക്കും.',
-      pa: 'GovGuide ਵਿੱਚ ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ। ਮੈਂ ਹਰ ਕਦਮ \'ਤੇ ਤੁਹਾਡੀ ਮਦਦ ਕਰਾਂਗਾ।',
-      or: 'GovGuide ରେ ଆପଣଙ୍କୁ ସ୍ୱାଗତ। ମୁଁ ପ୍ରତ୍ୟେକ ପଦକ୍ଷେପରେ ଆପଣଙ୍କୁ ସାହାଯ୍ୟ କରିବି।'
+      en: "Hello! I am your GovGuide assistant. I will help you step by step with official portal forms.",
+      hi: "नमस्ते! मैं आपका GovGuide सहायक हूँ। मैं सरकारी पोर्टल फ़ॉर्म भरने में आपकी चरणबद्ध मदद करूँगा।",
+      mr: "नमस्कार! मी तुमचा GovGuide साहाय्यक आहे.",
+      gu: "નમસ્તે! હું તમારો GovGuide સહાયક છું.",
+      bn: "নমস্কার! আমি আপনার GovGuide সহায়ক।",
+      ta: "வணக்கம்! நான் உங்கள் GovGuide உதவியாளர்.",
+      te: "నమస్కారం! నేను మీ GovGuide సహాయకుడిని.",
+      kn: "ನಮಸ್ಕಾರ! ನಾನು ನಿಮ್ಮ GovGuide ಸಹಾಯಕ.",
+      ml: "നമസ്കാരം! ഞാൻ നിങ്ങളുടെ GovGuide സഹായിയാണ്.",
+      pa: "ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ! ਮੈਂ ਤੁਹਾਡਾ GovGuide ਸਹਾਇਕ ਹਾਂ।",
+      or: "ନମସ୍କାର! ମୁଁ ଆପଣଙ୍କର GovGuide ସହାୟକ।"
     };
 
-    const textToSpeak = sampleTexts[langSelect.value] || sampleTexts.en;
+    const textToSpeak = sampleTexts[currentLang] || sampleTexts.en;
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
 
-    const speed = speedSelect.value;
-    utterance.rate = speed === 'slow' ? 0.85 : (speed === 'fast' ? 1.2 : 1.0);
+    // Apply speed
+    const rates = { slow: 0.85, normal: 1.0, fast: 1.2 };
+    utterance.rate = rates[speedSelect.value] || 1.0;
 
+    // Apply voice if selected
     const voices = window.speechSynthesis.getVoices() || [];
     if (voiceSelect.value) {
       const chosen = voices.find(v => v.voiceURI === voiceSelect.value);
       if (chosen) utterance.voice = chosen;
     } else {
-      const langPrefix = langSelect.value.toLowerCase();
-      const matched = voices.find(v => (v.lang || '').toLowerCase().startsWith(langPrefix));
-      if (matched) utterance.voice = matched;
+      // Pick first matching
+      const langPrefix = currentLang.toLowerCase();
+      const chosen = voices.find(v => (v.lang || '').toLowerCase().replace(/_/g, '-').startsWith(langPrefix));
+      if (chosen) utterance.voice = chosen;
     }
+
+    testVoiceBtn.classList.add('testing');
+    utterance.onend = () => testVoiceBtn.classList.remove('testing');
+    utterance.onerror = () => testVoiceBtn.classList.remove('testing');
 
     window.speechSynthesis.speak(utterance);
   });
