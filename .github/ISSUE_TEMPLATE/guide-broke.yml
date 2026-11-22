@@ -1,0 +1,33 @@
+name: Government Portal Layout Changed / Guide Broke
+description: Report that a government website updated its HTML/layout and the guide no longer highlights or advances
+title: "[PORTAL UPDATE]: "
+labels: ["portal-update", "guide-fix"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### ⚠️ CRITICAL PRIVACY REMINDER
+        **DO NOT paste real personal data, application numbers, or screenshots showing sensitive information.**
+  - type: input
+    id: portal_name
+    attributes:
+      label: Portal & Guide
+      description: Which portal and flow is affected?
+      placeholder: e.g. Parivahan Sarathi - Learner Licence (Delhi)
+    validations:
+      required: true
+  - type: input
+    id: page_url
+    attributes:
+      label: Portal Page URL
+      description: The exact URL where the guide fails to match or highlight
+      placeholder: e.g. https://sarathi.parivahan.gov.in/...
+    validations:
+      required: true
+  - type: textarea
+    id: break_description
+    attributes:
+      label: Where did the guide get stuck?
+      description: Did the mascot not appear, fail to highlight the button, or not move to the next step when clicked?
+    validations:
+      required: true

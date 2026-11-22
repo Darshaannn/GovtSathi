@@ -2,17 +2,26 @@
 node_modules/
 package-lock.json
 
-# Local capture assets & inspection dumps (not part of extension package)
+# Local capture assets & inspection dumps (never commit portal captures)
 captures/
 Capture/
 *.log
 
-# Dev tooling
+# Dev tooling & scripts
 tools/
+
+# Audio files (pre-recorded audio assets when generated)
+assets/audio/
+
+# Secrets and environment variables
+.env
+.env.*
+*.pem
+*.key
+*.token
 
 # OS & IDE
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
-
