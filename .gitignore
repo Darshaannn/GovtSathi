@@ -5,6 +5,7 @@ package-lock.json
 # Local capture assets & inspection dumps (never commit portal captures)
 captures/
 Capture/
+research/
 *.log
 
 # Dev tooling & scripts

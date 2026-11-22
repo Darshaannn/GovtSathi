@@ -6,6 +6,7 @@
  * - System Light / Dark mode
  * - Text size modes: small (13px), medium (15px), large (17px)
  * - Quick-Reply chips bar and expandable Document Checklist drawer
+ * - "What's Next" preview drawer with trust badges and verified source links
  * - Explain-This-Field active mode styling
  * - Mascot expressions: idle, pointing, thinking, happy, confused
  * - Accessibility: visible focus ring, min 44px touch targets, aria support
@@ -79,6 +80,14 @@
           --gg-badge-text: #f8fafc;
           --gg-spotlight-dim: rgba(15, 23, 42, 0.45);
           --gg-tail-border: rgba(226, 232, 240, 0.9);
+
+          /* Trust Badge Colors */
+          --gg-trust-verified-bg: #dcfce7;
+          --gg-trust-verified-text: #166534;
+          --gg-trust-official-bg: #e0f2fe;
+          --gg-trust-official-text: #075985;
+          --gg-trust-unverified-bg: #fef3c7;
+          --gg-trust-unverified-text: #92400e;
         }
 
         /* Dark Theme Support via System Setting */
@@ -103,6 +112,14 @@
             --gg-badge-text: #f8fafc;
             --gg-spotlight-dim: rgba(0, 0, 0, 0.65);
             --gg-tail-border: rgba(71, 85, 105, 0.7);
+
+            /* Trust Badge Colors Dark */
+            --gg-trust-verified-bg: #064e3b;
+            --gg-trust-verified-text: #a7f3d0;
+            --gg-trust-official-bg: #0c4a6e;
+            --gg-trust-official-text: #bae6fd;
+            --gg-trust-unverified-bg: #78350f;
+            --gg-trust-unverified-text: #fde68a;
           }
         }
 
@@ -342,7 +359,7 @@
           flex-shrink: 0;
         }
 
-        /* Control Buttons with min 44px touch targets */
+        /* Control Buttons with min 38-44px touch targets */
         .govguide-icon-btn {
           background: var(--gg-surface);
           border: 1px solid var(--gg-border);
@@ -491,6 +508,127 @@
         .govguide-checklist-item.checked span {
           text-decoration: line-through;
           color: var(--gg-text-muted);
+        }
+
+        /* "What's Next" Preview Drawer */
+        .govguide-whats-next-drawer {
+          background: var(--gg-surface);
+          border: 1px solid var(--gg-border);
+          border-radius: 10px;
+          padding: 10px 12px;
+          margin-bottom: 12px;
+          font-size: 12.5px;
+        }
+
+        .govguide-whats-next-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-weight: 600;
+          color: var(--gg-text-primary);
+          margin-bottom: 8px;
+        }
+
+        .govguide-whats-next-items {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          max-height: 220px;
+          overflow-y: auto;
+          padding-right: 4px;
+        }
+
+        .govguide-whats-next-item {
+          background: var(--gg-bg);
+          border: 1px solid var(--gg-border);
+          border-radius: 8px;
+          padding: 8px 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .govguide-whats-next-title-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 6px;
+          flex-wrap: wrap;
+        }
+
+        .govguide-whats-next-title {
+          font-weight: 600;
+          color: var(--gg-text-primary);
+          font-size: 12.5px;
+        }
+
+        .govguide-trust-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 3px;
+          font-size: 10.5px;
+          font-weight: 600;
+          padding: 2px 7px;
+          border-radius: 9999px;
+          white-space: nowrap;
+        }
+
+        .govguide-trust-badge.trust-verified_page {
+          background: var(--gg-trust-verified-bg);
+          color: var(--gg-trust-verified-text);
+        }
+
+        .govguide-trust-badge.trust-official_document {
+          background: var(--gg-trust-official-bg);
+          color: var(--gg-trust-official-text);
+        }
+
+        .govguide-trust-badge.trust-unverified {
+          background: var(--gg-trust-unverified-bg);
+          color: var(--gg-trust-unverified-text);
+        }
+
+        .govguide-whats-next-desc {
+          color: var(--gg-text-secondary);
+          line-height: 1.4;
+          font-size: 12px;
+        }
+
+        .govguide-whats-next-meta {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 11px;
+          color: var(--gg-text-muted);
+          margin-top: 4px;
+          padding-top: 4px;
+          border-top: 1px dashed var(--gg-border);
+          flex-wrap: wrap;
+          gap: 4px;
+        }
+
+        .govguide-whats-next-meta a {
+          color: var(--gg-primary);
+          text-decoration: underline;
+          cursor: pointer;
+        }
+
+        .govguide-whats-next-meta a:hover {
+          color: var(--gg-primary-hover);
+        }
+
+        .govguide-stale-warning {
+          color: #b45309;
+          font-size: 10.5px;
+          display: block;
+          margin-top: 2px;
+        }
+
+        .govguide-unverified-warning {
+          color: #b45309;
+          font-size: 10.5px;
+          display: block;
+          margin-top: 2px;
         }
 
         /* Review warning note */

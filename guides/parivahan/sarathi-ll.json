@@ -184,7 +184,129 @@
             "hi": {
               "bubble": "इसके बाद, पोर्टल राज्य डैशबोर्ड और संपर्क रहित सेवाओं का संदेश प्रदर्शित करेगा।"
             }
-          }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_ekyc_choice",
+              "order": 1,
+              "title": {
+                "en": "Aadhaar eKYC vs Non-Aadhaar Verification",
+                "hi": "आधार ई-केवाईसी बनाम गैर-आधार सत्यापन"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Choose between Aadhaar contactless verification (take test from home) or physical RTO visit. Keep your Aadhaar-linked mobile ready for OTP. Never share your OTP with anyone.",
+                  "spoken": "First, you will choose how to authenticate. If you use your Aadhaar number, you can take the learner test from home without visiting an RTO office. Please keep your Aadhaar-linked phone ready for the verification OTP, and remember never to share your OTP with anyone."
+                },
+                "hi": {
+                  "bubble": "आधार संपर्क रहित सत्यापन (घर से परीक्षा) या आरटीओ जाने का विकल्प चुनें। ओटीपी के लिए आधार से जुड़ा मोबाइल तैयार रखें। अपना ओटीपी कभी किसी के साथ साझा न करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Online LL Application Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_personal_vehicle_details",
+              "order": 2,
+              "title": {
+                "en": "Fill Personal, Address & Vehicle Class Details",
+                "hi": "व्यक्तिगत, पता और वाहन श्रेणी विवरण भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Enter your qualifications, blood group, address, and select the vehicle class (e.g. Motorcycle or Car). Complete the physical fitness self-declaration (Form 1).",
+                  "spoken": "Next, you will fill out the application form with your education, blood group, address, and the class of vehicles you wish to drive, such as motorcycle or car. You will also fill out the simple physical fitness Form 1."
+                },
+                "hi": {
+                  "bubble": "अपनी योग्यता, रक्त समूह, पता दर्ज करें और वाहन श्रेणी चुनें। शारीरिक फिटनेस स्व-घोषणा (फॉर्म 1) पूरा करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Application Form Instructions (newLLDet)",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_upload_documents_signature",
+              "order": 3,
+              "title": {
+                "en": "Upload Documents & Signature",
+                "hi": "दस्तावेज़ और हस्ताक्षर अपलोड करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Upload scanned copies of age and address proof. For Aadhaar applicants, your photo is fetched automatically; only your signature upload is needed. Keep original documents ready.",
+                  "spoken": "After that, upload your supporting proofs for age and address. If you authenticated using Aadhaar, your photo is already fetched, so you only need to upload your signature scan. Keep your original documents ready for verification."
+                },
+                "hi": {
+                  "bubble": "आयु और पता प्रमाण की स्कैन प्रतियां अपलोड करें। आधार आवेदकों की तस्वीर स्वतः ले ली जाती है; केवल हस्ताक्षर अपलोड करना होता है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Document Upload Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_fee_payment_tutorial",
+              "order": 4,
+              "title": {
+                "en": "Fee Payment & Road Safety Tutorial",
+                "hi": "शुल्क भुगतान और सड़क सुरक्षा ट्यूटोरियल"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Pay the prescribed government fees online using the official gateway. Official portals never ask for payment outside the site. Contactless applicants must watch the online road safety video.",
+                  "spoken": "Next comes fee payment. Pay your application and test fees directly through the official integrated portal payment gateway. Remember, official government departments never ask for payment outside the portal. Once paid, watch the mandatory road safety tutorial video online."
+                },
+                "hi": {
+                  "bubble": "आधिकारिक गेटवे का उपयोग करके ऑनलाइन निर्धारित सरकारी शुल्क का भुगतान करें। सरकारी पोर्टल कभी भी बाहर भुगतान नहीं मांगते। ऑनलाइन सड़क सुरक्षा वीडियो अवश्य देखें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Fee Payment & Tutorial Instructions",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_online_test_stall",
+              "order": 5,
+              "title": {
+                "en": "Online Learner's Licence Test (STALL)",
+                "hi": "ऑनलाइन लर्नर लाइसेंस टेस्ट (STALL)"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Take the computer-based multiple-choice test on traffic signs and rules using your application credentials. Once passed, download your digital Learner's Licence (Form 3) directly from the portal.",
+                  "spoken": "Finally, you will take the online multiple-choice screening test covering traffic signs and safety rules from your computer. Once you pass, your digital Learner's Licence Form 3 is approved and ready to print directly from the portal."
+                },
+                "hi": {
+                  "bubble": "ट्रैफिक संकेतों और नियमों पर कंप्यूटर आधारित बहुविकल्पीय परीक्षा दें। उत्तीर्ण होने के बाद, पोर्टल से सीधे अपना डिजिटल लर्नर लाइसेंस (फॉर्म 3) डाउनलोड करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Screen Test for Learner Licence (STALL)",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ]
         },
         {
           "pageId": "screen_02_contactless_popup",
@@ -295,7 +417,129 @@
             "hi": {
               "bubble": "इसके बाद, आप मुख्य डैशबोर्ड पर शिक्षार्थी लाइसेंस आवेदन बटन देख सकेंगे।"
             }
-          }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_ekyc_choice",
+              "order": 1,
+              "title": {
+                "en": "Aadhaar eKYC vs Non-Aadhaar Verification",
+                "hi": "आधार ई-केवाईसी बनाम गैर-आधार सत्यापन"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Choose between Aadhaar contactless verification (take test from home) or physical RTO visit. Keep your Aadhaar-linked mobile ready for OTP. Never share your OTP with anyone.",
+                  "spoken": "First, you will choose how to authenticate. If you use your Aadhaar number, you can take the learner test from home without visiting an RTO office. Please keep your Aadhaar-linked phone ready for the verification OTP, and remember never to share your OTP with anyone."
+                },
+                "hi": {
+                  "bubble": "आधार संपर्क रहित सत्यापन (घर से परीक्षा) या आरटीओ जाने का विकल्प चुनें। ओटीपी के लिए आधार से जुड़ा मोबाइल तैयार रखें। अपना ओटीपी कभी किसी के साथ साझा न करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Online LL Application Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_personal_vehicle_details",
+              "order": 2,
+              "title": {
+                "en": "Fill Personal, Address & Vehicle Class Details",
+                "hi": "व्यक्तिगत, पता और वाहन श्रेणी विवरण भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Enter your qualifications, blood group, address, and select the vehicle class (e.g. Motorcycle or Car). Complete the physical fitness self-declaration (Form 1).",
+                  "spoken": "Next, you will fill out the application form with your education, blood group, address, and the class of vehicles you wish to drive, such as motorcycle or car. You will also fill out the simple physical fitness Form 1."
+                },
+                "hi": {
+                  "bubble": "अपनी योग्यता, रक्त समूह, पता दर्ज करें और वाहन श्रेणी चुनें। शारीरिक फिटनेस स्व-घोषणा (फॉर्म 1) पूरा करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Application Form Instructions (newLLDet)",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_upload_documents_signature",
+              "order": 3,
+              "title": {
+                "en": "Upload Documents & Signature",
+                "hi": "दस्तावेज़ और हस्ताक्षर अपलोड करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Upload scanned copies of age and address proof. For Aadhaar applicants, your photo is fetched automatically; only your signature upload is needed. Keep original documents ready.",
+                  "spoken": "After that, upload your supporting proofs for age and address. If you authenticated using Aadhaar, your photo is already fetched, so you only need to upload your signature scan. Keep your original documents ready for verification."
+                },
+                "hi": {
+                  "bubble": "आयु और पता प्रमाण की स्कैन प्रतियां अपलोड करें। आधार आवेदकों की तस्वीर स्वतः ले ली जाती है; केवल हस्ताक्षर अपलोड करना होता है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Document Upload Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_fee_payment_tutorial",
+              "order": 4,
+              "title": {
+                "en": "Fee Payment & Road Safety Tutorial",
+                "hi": "शुल्क भुगतान और सड़क सुरक्षा ट्यूटोरियल"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Pay the prescribed government fees online using the official gateway. Official portals never ask for payment outside the site. Contactless applicants must watch the online road safety video.",
+                  "spoken": "Next comes fee payment. Pay your application and test fees directly through the official integrated portal payment gateway. Remember, official government departments never ask for payment outside the portal. Once paid, watch the mandatory road safety tutorial video online."
+                },
+                "hi": {
+                  "bubble": "आधिकारिक गेटवे का उपयोग करके ऑनलाइन निर्धारित सरकारी शुल्क का भुगतान करें। सरकारी पोर्टल कभी भी बाहर भुगतान नहीं मांगते। ऑनलाइन सड़क सुरक्षा वीडियो अवश्य देखें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Fee Payment & Tutorial Instructions",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_online_test_stall",
+              "order": 5,
+              "title": {
+                "en": "Online Learner's Licence Test (STALL)",
+                "hi": "ऑनलाइन लर्नर लाइसेंस टेस्ट (STALL)"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Take the computer-based multiple-choice test on traffic signs and rules using your application credentials. Once passed, download your digital Learner's Licence (Form 3) directly from the portal.",
+                  "spoken": "Finally, you will take the online multiple-choice screening test covering traffic signs and safety rules from your computer. Once you pass, your digital Learner's Licence Form 3 is approved and ready to print directly from the portal."
+                },
+                "hi": {
+                  "bubble": "ट्रैफिक संकेतों और नियमों पर कंप्यूटर आधारित बहुविकल्पीय परीक्षा दें। उत्तीर्ण होने के बाद, पोर्टल से सीधे अपना डिजिटल लर्नर लाइसेंस (फॉर्म 3) डाउनलोड करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Screen Test for Learner Licence (STALL)",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ]
         },
         {
           "pageId": "screen_03_state_dashboard",
@@ -429,7 +673,129 @@
             "hi": {
               "bubble": "इसके बाद, पोर्टल आवेदन के निर्देश और चरण प्रदर्शित करेगा।"
             }
-          }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_ekyc_choice",
+              "order": 1,
+              "title": {
+                "en": "Aadhaar eKYC vs Non-Aadhaar Verification",
+                "hi": "आधार ई-केवाईसी बनाम गैर-आधार सत्यापन"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Choose between Aadhaar contactless verification (take test from home) or physical RTO visit. Keep your Aadhaar-linked mobile ready for OTP. Never share your OTP with anyone.",
+                  "spoken": "First, you will choose how to authenticate. If you use your Aadhaar number, you can take the learner test from home without visiting an RTO office. Please keep your Aadhaar-linked phone ready for the verification OTP, and remember never to share your OTP with anyone."
+                },
+                "hi": {
+                  "bubble": "आधार संपर्क रहित सत्यापन (घर से परीक्षा) या आरटीओ जाने का विकल्प चुनें। ओटीपी के लिए आधार से जुड़ा मोबाइल तैयार रखें। अपना ओटीपी कभी किसी के साथ साझा न करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Online LL Application Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_personal_vehicle_details",
+              "order": 2,
+              "title": {
+                "en": "Fill Personal, Address & Vehicle Class Details",
+                "hi": "व्यक्तिगत, पता और वाहन श्रेणी विवरण भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Enter your qualifications, blood group, address, and select the vehicle class (e.g. Motorcycle or Car). Complete the physical fitness self-declaration (Form 1).",
+                  "spoken": "Next, you will fill out the application form with your education, blood group, address, and the class of vehicles you wish to drive, such as motorcycle or car. You will also fill out the simple physical fitness Form 1."
+                },
+                "hi": {
+                  "bubble": "अपनी योग्यता, रक्त समूह, पता दर्ज करें और वाहन श्रेणी चुनें। शारीरिक फिटनेस स्व-घोषणा (फॉर्म 1) पूरा करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Application Form Instructions (newLLDet)",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_upload_documents_signature",
+              "order": 3,
+              "title": {
+                "en": "Upload Documents & Signature",
+                "hi": "दस्तावेज़ और हस्ताक्षर अपलोड करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Upload scanned copies of age and address proof. For Aadhaar applicants, your photo is fetched automatically; only your signature upload is needed. Keep original documents ready.",
+                  "spoken": "After that, upload your supporting proofs for age and address. If you authenticated using Aadhaar, your photo is already fetched, so you only need to upload your signature scan. Keep your original documents ready for verification."
+                },
+                "hi": {
+                  "bubble": "आयु और पता प्रमाण की स्कैन प्रतियां अपलोड करें। आधार आवेदकों की तस्वीर स्वतः ले ली जाती है; केवल हस्ताक्षर अपलोड करना होता है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Document Upload Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_fee_payment_tutorial",
+              "order": 4,
+              "title": {
+                "en": "Fee Payment & Road Safety Tutorial",
+                "hi": "शुल्क भुगतान और सड़क सुरक्षा ट्यूटोरियल"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Pay the prescribed government fees online using the official gateway. Official portals never ask for payment outside the site. Contactless applicants must watch the online road safety video.",
+                  "spoken": "Next comes fee payment. Pay your application and test fees directly through the official integrated portal payment gateway. Remember, official government departments never ask for payment outside the portal. Once paid, watch the mandatory road safety tutorial video online."
+                },
+                "hi": {
+                  "bubble": "आधिकारिक गेटवे का उपयोग करके ऑनलाइन निर्धारित सरकारी शुल्क का भुगतान करें। सरकारी पोर्टल कभी भी बाहर भुगतान नहीं मांगते। ऑनलाइन सड़क सुरक्षा वीडियो अवश्य देखें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Fee Payment & Tutorial Instructions",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_online_test_stall",
+              "order": 5,
+              "title": {
+                "en": "Online Learner's Licence Test (STALL)",
+                "hi": "ऑनलाइन लर्नर लाइसेंस टेस्ट (STALL)"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Take the computer-based multiple-choice test on traffic signs and rules using your application credentials. Once passed, download your digital Learner's Licence (Form 3) directly from the portal.",
+                  "spoken": "Finally, you will take the online multiple-choice screening test covering traffic signs and safety rules from your computer. Once you pass, your digital Learner's Licence Form 3 is approved and ready to print directly from the portal."
+                },
+                "hi": {
+                  "bubble": "ट्रैफिक संकेतों और नियमों पर कंप्यूटर आधारित बहुविकल्पीय परीक्षा दें। उत्तीर्ण होने के बाद, पोर्टल से सीधे अपना डिजिटल लर्नर लाइसेंस (फॉर्म 3) डाउनलोड करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Screen Test for Learner Licence (STALL)",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ]
         },
         {
           "pageId": "screen_04_instructions",
@@ -563,7 +929,129 @@
             "hi": {
               "bubble": "इसके बाद, आप अपनी आवेदक श्रेणी का चयन करेंगे।"
             }
-          }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_ekyc_choice",
+              "order": 1,
+              "title": {
+                "en": "Aadhaar eKYC vs Non-Aadhaar Verification",
+                "hi": "आधार ई-केवाईसी बनाम गैर-आधार सत्यापन"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Choose between Aadhaar contactless verification (take test from home) or physical RTO visit. Keep your Aadhaar-linked mobile ready for OTP. Never share your OTP with anyone.",
+                  "spoken": "First, you will choose how to authenticate. If you use your Aadhaar number, you can take the learner test from home without visiting an RTO office. Please keep your Aadhaar-linked phone ready for the verification OTP, and remember never to share your OTP with anyone."
+                },
+                "hi": {
+                  "bubble": "आधार संपर्क रहित सत्यापन (घर से परीक्षा) या आरटीओ जाने का विकल्प चुनें। ओटीपी के लिए आधार से जुड़ा मोबाइल तैयार रखें। अपना ओटीपी कभी किसी के साथ साझा न करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Online LL Application Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_personal_vehicle_details",
+              "order": 2,
+              "title": {
+                "en": "Fill Personal, Address & Vehicle Class Details",
+                "hi": "व्यक्तिगत, पता और वाहन श्रेणी विवरण भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Enter your qualifications, blood group, address, and select the vehicle class (e.g. Motorcycle or Car). Complete the physical fitness self-declaration (Form 1).",
+                  "spoken": "Next, you will fill out the application form with your education, blood group, address, and the class of vehicles you wish to drive, such as motorcycle or car. You will also fill out the simple physical fitness Form 1."
+                },
+                "hi": {
+                  "bubble": "अपनी योग्यता, रक्त समूह, पता दर्ज करें और वाहन श्रेणी चुनें। शारीरिक फिटनेस स्व-घोषणा (फॉर्म 1) पूरा करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Application Form Instructions (newLLDet)",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_upload_documents_signature",
+              "order": 3,
+              "title": {
+                "en": "Upload Documents & Signature",
+                "hi": "दस्तावेज़ और हस्ताक्षर अपलोड करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Upload scanned copies of age and address proof. For Aadhaar applicants, your photo is fetched automatically; only your signature upload is needed. Keep original documents ready.",
+                  "spoken": "After that, upload your supporting proofs for age and address. If you authenticated using Aadhaar, your photo is already fetched, so you only need to upload your signature scan. Keep your original documents ready for verification."
+                },
+                "hi": {
+                  "bubble": "आयु और पता प्रमाण की स्कैन प्रतियां अपलोड करें। आधार आवेदकों की तस्वीर स्वतः ले ली जाती है; केवल हस्ताक्षर अपलोड करना होता है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Document Upload Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_fee_payment_tutorial",
+              "order": 4,
+              "title": {
+                "en": "Fee Payment & Road Safety Tutorial",
+                "hi": "शुल्क भुगतान और सड़क सुरक्षा ट्यूटोरियल"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Pay the prescribed government fees online using the official gateway. Official portals never ask for payment outside the site. Contactless applicants must watch the online road safety video.",
+                  "spoken": "Next comes fee payment. Pay your application and test fees directly through the official integrated portal payment gateway. Remember, official government departments never ask for payment outside the portal. Once paid, watch the mandatory road safety tutorial video online."
+                },
+                "hi": {
+                  "bubble": "आधिकारिक गेटवे का उपयोग करके ऑनलाइन निर्धारित सरकारी शुल्क का भुगतान करें। सरकारी पोर्टल कभी भी बाहर भुगतान नहीं मांगते। ऑनलाइन सड़क सुरक्षा वीडियो अवश्य देखें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Fee Payment & Tutorial Instructions",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_online_test_stall",
+              "order": 5,
+              "title": {
+                "en": "Online Learner's Licence Test (STALL)",
+                "hi": "ऑनलाइन लर्नर लाइसेंस टेस्ट (STALL)"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Take the computer-based multiple-choice test on traffic signs and rules using your application credentials. Once passed, download your digital Learner's Licence (Form 3) directly from the portal.",
+                  "spoken": "Finally, you will take the online multiple-choice screening test covering traffic signs and safety rules from your computer. Once you pass, your digital Learner's Licence Form 3 is approved and ready to print directly from the portal."
+                },
+                "hi": {
+                  "bubble": "ट्रैफिक संकेतों और नियमों पर कंप्यूटर आधारित बहुविकल्पीय परीक्षा दें। उत्तीर्ण होने के बाद, पोर्टल से सीधे अपना डिजिटल लर्नर लाइसेंस (फॉर्म 3) डाउनलोड करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Screen Test for Learner Licence (STALL)",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ]
         },
         {
           "pageId": "screen_05_applicant_category",
@@ -817,7 +1305,129 @@
             "hi": {
               "bubble": "इसके बाद, आप आधार प्रमाणीकरण (घर से) या आरटीओ जाने का विकल्प चुनेंगे।"
             }
-          }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_ekyc_choice",
+              "order": 1,
+              "title": {
+                "en": "Aadhaar eKYC vs Non-Aadhaar Verification",
+                "hi": "आधार ई-केवाईसी बनाम गैर-आधार सत्यापन"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Choose between Aadhaar contactless verification (take test from home) or physical RTO visit. Keep your Aadhaar-linked mobile ready for OTP. Never share your OTP with anyone.",
+                  "spoken": "First, you will choose how to authenticate. If you use your Aadhaar number, you can take the learner test from home without visiting an RTO office. Please keep your Aadhaar-linked phone ready for the verification OTP, and remember never to share your OTP with anyone."
+                },
+                "hi": {
+                  "bubble": "आधार संपर्क रहित सत्यापन (घर से परीक्षा) या आरटीओ जाने का विकल्प चुनें। ओटीपी के लिए आधार से जुड़ा मोबाइल तैयार रखें। अपना ओटीपी कभी किसी के साथ साझा न करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Online LL Application Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_personal_vehicle_details",
+              "order": 2,
+              "title": {
+                "en": "Fill Personal, Address & Vehicle Class Details",
+                "hi": "व्यक्तिगत, पता और वाहन श्रेणी विवरण भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Enter your qualifications, blood group, address, and select the vehicle class (e.g. Motorcycle or Car). Complete the physical fitness self-declaration (Form 1).",
+                  "spoken": "Next, you will fill out the application form with your education, blood group, address, and the class of vehicles you wish to drive, such as motorcycle or car. You will also fill out the simple physical fitness Form 1."
+                },
+                "hi": {
+                  "bubble": "अपनी योग्यता, रक्त समूह, पता दर्ज करें और वाहन श्रेणी चुनें। शारीरिक फिटनेस स्व-घोषणा (फॉर्म 1) पूरा करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Application Form Instructions (newLLDet)",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_upload_documents_signature",
+              "order": 3,
+              "title": {
+                "en": "Upload Documents & Signature",
+                "hi": "दस्तावेज़ और हस्ताक्षर अपलोड करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Upload scanned copies of age and address proof. For Aadhaar applicants, your photo is fetched automatically; only your signature upload is needed. Keep original documents ready.",
+                  "spoken": "After that, upload your supporting proofs for age and address. If you authenticated using Aadhaar, your photo is already fetched, so you only need to upload your signature scan. Keep your original documents ready for verification."
+                },
+                "hi": {
+                  "bubble": "आयु और पता प्रमाण की स्कैन प्रतियां अपलोड करें। आधार आवेदकों की तस्वीर स्वतः ले ली जाती है; केवल हस्ताक्षर अपलोड करना होता है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Document Upload Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_fee_payment_tutorial",
+              "order": 4,
+              "title": {
+                "en": "Fee Payment & Road Safety Tutorial",
+                "hi": "शुल्क भुगतान और सड़क सुरक्षा ट्यूटोरियल"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Pay the prescribed government fees online using the official gateway. Official portals never ask for payment outside the site. Contactless applicants must watch the online road safety video.",
+                  "spoken": "Next comes fee payment. Pay your application and test fees directly through the official integrated portal payment gateway. Remember, official government departments never ask for payment outside the portal. Once paid, watch the mandatory road safety tutorial video online."
+                },
+                "hi": {
+                  "bubble": "आधिकारिक गेटवे का उपयोग करके ऑनलाइन निर्धारित सरकारी शुल्क का भुगतान करें। सरकारी पोर्टल कभी भी बाहर भुगतान नहीं मांगते। ऑनलाइन सड़क सुरक्षा वीडियो अवश्य देखें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Fee Payment & Tutorial Instructions",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_online_test_stall",
+              "order": 5,
+              "title": {
+                "en": "Online Learner's Licence Test (STALL)",
+                "hi": "ऑनलाइन लर्नर लाइसेंस टेस्ट (STALL)"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Take the computer-based multiple-choice test on traffic signs and rules using your application credentials. Once passed, download your digital Learner's Licence (Form 3) directly from the portal.",
+                  "spoken": "Finally, you will take the online multiple-choice screening test covering traffic signs and safety rules from your computer. Once you pass, your digital Learner's Licence Form 3 is approved and ready to print directly from the portal."
+                },
+                "hi": {
+                  "bubble": "ट्रैफिक संकेतों और नियमों पर कंप्यूटर आधारित बहुविकल्पीय परीक्षा दें। उत्तीर्ण होने के बाद, पोर्टल से सीधे अपना डिजिटल लर्नर लाइसेंस (फॉर्म 3) डाउनलोड करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Screen Test for Learner Licence (STALL)",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ]
         },
         {
           "pageId": "screen_06_unverified_ekyc_selection",
@@ -886,6 +1496,13 @@
               "fallback": null,
               "audio": {
                 "en": "assets/audio/en/step_08_unverified_choose_ekyc_method.mp3"
+              },
+              "explainOnly": true,
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Aadhaar eKYC Portal Instructions",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
               }
             },
             {
@@ -946,6 +1563,13 @@
               "fallback": null,
               "audio": {
                 "en": "assets/audio/en/step_09_unverified_explain_aadhaar_otp.mp3"
+              },
+              "explainOnly": true,
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Aadhaar eKYC Portal Instructions",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
               }
             }
           ],
@@ -981,6 +1605,134 @@
             "hi": {
               "bubble": "इसके बाद, आवेदन पत्र खुलेगा जहाँ व्यक्तिगत और वाहन श्रेणी का विवरण भरा जाएगा।"
             }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_ekyc_choice",
+              "order": 1,
+              "title": {
+                "en": "Aadhaar eKYC vs Non-Aadhaar Verification",
+                "hi": "आधार ई-केवाईसी बनाम गैर-आधार सत्यापन"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Choose between Aadhaar contactless verification (take test from home) or physical RTO visit. Keep your Aadhaar-linked mobile ready for OTP. Never share your OTP with anyone.",
+                  "spoken": "First, you will choose how to authenticate. If you use your Aadhaar number, you can take the learner test from home without visiting an RTO office. Please keep your Aadhaar-linked phone ready for the verification OTP, and remember never to share your OTP with anyone."
+                },
+                "hi": {
+                  "bubble": "आधार संपर्क रहित सत्यापन (घर से परीक्षा) या आरटीओ जाने का विकल्प चुनें। ओटीपी के लिए आधार से जुड़ा मोबाइल तैयार रखें। अपना ओटीपी कभी किसी के साथ साझा न करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Online LL Application Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_personal_vehicle_details",
+              "order": 2,
+              "title": {
+                "en": "Fill Personal, Address & Vehicle Class Details",
+                "hi": "व्यक्तिगत, पता और वाहन श्रेणी विवरण भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Enter your qualifications, blood group, address, and select the vehicle class (e.g. Motorcycle or Car). Complete the physical fitness self-declaration (Form 1).",
+                  "spoken": "Next, you will fill out the application form with your education, blood group, address, and the class of vehicles you wish to drive, such as motorcycle or car. You will also fill out the simple physical fitness Form 1."
+                },
+                "hi": {
+                  "bubble": "अपनी योग्यता, रक्त समूह, पता दर्ज करें और वाहन श्रेणी चुनें। शारीरिक फिटनेस स्व-घोषणा (फॉर्म 1) पूरा करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Application Form Instructions (newLLDet)",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_upload_documents_signature",
+              "order": 3,
+              "title": {
+                "en": "Upload Documents & Signature",
+                "hi": "दस्तावेज़ और हस्ताक्षर अपलोड करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Upload scanned copies of age and address proof. For Aadhaar applicants, your photo is fetched automatically; only your signature upload is needed. Keep original documents ready.",
+                  "spoken": "After that, upload your supporting proofs for age and address. If you authenticated using Aadhaar, your photo is already fetched, so you only need to upload your signature scan. Keep your original documents ready for verification."
+                },
+                "hi": {
+                  "bubble": "आयु और पता प्रमाण की स्कैन प्रतियां अपलोड करें। आधार आवेदकों की तस्वीर स्वतः ले ली जाती है; केवल हस्ताक्षर अपलोड करना होता है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Document Upload Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_fee_payment_tutorial",
+              "order": 4,
+              "title": {
+                "en": "Fee Payment & Road Safety Tutorial",
+                "hi": "शुल्क भुगतान और सड़क सुरक्षा ट्यूटोरियल"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Pay the prescribed government fees online using the official gateway. Official portals never ask for payment outside the site. Contactless applicants must watch the online road safety video.",
+                  "spoken": "Next comes fee payment. Pay your application and test fees directly through the official integrated portal payment gateway. Remember, official government departments never ask for payment outside the portal. Once paid, watch the mandatory road safety tutorial video online."
+                },
+                "hi": {
+                  "bubble": "आधिकारिक गेटवे का उपयोग करके ऑनलाइन निर्धारित सरकारी शुल्क का भुगतान करें। सरकारी पोर्टल कभी भी बाहर भुगतान नहीं मांगते। ऑनलाइन सड़क सुरक्षा वीडियो अवश्य देखें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Fee Payment & Tutorial Instructions",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_online_test_stall",
+              "order": 5,
+              "title": {
+                "en": "Online Learner's Licence Test (STALL)",
+                "hi": "ऑनलाइन लर्नर लाइसेंस टेस्ट (STALL)"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Take the computer-based multiple-choice test on traffic signs and rules using your application credentials. Once passed, download your digital Learner's Licence (Form 3) directly from the portal.",
+                  "spoken": "Finally, you will take the online multiple-choice screening test covering traffic signs and safety rules from your computer. Once you pass, your digital Learner's Licence Form 3 is approved and ready to print directly from the portal."
+                },
+                "hi": {
+                  "bubble": "ट्रैफिक संकेतों और नियमों पर कंप्यूटर आधारित बहुविकल्पीय परीक्षा दें। उत्तीर्ण होने के बाद, पोर्टल से सीधे अपना डिजिटल लर्नर लाइसेंस (फॉर्म 3) डाउनलोड करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Screen Test for Learner Licence (STALL)",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ],
+          "trust": "official_document",
+          "source": {
+            "title": "Sarathi Parivahan Aadhaar eKYC Portal Instructions",
+            "url": "https://sarathi.parivahan.gov.in/",
+            "retrievedOn": "2026-11-22"
           }
         },
         {
@@ -1050,6 +1802,13 @@
               "fallback": null,
               "audio": {
                 "en": "assets/audio/en/step_10_unverified_explain_remaining_stages.mp3"
+              },
+              "explainOnly": true,
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Application Stages Overview",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
               }
             }
           ],
@@ -1097,6 +1856,134 @@
             "hi": {
               "bubble": "दस्तावेज़ और शुल्क पूर्ण होने के बाद, आप घर से ऑनलाइन टेस्ट दे सकते हैं।"
             }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_ekyc_choice",
+              "order": 1,
+              "title": {
+                "en": "Aadhaar eKYC vs Non-Aadhaar Verification",
+                "hi": "आधार ई-केवाईसी बनाम गैर-आधार सत्यापन"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Choose between Aadhaar contactless verification (take test from home) or physical RTO visit. Keep your Aadhaar-linked mobile ready for OTP. Never share your OTP with anyone.",
+                  "spoken": "First, you will choose how to authenticate. If you use your Aadhaar number, you can take the learner test from home without visiting an RTO office. Please keep your Aadhaar-linked phone ready for the verification OTP, and remember never to share your OTP with anyone."
+                },
+                "hi": {
+                  "bubble": "आधार संपर्क रहित सत्यापन (घर से परीक्षा) या आरटीओ जाने का विकल्प चुनें। ओटीपी के लिए आधार से जुड़ा मोबाइल तैयार रखें। अपना ओटीपी कभी किसी के साथ साझा न करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Online LL Application Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_personal_vehicle_details",
+              "order": 2,
+              "title": {
+                "en": "Fill Personal, Address & Vehicle Class Details",
+                "hi": "व्यक्तिगत, पता और वाहन श्रेणी विवरण भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Enter your qualifications, blood group, address, and select the vehicle class (e.g. Motorcycle or Car). Complete the physical fitness self-declaration (Form 1).",
+                  "spoken": "Next, you will fill out the application form with your education, blood group, address, and the class of vehicles you wish to drive, such as motorcycle or car. You will also fill out the simple physical fitness Form 1."
+                },
+                "hi": {
+                  "bubble": "अपनी योग्यता, रक्त समूह, पता दर्ज करें और वाहन श्रेणी चुनें। शारीरिक फिटनेस स्व-घोषणा (फॉर्म 1) पूरा करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Application Form Instructions (newLLDet)",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_upload_documents_signature",
+              "order": 3,
+              "title": {
+                "en": "Upload Documents & Signature",
+                "hi": "दस्तावेज़ और हस्ताक्षर अपलोड करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Upload scanned copies of age and address proof. For Aadhaar applicants, your photo is fetched automatically; only your signature upload is needed. Keep original documents ready.",
+                  "spoken": "After that, upload your supporting proofs for age and address. If you authenticated using Aadhaar, your photo is already fetched, so you only need to upload your signature scan. Keep your original documents ready for verification."
+                },
+                "hi": {
+                  "bubble": "आयु और पता प्रमाण की स्कैन प्रतियां अपलोड करें। आधार आवेदकों की तस्वीर स्वतः ले ली जाती है; केवल हस्ताक्षर अपलोड करना होता है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Document Upload Guidelines",
+                "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_fee_payment_tutorial",
+              "order": 4,
+              "title": {
+                "en": "Fee Payment & Road Safety Tutorial",
+                "hi": "शुल्क भुगतान और सड़क सुरक्षा ट्यूटोरियल"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Pay the prescribed government fees online using the official gateway. Official portals never ask for payment outside the site. Contactless applicants must watch the online road safety video.",
+                  "spoken": "Next comes fee payment. Pay your application and test fees directly through the official integrated portal payment gateway. Remember, official government departments never ask for payment outside the portal. Once paid, watch the mandatory road safety tutorial video online."
+                },
+                "hi": {
+                  "bubble": "आधिकारिक गेटवे का उपयोग करके ऑनलाइन निर्धारित सरकारी शुल्क का भुगतान करें। सरकारी पोर्टल कभी भी बाहर भुगतान नहीं मांगते। ऑनलाइन सड़क सुरक्षा वीडियो अवश्य देखें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Fee Payment & Tutorial Instructions",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_online_test_stall",
+              "order": 5,
+              "title": {
+                "en": "Online Learner's Licence Test (STALL)",
+                "hi": "ऑनलाइन लर्नर लाइसेंस टेस्ट (STALL)"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Take the computer-based multiple-choice test on traffic signs and rules using your application credentials. Once passed, download your digital Learner's Licence (Form 3) directly from the portal.",
+                  "spoken": "Finally, you will take the online multiple-choice screening test covering traffic signs and safety rules from your computer. Once you pass, your digital Learner's Licence Form 3 is approved and ready to print directly from the portal."
+                },
+                "hi": {
+                  "bubble": "ट्रैफिक संकेतों और नियमों पर कंप्यूटर आधारित बहुविकल्पीय परीक्षा दें। उत्तीर्ण होने के बाद, पोर्टल से सीधे अपना डिजिटल लर्नर लाइसेंस (फॉर्म 3) डाउनलोड करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Sarathi Parivahan Screen Test for Learner Licence (STALL)",
+                "url": "https://sarathi.parivahan.gov.in/",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ],
+          "trust": "official_document",
+          "source": {
+            "title": "Sarathi Parivahan Application Stages Overview",
+            "url": "https://sarathi.parivahan.gov.in/",
+            "retrievedOn": "2026-11-22"
           }
         }
       ],
@@ -1116,6 +2003,128 @@
         {
           "en": "Medical Certificate (Form 1 / 1-A if required by age/category)",
           "hi": "चिकित्सा प्रमाण पत्र (फॉर्म 1 / 1-ए यदि आवश्यक हो)"
+        }
+      ],
+      "whatsNext": [
+        {
+          "id": "stage_01_ekyc_choice",
+          "order": 1,
+          "title": {
+            "en": "Aadhaar eKYC vs Non-Aadhaar Verification",
+            "hi": "आधार ई-केवाईसी बनाम गैर-आधार सत्यापन"
+          },
+          "explanation": {
+            "en": {
+              "bubble": "Choose between Aadhaar contactless verification (take test from home) or physical RTO visit. Keep your Aadhaar-linked mobile ready for OTP. Never share your OTP with anyone.",
+              "spoken": "First, you will choose how to authenticate. If you use your Aadhaar number, you can take the learner test from home without visiting an RTO office. Please keep your Aadhaar-linked phone ready for the verification OTP, and remember never to share your OTP with anyone."
+            },
+            "hi": {
+              "bubble": "आधार संपर्क रहित सत्यापन (घर से परीक्षा) या आरटीओ जाने का विकल्प चुनें। ओटीपी के लिए आधार से जुड़ा मोबाइल तैयार रखें। अपना ओटीपी कभी किसी के साथ साझा न करें।"
+            }
+          },
+          "trust": "official_document",
+          "source": {
+            "title": "Sarathi Parivahan Online LL Application Guidelines",
+            "url": "https://sarathi.parivahan.gov.in/",
+            "retrievedOn": "2026-11-22"
+          },
+          "explainOnly": true
+        },
+        {
+          "id": "stage_02_personal_vehicle_details",
+          "order": 2,
+          "title": {
+            "en": "Fill Personal, Address & Vehicle Class Details",
+            "hi": "व्यक्तिगत, पता और वाहन श्रेणी विवरण भरें"
+          },
+          "explanation": {
+            "en": {
+              "bubble": "Enter your qualifications, blood group, address, and select the vehicle class (e.g. Motorcycle or Car). Complete the physical fitness self-declaration (Form 1).",
+              "spoken": "Next, you will fill out the application form with your education, blood group, address, and the class of vehicles you wish to drive, such as motorcycle or car. You will also fill out the simple physical fitness Form 1."
+            },
+            "hi": {
+              "bubble": "अपनी योग्यता, रक्त समूह, पता दर्ज करें और वाहन श्रेणी चुनें। शारीरिक फिटनेस स्व-घोषणा (फॉर्म 1) पूरा करें।"
+            }
+          },
+          "trust": "official_document",
+          "source": {
+            "title": "Sarathi Parivahan Application Form Instructions (newLLDet)",
+            "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+            "retrievedOn": "2026-11-22"
+          },
+          "explainOnly": true
+        },
+        {
+          "id": "stage_03_upload_documents_signature",
+          "order": 3,
+          "title": {
+            "en": "Upload Documents & Signature",
+            "hi": "दस्तावेज़ और हस्ताक्षर अपलोड करें"
+          },
+          "explanation": {
+            "en": {
+              "bubble": "Upload scanned copies of age and address proof. For Aadhaar applicants, your photo is fetched automatically; only your signature upload is needed. Keep original documents ready.",
+              "spoken": "After that, upload your supporting proofs for age and address. If you authenticated using Aadhaar, your photo is already fetched, so you only need to upload your signature scan. Keep your original documents ready for verification."
+            },
+            "hi": {
+              "bubble": "आयु और पता प्रमाण की स्कैन प्रतियां अपलोड करें। आधार आवेदकों की तस्वीर स्वतः ले ली जाती है; केवल हस्ताक्षर अपलोड करना होता है।"
+            }
+          },
+          "trust": "official_document",
+          "source": {
+            "title": "Sarathi Parivahan Document Upload Guidelines",
+            "url": "https://sarathi.parivahan.gov.in/sarathiservice/newLLDet.do",
+            "retrievedOn": "2026-11-22"
+          },
+          "explainOnly": true
+        },
+        {
+          "id": "stage_04_fee_payment_tutorial",
+          "order": 4,
+          "title": {
+            "en": "Fee Payment & Road Safety Tutorial",
+            "hi": "शुल्क भुगतान और सड़क सुरक्षा ट्यूटोरियल"
+          },
+          "explanation": {
+            "en": {
+              "bubble": "Pay the prescribed government fees online using the official gateway. Official portals never ask for payment outside the site. Contactless applicants must watch the online road safety video.",
+              "spoken": "Next comes fee payment. Pay your application and test fees directly through the official integrated portal payment gateway. Remember, official government departments never ask for payment outside the portal. Once paid, watch the mandatory road safety tutorial video online."
+            },
+            "hi": {
+              "bubble": "आधिकारिक गेटवे का उपयोग करके ऑनलाइन निर्धारित सरकारी शुल्क का भुगतान करें। सरकारी पोर्टल कभी भी बाहर भुगतान नहीं मांगते। ऑनलाइन सड़क सुरक्षा वीडियो अवश्य देखें।"
+            }
+          },
+          "trust": "official_document",
+          "source": {
+            "title": "Sarathi Parivahan Fee Payment & Tutorial Instructions",
+            "url": "https://sarathi.parivahan.gov.in/",
+            "retrievedOn": "2026-11-22"
+          },
+          "explainOnly": true
+        },
+        {
+          "id": "stage_05_online_test_stall",
+          "order": 5,
+          "title": {
+            "en": "Online Learner's Licence Test (STALL)",
+            "hi": "ऑनलाइन लर्नर लाइसेंस टेस्ट (STALL)"
+          },
+          "explanation": {
+            "en": {
+              "bubble": "Take the computer-based multiple-choice test on traffic signs and rules using your application credentials. Once passed, download your digital Learner's Licence (Form 3) directly from the portal.",
+              "spoken": "Finally, you will take the online multiple-choice screening test covering traffic signs and safety rules from your computer. Once you pass, your digital Learner's Licence Form 3 is approved and ready to print directly from the portal."
+            },
+            "hi": {
+              "bubble": "ट्रैफिक संकेतों और नियमों पर कंप्यूटर आधारित बहुविकल्पीय परीक्षा दें। उत्तीर्ण होने के बाद, पोर्टल से सीधे अपना डिजिटल लर्नर लाइसेंस (फॉर्म 3) डाउनलोड करें।"
+            }
+          },
+          "trust": "official_document",
+          "source": {
+            "title": "Sarathi Parivahan Screen Test for Learner Licence (STALL)",
+            "url": "https://sarathi.parivahan.gov.in/",
+            "retrievedOn": "2026-11-22"
+          },
+          "explainOnly": true
         }
       ]
     }

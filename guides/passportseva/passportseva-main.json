@@ -167,7 +167,129 @@
             "hi": {
               "bubble": "इसके बाद, आप मुख्य पृष्ठ पर दस्तावेज़ सलाहकार, शुल्क कैलकुलेटर और केंद्र खोजक देख सकेंगे।"
             }
-          }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_registration_activation",
+              "order": 1,
+              "title": {
+                "en": "Register & Activate Portal Account",
+                "hi": "पंजीकरण करें और पोर्टल खाता सक्रिय करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Create an account on the official portal using your email ID. Click the activation link sent to your email. Always use the official portal (passportindia.gov.in) and never pay intermediary agents.",
+                  "spoken": "First, you will register for an account on the official Passport Seva portal using your name and email. Once submitted, check your email inbox and click the activation link to activate your account. Always ensure you are on the official government website and never pay any third-party intermediary."
+                },
+                "hi": {
+                  "bubble": "अपने ईमेल आईडी का उपयोग करके आधिकारिक पोर्टल पर खाता बनाएं। अपने ईमेल पर भेजे गए सक्रियण लिंक पर क्लिक करें। केवल आधिकारिक पोर्टल का उपयोग करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Steps to Apply & User Registration Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_fill_application_form",
+              "order": 2,
+              "title": {
+                "en": "Fill Online Application Form",
+                "hi": "ऑनलाइन आवेदन पत्र भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Log in to your account and click 'Apply for Fresh Passport / Re-issue'. Select your Regional Passport Office (RPO) jurisdiction and enter applicant and family details carefully.",
+                  "spoken": "Next, log in to your account and select Apply for Fresh Passport or Reissue. Make sure you select the correct Regional Passport Office jurisdiction corresponding to your current address, and fill in your personal and family details carefully."
+                },
+                "hi": {
+                  "bubble": "अपने खाते में लॉग इन करें और 'Apply for Fresh Passport / Re-issue' चुनें। अपने अधिकार क्षेत्र का चयन करें और विवरण भरें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Online Form Submission Procedure",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_online_fee_payment_appointment",
+              "order": 3,
+              "title": {
+                "en": "Online Fee Payment & Appointment Booking",
+                "hi": "ऑनलाइन शुल्क भुगतान और अपॉइंटमेंट बुकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Online payment is mandatory to book slots at PSK/POPSK. Select an available appointment date and pay via internet banking, cards, or UPI. Payment receipts remain valid for one year.",
+                  "spoken": "After submitting your form, navigate to View Saved Applications and click Pay and Schedule Appointment. Online payment is mandatory to reserve appointment slots at Passport Seva Kendras. You can pay securely using net banking, cards, or UPI. Your payment receipt remains valid for one year."
+                },
+                "hi": {
+                  "bubble": "पीएसके पर स्लॉट बुक करने के लिए ऑनलाइन भुगतान अनिवार्य है। अपॉइंटमेंट की तारीख चुनें और ऑनलाइन भुगतान करें। भुगतान रसीद एक वर्ष के लिए मान्य रहती है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Appointment Scheduling & Fee Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/feeSchedule",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_visit_psk_biometrics",
+              "order": 4,
+              "title": {
+                "en": "Visit Passport Seva Kendra (PSK / POPSK)",
+                "hi": "पासपोर्ट सेवा केंद्र (PSK) का दौरा और बायोमेट्रिक्स"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Arrive at your appointment time with your Application Receipt/SMS, original documents (DOB, Address), and self-attested copies. Biometrics (photo and fingerprints) are captured on-site.",
+                  "spoken": "On your appointment day, arrive at your chosen Passport Seva Kendra on time. Carry your Application Receipt or SMS confirmation, along with all original documents for date of birth and address proof, plus one set of self-attested photocopies. Your photograph and biometric fingerprints are captured right at the center."
+                },
+                "hi": {
+                  "bubble": "अपनी नियुक्ति के समय आवेदन रसीद/एसएमएस, मूल दस्तावेज़ों और स्व-प्रमाणित प्रतियों के साथ पहुंचें। बायोमेट्रिक्स केंद्र पर लिए जाएंगे।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Kendra Appointment Visit Instructions",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_police_verification_tracking",
+              "order": 5,
+              "title": {
+                "en": "Police Verification & Speed Post Tracking",
+                "hi": "पुलिस सत्यापन और स्पीड पोस्ट ट्रैकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Following your PSK visit, local police verification takes place (if applicable). Once approved and printed, your passport is dispatched via India Post Speed Post. Track status using your 15-character File Number.",
+                  "spoken": "Finally, following your center visit, local police verification is initiated if applicable for your category. Once verified and printed, your passport is dispatched securely via India Post Speed Post. You can track real-time progress anytime on the portal using your 15-character file number."
+                },
+                "hi": {
+                  "bubble": "पीएसके दौरे के बाद, स्थानीय पुलिस सत्यापन होगा। स्वीकृत होने पर पासपोर्ट स्पीड पोस्ट द्वारा भेजा जाता है। फ़ाइल नंबर से स्थिति ट्रैक करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Application Status Tracking Portal",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/statusTracker/trackStatusInpNew",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ]
         },
         {
           "pageId": "screen_02_homepage_hub",
@@ -409,7 +531,129 @@
             "hi": {
               "bubble": "इसके बाद, आप पासपोर्ट शुल्क की गणना कर सकते हैं या निकटतम पासपोर्ट केंद्र खोज सकते हैं।"
             }
-          }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_registration_activation",
+              "order": 1,
+              "title": {
+                "en": "Register & Activate Portal Account",
+                "hi": "पंजीकरण करें और पोर्टल खाता सक्रिय करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Create an account on the official portal using your email ID. Click the activation link sent to your email. Always use the official portal (passportindia.gov.in) and never pay intermediary agents.",
+                  "spoken": "First, you will register for an account on the official Passport Seva portal using your name and email. Once submitted, check your email inbox and click the activation link to activate your account. Always ensure you are on the official government website and never pay any third-party intermediary."
+                },
+                "hi": {
+                  "bubble": "अपने ईमेल आईडी का उपयोग करके आधिकारिक पोर्टल पर खाता बनाएं। अपने ईमेल पर भेजे गए सक्रियण लिंक पर क्लिक करें। केवल आधिकारिक पोर्टल का उपयोग करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Steps to Apply & User Registration Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_fill_application_form",
+              "order": 2,
+              "title": {
+                "en": "Fill Online Application Form",
+                "hi": "ऑनलाइन आवेदन पत्र भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Log in to your account and click 'Apply for Fresh Passport / Re-issue'. Select your Regional Passport Office (RPO) jurisdiction and enter applicant and family details carefully.",
+                  "spoken": "Next, log in to your account and select Apply for Fresh Passport or Reissue. Make sure you select the correct Regional Passport Office jurisdiction corresponding to your current address, and fill in your personal and family details carefully."
+                },
+                "hi": {
+                  "bubble": "अपने खाते में लॉग इन करें और 'Apply for Fresh Passport / Re-issue' चुनें। अपने अधिकार क्षेत्र का चयन करें और विवरण भरें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Online Form Submission Procedure",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_online_fee_payment_appointment",
+              "order": 3,
+              "title": {
+                "en": "Online Fee Payment & Appointment Booking",
+                "hi": "ऑनलाइन शुल्क भुगतान और अपॉइंटमेंट बुकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Online payment is mandatory to book slots at PSK/POPSK. Select an available appointment date and pay via internet banking, cards, or UPI. Payment receipts remain valid for one year.",
+                  "spoken": "After submitting your form, navigate to View Saved Applications and click Pay and Schedule Appointment. Online payment is mandatory to reserve appointment slots at Passport Seva Kendras. You can pay securely using net banking, cards, or UPI. Your payment receipt remains valid for one year."
+                },
+                "hi": {
+                  "bubble": "पीएसके पर स्लॉट बुक करने के लिए ऑनलाइन भुगतान अनिवार्य है। अपॉइंटमेंट की तारीख चुनें और ऑनलाइन भुगतान करें। भुगतान रसीद एक वर्ष के लिए मान्य रहती है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Appointment Scheduling & Fee Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/feeSchedule",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_visit_psk_biometrics",
+              "order": 4,
+              "title": {
+                "en": "Visit Passport Seva Kendra (PSK / POPSK)",
+                "hi": "पासपोर्ट सेवा केंद्र (PSK) का दौरा और बायोमेट्रिक्स"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Arrive at your appointment time with your Application Receipt/SMS, original documents (DOB, Address), and self-attested copies. Biometrics (photo and fingerprints) are captured on-site.",
+                  "spoken": "On your appointment day, arrive at your chosen Passport Seva Kendra on time. Carry your Application Receipt or SMS confirmation, along with all original documents for date of birth and address proof, plus one set of self-attested photocopies. Your photograph and biometric fingerprints are captured right at the center."
+                },
+                "hi": {
+                  "bubble": "अपनी नियुक्ति के समय आवेदन रसीद/एसएमएस, मूल दस्तावेज़ों और स्व-प्रमाणित प्रतियों के साथ पहुंचें। बायोमेट्रिक्स केंद्र पर लिए जाएंगे।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Kendra Appointment Visit Instructions",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_police_verification_tracking",
+              "order": 5,
+              "title": {
+                "en": "Police Verification & Speed Post Tracking",
+                "hi": "पुलिस सत्यापन और स्पीड पोस्ट ट्रैकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Following your PSK visit, local police verification takes place (if applicable). Once approved and printed, your passport is dispatched via India Post Speed Post. Track status using your 15-character File Number.",
+                  "spoken": "Finally, following your center visit, local police verification is initiated if applicable for your category. Once verified and printed, your passport is dispatched securely via India Post Speed Post. You can track real-time progress anytime on the portal using your 15-character file number."
+                },
+                "hi": {
+                  "bubble": "पीएसके दौरे के बाद, स्थानीय पुलिस सत्यापन होगा। स्वीकृत होने पर पासपोर्ट स्पीड पोस्ट द्वारा भेजा जाता है। फ़ाइल नंबर से स्थिति ट्रैक करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Application Status Tracking Portal",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/statusTracker/trackStatusInpNew",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ]
         },
         {
           "pageId": "screen_03_fee_calculator",
@@ -510,7 +754,129 @@
             "hi": {
               "bubble": "इसके बाद, आवेदन करने से पहले आवश्यक कागजात देखने के लिए दस्तावेज़ सलाहकार देखें।"
             }
-          }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_registration_activation",
+              "order": 1,
+              "title": {
+                "en": "Register & Activate Portal Account",
+                "hi": "पंजीकरण करें और पोर्टल खाता सक्रिय करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Create an account on the official portal using your email ID. Click the activation link sent to your email. Always use the official portal (passportindia.gov.in) and never pay intermediary agents.",
+                  "spoken": "First, you will register for an account on the official Passport Seva portal using your name and email. Once submitted, check your email inbox and click the activation link to activate your account. Always ensure you are on the official government website and never pay any third-party intermediary."
+                },
+                "hi": {
+                  "bubble": "अपने ईमेल आईडी का उपयोग करके आधिकारिक पोर्टल पर खाता बनाएं। अपने ईमेल पर भेजे गए सक्रियण लिंक पर क्लिक करें। केवल आधिकारिक पोर्टल का उपयोग करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Steps to Apply & User Registration Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_fill_application_form",
+              "order": 2,
+              "title": {
+                "en": "Fill Online Application Form",
+                "hi": "ऑनलाइन आवेदन पत्र भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Log in to your account and click 'Apply for Fresh Passport / Re-issue'. Select your Regional Passport Office (RPO) jurisdiction and enter applicant and family details carefully.",
+                  "spoken": "Next, log in to your account and select Apply for Fresh Passport or Reissue. Make sure you select the correct Regional Passport Office jurisdiction corresponding to your current address, and fill in your personal and family details carefully."
+                },
+                "hi": {
+                  "bubble": "अपने खाते में लॉग इन करें और 'Apply for Fresh Passport / Re-issue' चुनें। अपने अधिकार क्षेत्र का चयन करें और विवरण भरें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Online Form Submission Procedure",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_online_fee_payment_appointment",
+              "order": 3,
+              "title": {
+                "en": "Online Fee Payment & Appointment Booking",
+                "hi": "ऑनलाइन शुल्क भुगतान और अपॉइंटमेंट बुकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Online payment is mandatory to book slots at PSK/POPSK. Select an available appointment date and pay via internet banking, cards, or UPI. Payment receipts remain valid for one year.",
+                  "spoken": "After submitting your form, navigate to View Saved Applications and click Pay and Schedule Appointment. Online payment is mandatory to reserve appointment slots at Passport Seva Kendras. You can pay securely using net banking, cards, or UPI. Your payment receipt remains valid for one year."
+                },
+                "hi": {
+                  "bubble": "पीएसके पर स्लॉट बुक करने के लिए ऑनलाइन भुगतान अनिवार्य है। अपॉइंटमेंट की तारीख चुनें और ऑनलाइन भुगतान करें। भुगतान रसीद एक वर्ष के लिए मान्य रहती है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Appointment Scheduling & Fee Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/feeSchedule",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_visit_psk_biometrics",
+              "order": 4,
+              "title": {
+                "en": "Visit Passport Seva Kendra (PSK / POPSK)",
+                "hi": "पासपोर्ट सेवा केंद्र (PSK) का दौरा और बायोमेट्रिक्स"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Arrive at your appointment time with your Application Receipt/SMS, original documents (DOB, Address), and self-attested copies. Biometrics (photo and fingerprints) are captured on-site.",
+                  "spoken": "On your appointment day, arrive at your chosen Passport Seva Kendra on time. Carry your Application Receipt or SMS confirmation, along with all original documents for date of birth and address proof, plus one set of self-attested photocopies. Your photograph and biometric fingerprints are captured right at the center."
+                },
+                "hi": {
+                  "bubble": "अपनी नियुक्ति के समय आवेदन रसीद/एसएमएस, मूल दस्तावेज़ों और स्व-प्रमाणित प्रतियों के साथ पहुंचें। बायोमेट्रिक्स केंद्र पर लिए जाएंगे।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Kendra Appointment Visit Instructions",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_police_verification_tracking",
+              "order": 5,
+              "title": {
+                "en": "Police Verification & Speed Post Tracking",
+                "hi": "पुलिस सत्यापन और स्पीड पोस्ट ट्रैकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Following your PSK visit, local police verification takes place (if applicable). Once approved and printed, your passport is dispatched via India Post Speed Post. Track status using your 15-character File Number.",
+                  "spoken": "Finally, following your center visit, local police verification is initiated if applicable for your category. Once verified and printed, your passport is dispatched securely via India Post Speed Post. You can track real-time progress anytime on the portal using your 15-character file number."
+                },
+                "hi": {
+                  "bubble": "पीएसके दौरे के बाद, स्थानीय पुलिस सत्यापन होगा। स्वीकृत होने पर पासपोर्ट स्पीड पोस्ट द्वारा भेजा जाता है। फ़ाइल नंबर से स्थिति ट्रैक करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Application Status Tracking Portal",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/statusTracker/trackStatusInpNew",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ]
         },
         {
           "pageId": "screen_04_document_advisor",
@@ -619,7 +985,129 @@
             "hi": {
               "bubble": "इसके बाद, अपने निकटतम पासपोर्ट सेवा केंद्र पर अपॉइंटमेंट उपलब्धता देखें।"
             }
-          }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_registration_activation",
+              "order": 1,
+              "title": {
+                "en": "Register & Activate Portal Account",
+                "hi": "पंजीकरण करें और पोर्टल खाता सक्रिय करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Create an account on the official portal using your email ID. Click the activation link sent to your email. Always use the official portal (passportindia.gov.in) and never pay intermediary agents.",
+                  "spoken": "First, you will register for an account on the official Passport Seva portal using your name and email. Once submitted, check your email inbox and click the activation link to activate your account. Always ensure you are on the official government website and never pay any third-party intermediary."
+                },
+                "hi": {
+                  "bubble": "अपने ईमेल आईडी का उपयोग करके आधिकारिक पोर्टल पर खाता बनाएं। अपने ईमेल पर भेजे गए सक्रियण लिंक पर क्लिक करें। केवल आधिकारिक पोर्टल का उपयोग करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Steps to Apply & User Registration Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_fill_application_form",
+              "order": 2,
+              "title": {
+                "en": "Fill Online Application Form",
+                "hi": "ऑनलाइन आवेदन पत्र भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Log in to your account and click 'Apply for Fresh Passport / Re-issue'. Select your Regional Passport Office (RPO) jurisdiction and enter applicant and family details carefully.",
+                  "spoken": "Next, log in to your account and select Apply for Fresh Passport or Reissue. Make sure you select the correct Regional Passport Office jurisdiction corresponding to your current address, and fill in your personal and family details carefully."
+                },
+                "hi": {
+                  "bubble": "अपने खाते में लॉग इन करें और 'Apply for Fresh Passport / Re-issue' चुनें। अपने अधिकार क्षेत्र का चयन करें और विवरण भरें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Online Form Submission Procedure",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_online_fee_payment_appointment",
+              "order": 3,
+              "title": {
+                "en": "Online Fee Payment & Appointment Booking",
+                "hi": "ऑनलाइन शुल्क भुगतान और अपॉइंटमेंट बुकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Online payment is mandatory to book slots at PSK/POPSK. Select an available appointment date and pay via internet banking, cards, or UPI. Payment receipts remain valid for one year.",
+                  "spoken": "After submitting your form, navigate to View Saved Applications and click Pay and Schedule Appointment. Online payment is mandatory to reserve appointment slots at Passport Seva Kendras. You can pay securely using net banking, cards, or UPI. Your payment receipt remains valid for one year."
+                },
+                "hi": {
+                  "bubble": "पीएसके पर स्लॉट बुक करने के लिए ऑनलाइन भुगतान अनिवार्य है। अपॉइंटमेंट की तारीख चुनें और ऑनलाइन भुगतान करें। भुगतान रसीद एक वर्ष के लिए मान्य रहती है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Appointment Scheduling & Fee Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/feeSchedule",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_visit_psk_biometrics",
+              "order": 4,
+              "title": {
+                "en": "Visit Passport Seva Kendra (PSK / POPSK)",
+                "hi": "पासपोर्ट सेवा केंद्र (PSK) का दौरा और बायोमेट्रिक्स"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Arrive at your appointment time with your Application Receipt/SMS, original documents (DOB, Address), and self-attested copies. Biometrics (photo and fingerprints) are captured on-site.",
+                  "spoken": "On your appointment day, arrive at your chosen Passport Seva Kendra on time. Carry your Application Receipt or SMS confirmation, along with all original documents for date of birth and address proof, plus one set of self-attested photocopies. Your photograph and biometric fingerprints are captured right at the center."
+                },
+                "hi": {
+                  "bubble": "अपनी नियुक्ति के समय आवेदन रसीद/एसएमएस, मूल दस्तावेज़ों और स्व-प्रमाणित प्रतियों के साथ पहुंचें। बायोमेट्रिक्स केंद्र पर लिए जाएंगे।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Kendra Appointment Visit Instructions",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_police_verification_tracking",
+              "order": 5,
+              "title": {
+                "en": "Police Verification & Speed Post Tracking",
+                "hi": "पुलिस सत्यापन और स्पीड पोस्ट ट्रैकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Following your PSK visit, local police verification takes place (if applicable). Once approved and printed, your passport is dispatched via India Post Speed Post. Track status using your 15-character File Number.",
+                  "spoken": "Finally, following your center visit, local police verification is initiated if applicable for your category. Once verified and printed, your passport is dispatched securely via India Post Speed Post. You can track real-time progress anytime on the portal using your 15-character file number."
+                },
+                "hi": {
+                  "bubble": "पीएसके दौरे के बाद, स्थानीय पुलिस सत्यापन होगा। स्वीकृत होने पर पासपोर्ट स्पीड पोस्ट द्वारा भेजा जाता है। फ़ाइल नंबर से स्थिति ट्रैक करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Application Status Tracking Portal",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/statusTracker/trackStatusInpNew",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ]
         },
         {
           "pageId": "screen_05_locate_psk",
@@ -720,7 +1208,129 @@
             "hi": {
               "bubble": "इसके बाद, जब आप आवेदन शुरू करने के लिए तैयार हों, तो नया उपयोगकर्ता पंजीकरण स्क्रीन देखें।"
             }
-          }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_registration_activation",
+              "order": 1,
+              "title": {
+                "en": "Register & Activate Portal Account",
+                "hi": "पंजीकरण करें और पोर्टल खाता सक्रिय करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Create an account on the official portal using your email ID. Click the activation link sent to your email. Always use the official portal (passportindia.gov.in) and never pay intermediary agents.",
+                  "spoken": "First, you will register for an account on the official Passport Seva portal using your name and email. Once submitted, check your email inbox and click the activation link to activate your account. Always ensure you are on the official government website and never pay any third-party intermediary."
+                },
+                "hi": {
+                  "bubble": "अपने ईमेल आईडी का उपयोग करके आधिकारिक पोर्टल पर खाता बनाएं। अपने ईमेल पर भेजे गए सक्रियण लिंक पर क्लिक करें। केवल आधिकारिक पोर्टल का उपयोग करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Steps to Apply & User Registration Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_fill_application_form",
+              "order": 2,
+              "title": {
+                "en": "Fill Online Application Form",
+                "hi": "ऑनलाइन आवेदन पत्र भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Log in to your account and click 'Apply for Fresh Passport / Re-issue'. Select your Regional Passport Office (RPO) jurisdiction and enter applicant and family details carefully.",
+                  "spoken": "Next, log in to your account and select Apply for Fresh Passport or Reissue. Make sure you select the correct Regional Passport Office jurisdiction corresponding to your current address, and fill in your personal and family details carefully."
+                },
+                "hi": {
+                  "bubble": "अपने खाते में लॉग इन करें और 'Apply for Fresh Passport / Re-issue' चुनें। अपने अधिकार क्षेत्र का चयन करें और विवरण भरें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Online Form Submission Procedure",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_online_fee_payment_appointment",
+              "order": 3,
+              "title": {
+                "en": "Online Fee Payment & Appointment Booking",
+                "hi": "ऑनलाइन शुल्क भुगतान और अपॉइंटमेंट बुकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Online payment is mandatory to book slots at PSK/POPSK. Select an available appointment date and pay via internet banking, cards, or UPI. Payment receipts remain valid for one year.",
+                  "spoken": "After submitting your form, navigate to View Saved Applications and click Pay and Schedule Appointment. Online payment is mandatory to reserve appointment slots at Passport Seva Kendras. You can pay securely using net banking, cards, or UPI. Your payment receipt remains valid for one year."
+                },
+                "hi": {
+                  "bubble": "पीएसके पर स्लॉट बुक करने के लिए ऑनलाइन भुगतान अनिवार्य है। अपॉइंटमेंट की तारीख चुनें और ऑनलाइन भुगतान करें। भुगतान रसीद एक वर्ष के लिए मान्य रहती है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Appointment Scheduling & Fee Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/feeSchedule",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_visit_psk_biometrics",
+              "order": 4,
+              "title": {
+                "en": "Visit Passport Seva Kendra (PSK / POPSK)",
+                "hi": "पासपोर्ट सेवा केंद्र (PSK) का दौरा और बायोमेट्रिक्स"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Arrive at your appointment time with your Application Receipt/SMS, original documents (DOB, Address), and self-attested copies. Biometrics (photo and fingerprints) are captured on-site.",
+                  "spoken": "On your appointment day, arrive at your chosen Passport Seva Kendra on time. Carry your Application Receipt or SMS confirmation, along with all original documents for date of birth and address proof, plus one set of self-attested photocopies. Your photograph and biometric fingerprints are captured right at the center."
+                },
+                "hi": {
+                  "bubble": "अपनी नियुक्ति के समय आवेदन रसीद/एसएमएस, मूल दस्तावेज़ों और स्व-प्रमाणित प्रतियों के साथ पहुंचें। बायोमेट्रिक्स केंद्र पर लिए जाएंगे।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Kendra Appointment Visit Instructions",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_police_verification_tracking",
+              "order": 5,
+              "title": {
+                "en": "Police Verification & Speed Post Tracking",
+                "hi": "पुलिस सत्यापन और स्पीड पोस्ट ट्रैकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Following your PSK visit, local police verification takes place (if applicable). Once approved and printed, your passport is dispatched via India Post Speed Post. Track status using your 15-character File Number.",
+                  "spoken": "Finally, following your center visit, local police verification is initiated if applicable for your category. Once verified and printed, your passport is dispatched securely via India Post Speed Post. You can track real-time progress anytime on the portal using your 15-character file number."
+                },
+                "hi": {
+                  "bubble": "पीएसके दौरे के बाद, स्थानीय पुलिस सत्यापन होगा। स्वीकृत होने पर पासपोर्ट स्पीड पोस्ट द्वारा भेजा जाता है। फ़ाइल नंबर से स्थिति ट्रैक करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Application Status Tracking Portal",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/statusTracker/trackStatusInpNew",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ]
         },
         {
           "pageId": "screen_06_track_status",
@@ -830,7 +1440,129 @@
             "hi": {
               "bubble": "अनुमोदित होने के बाद, आपका स्पीड पोस्ट ट्रैकिंग नंबर यहाँ दिखाई देगा।"
             }
-          }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_registration_activation",
+              "order": 1,
+              "title": {
+                "en": "Register & Activate Portal Account",
+                "hi": "पंजीकरण करें और पोर्टल खाता सक्रिय करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Create an account on the official portal using your email ID. Click the activation link sent to your email. Always use the official portal (passportindia.gov.in) and never pay intermediary agents.",
+                  "spoken": "First, you will register for an account on the official Passport Seva portal using your name and email. Once submitted, check your email inbox and click the activation link to activate your account. Always ensure you are on the official government website and never pay any third-party intermediary."
+                },
+                "hi": {
+                  "bubble": "अपने ईमेल आईडी का उपयोग करके आधिकारिक पोर्टल पर खाता बनाएं। अपने ईमेल पर भेजे गए सक्रियण लिंक पर क्लिक करें। केवल आधिकारिक पोर्टल का उपयोग करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Steps to Apply & User Registration Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_fill_application_form",
+              "order": 2,
+              "title": {
+                "en": "Fill Online Application Form",
+                "hi": "ऑनलाइन आवेदन पत्र भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Log in to your account and click 'Apply for Fresh Passport / Re-issue'. Select your Regional Passport Office (RPO) jurisdiction and enter applicant and family details carefully.",
+                  "spoken": "Next, log in to your account and select Apply for Fresh Passport or Reissue. Make sure you select the correct Regional Passport Office jurisdiction corresponding to your current address, and fill in your personal and family details carefully."
+                },
+                "hi": {
+                  "bubble": "अपने खाते में लॉग इन करें और 'Apply for Fresh Passport / Re-issue' चुनें। अपने अधिकार क्षेत्र का चयन करें और विवरण भरें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Online Form Submission Procedure",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_online_fee_payment_appointment",
+              "order": 3,
+              "title": {
+                "en": "Online Fee Payment & Appointment Booking",
+                "hi": "ऑनलाइन शुल्क भुगतान और अपॉइंटमेंट बुकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Online payment is mandatory to book slots at PSK/POPSK. Select an available appointment date and pay via internet banking, cards, or UPI. Payment receipts remain valid for one year.",
+                  "spoken": "After submitting your form, navigate to View Saved Applications and click Pay and Schedule Appointment. Online payment is mandatory to reserve appointment slots at Passport Seva Kendras. You can pay securely using net banking, cards, or UPI. Your payment receipt remains valid for one year."
+                },
+                "hi": {
+                  "bubble": "पीएसके पर स्लॉट बुक करने के लिए ऑनलाइन भुगतान अनिवार्य है। अपॉइंटमेंट की तारीख चुनें और ऑनलाइन भुगतान करें। भुगतान रसीद एक वर्ष के लिए मान्य रहती है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Appointment Scheduling & Fee Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/feeSchedule",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_visit_psk_biometrics",
+              "order": 4,
+              "title": {
+                "en": "Visit Passport Seva Kendra (PSK / POPSK)",
+                "hi": "पासपोर्ट सेवा केंद्र (PSK) का दौरा और बायोमेट्रिक्स"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Arrive at your appointment time with your Application Receipt/SMS, original documents (DOB, Address), and self-attested copies. Biometrics (photo and fingerprints) are captured on-site.",
+                  "spoken": "On your appointment day, arrive at your chosen Passport Seva Kendra on time. Carry your Application Receipt or SMS confirmation, along with all original documents for date of birth and address proof, plus one set of self-attested photocopies. Your photograph and biometric fingerprints are captured right at the center."
+                },
+                "hi": {
+                  "bubble": "अपनी नियुक्ति के समय आवेदन रसीद/एसएमएस, मूल दस्तावेज़ों और स्व-प्रमाणित प्रतियों के साथ पहुंचें। बायोमेट्रिक्स केंद्र पर लिए जाएंगे।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Kendra Appointment Visit Instructions",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_police_verification_tracking",
+              "order": 5,
+              "title": {
+                "en": "Police Verification & Speed Post Tracking",
+                "hi": "पुलिस सत्यापन और स्पीड पोस्ट ट्रैकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Following your PSK visit, local police verification takes place (if applicable). Once approved and printed, your passport is dispatched via India Post Speed Post. Track status using your 15-character File Number.",
+                  "spoken": "Finally, following your center visit, local police verification is initiated if applicable for your category. Once verified and printed, your passport is dispatched securely via India Post Speed Post. You can track real-time progress anytime on the portal using your 15-character file number."
+                },
+                "hi": {
+                  "bubble": "पीएसके दौरे के बाद, स्थानीय पुलिस सत्यापन होगा। स्वीकृत होने पर पासपोर्ट स्पीड पोस्ट द्वारा भेजा जाता है। फ़ाइल नंबर से स्थिति ट्रैक करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Application Status Tracking Portal",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/statusTracker/trackStatusInpNew",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ]
         },
         {
           "pageId": "screen_07_user_registration",
@@ -892,6 +1624,13 @@
                   "speech": "ଏହା ସରକାରୀ ପଞ୍ଜୀକରଣ ସ୍କ୍ରିନ୍ | ଆପଣଙ୍କ ବିବରଣୀ ସିଧାସଳଖ ପ୍ରବେଶ କରନ୍ତୁ | GovGuide ସମ୍ପୂର୍ଣ୍ଣ ବ୍ୟକ୍ତିଗତ |",
                   "bubble": "ଆକାଉଣ୍ଟ ପଞ୍ଜୀକରଣ: ଆପଣଙ୍କ ନାମ ଏବଂ ପାସୱାର୍ଡ ସିଧାସଳଖ ଦର୍ଜ କରନ୍ତୁ | GovGuide କୌଣସି ତଥ୍ୟ ପଢ଼େ ନାହିଁ |"
                 }
+              },
+              "explainOnly": true,
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva User Registration Official Portal",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
               }
             }
           ],
@@ -931,6 +1670,134 @@
             "hi": {
               "bubble": "पंजीकरण जमा करने के बाद, अपना खाता सक्रिय करने के लिए अपने ईमेल की जांच करें।"
             }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_registration_activation",
+              "order": 1,
+              "title": {
+                "en": "Register & Activate Portal Account",
+                "hi": "पंजीकरण करें और पोर्टल खाता सक्रिय करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Create an account on the official portal using your email ID. Click the activation link sent to your email. Always use the official portal (passportindia.gov.in) and never pay intermediary agents.",
+                  "spoken": "First, you will register for an account on the official Passport Seva portal using your name and email. Once submitted, check your email inbox and click the activation link to activate your account. Always ensure you are on the official government website and never pay any third-party intermediary."
+                },
+                "hi": {
+                  "bubble": "अपने ईमेल आईडी का उपयोग करके आधिकारिक पोर्टल पर खाता बनाएं। अपने ईमेल पर भेजे गए सक्रियण लिंक पर क्लिक करें। केवल आधिकारिक पोर्टल का उपयोग करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Steps to Apply & User Registration Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_fill_application_form",
+              "order": 2,
+              "title": {
+                "en": "Fill Online Application Form",
+                "hi": "ऑनलाइन आवेदन पत्र भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Log in to your account and click 'Apply for Fresh Passport / Re-issue'. Select your Regional Passport Office (RPO) jurisdiction and enter applicant and family details carefully.",
+                  "spoken": "Next, log in to your account and select Apply for Fresh Passport or Reissue. Make sure you select the correct Regional Passport Office jurisdiction corresponding to your current address, and fill in your personal and family details carefully."
+                },
+                "hi": {
+                  "bubble": "अपने खाते में लॉग इन करें और 'Apply for Fresh Passport / Re-issue' चुनें। अपने अधिकार क्षेत्र का चयन करें और विवरण भरें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Online Form Submission Procedure",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_online_fee_payment_appointment",
+              "order": 3,
+              "title": {
+                "en": "Online Fee Payment & Appointment Booking",
+                "hi": "ऑनलाइन शुल्क भुगतान और अपॉइंटमेंट बुकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Online payment is mandatory to book slots at PSK/POPSK. Select an available appointment date and pay via internet banking, cards, or UPI. Payment receipts remain valid for one year.",
+                  "spoken": "After submitting your form, navigate to View Saved Applications and click Pay and Schedule Appointment. Online payment is mandatory to reserve appointment slots at Passport Seva Kendras. You can pay securely using net banking, cards, or UPI. Your payment receipt remains valid for one year."
+                },
+                "hi": {
+                  "bubble": "पीएसके पर स्लॉट बुक करने के लिए ऑनलाइन भुगतान अनिवार्य है। अपॉइंटमेंट की तारीख चुनें और ऑनलाइन भुगतान करें। भुगतान रसीद एक वर्ष के लिए मान्य रहती है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Appointment Scheduling & Fee Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/feeSchedule",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_visit_psk_biometrics",
+              "order": 4,
+              "title": {
+                "en": "Visit Passport Seva Kendra (PSK / POPSK)",
+                "hi": "पासपोर्ट सेवा केंद्र (PSK) का दौरा और बायोमेट्रिक्स"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Arrive at your appointment time with your Application Receipt/SMS, original documents (DOB, Address), and self-attested copies. Biometrics (photo and fingerprints) are captured on-site.",
+                  "spoken": "On your appointment day, arrive at your chosen Passport Seva Kendra on time. Carry your Application Receipt or SMS confirmation, along with all original documents for date of birth and address proof, plus one set of self-attested photocopies. Your photograph and biometric fingerprints are captured right at the center."
+                },
+                "hi": {
+                  "bubble": "अपनी नियुक्ति के समय आवेदन रसीद/एसएमएस, मूल दस्तावेज़ों और स्व-प्रमाणित प्रतियों के साथ पहुंचें। बायोमेट्रिक्स केंद्र पर लिए जाएंगे।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Kendra Appointment Visit Instructions",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_police_verification_tracking",
+              "order": 5,
+              "title": {
+                "en": "Police Verification & Speed Post Tracking",
+                "hi": "पुलिस सत्यापन और स्पीड पोस्ट ट्रैकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Following your PSK visit, local police verification takes place (if applicable). Once approved and printed, your passport is dispatched via India Post Speed Post. Track status using your 15-character File Number.",
+                  "spoken": "Finally, following your center visit, local police verification is initiated if applicable for your category. Once verified and printed, your passport is dispatched securely via India Post Speed Post. You can track real-time progress anytime on the portal using your 15-character file number."
+                },
+                "hi": {
+                  "bubble": "पीएसके दौरे के बाद, स्थानीय पुलिस सत्यापन होगा। स्वीकृत होने पर पासपोर्ट स्पीड पोस्ट द्वारा भेजा जाता है। फ़ाइल नंबर से स्थिति ट्रैक करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Application Status Tracking Portal",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/statusTracker/trackStatusInpNew",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ],
+          "trust": "official_document",
+          "source": {
+            "title": "Passport Seva User Registration Official Portal",
+            "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+            "retrievedOn": "2026-11-22"
           }
         },
         {
@@ -993,6 +1860,13 @@
                   "speech": "ଆପଣଙ୍କର ପାସପୋର୍ଟ ସେବା ଡ୍ୟାସବୋର୍ଡରେ ପ୍ରବେଶ କରିବାକୁ ପଞ୍ଜୀକୃତ ଲଗଇନ୍ ID ପ୍ରବେଶ କରନ୍ତୁ |",
                   "bubble": "ବ୍ୟବହାରକାରୀ ଲଗଇନ୍: ଆପଣଙ୍କର ଲଗଇନ୍ ID ଦର୍ଜ କରନ୍ତୁ ଏବଂ Continue କ୍ଲିକ୍ କରନ୍ତୁ |"
                 }
+              },
+              "explainOnly": true,
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Registered Applicant Login Portal",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
               }
             }
           ],
@@ -1028,6 +1902,134 @@
             "hi": {
               "bubble": "लॉग इन करने के बाद, आप आवेदक होम पर पहुंचेंगे जहाँ आप \"Apply for Fresh Passport\" पर क्लिक कर सकते हैं।"
             }
+          },
+          "whatsNext": [
+            {
+              "id": "stage_01_registration_activation",
+              "order": 1,
+              "title": {
+                "en": "Register & Activate Portal Account",
+                "hi": "पंजीकरण करें और पोर्टल खाता सक्रिय करें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Create an account on the official portal using your email ID. Click the activation link sent to your email. Always use the official portal (passportindia.gov.in) and never pay intermediary agents.",
+                  "spoken": "First, you will register for an account on the official Passport Seva portal using your name and email. Once submitted, check your email inbox and click the activation link to activate your account. Always ensure you are on the official government website and never pay any third-party intermediary."
+                },
+                "hi": {
+                  "bubble": "अपने ईमेल आईडी का उपयोग करके आधिकारिक पोर्टल पर खाता बनाएं। अपने ईमेल पर भेजे गए सक्रियण लिंक पर क्लिक करें। केवल आधिकारिक पोर्टल का उपयोग करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Steps to Apply & User Registration Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_02_fill_application_form",
+              "order": 2,
+              "title": {
+                "en": "Fill Online Application Form",
+                "hi": "ऑनलाइन आवेदन पत्र भरें"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Log in to your account and click 'Apply for Fresh Passport / Re-issue'. Select your Regional Passport Office (RPO) jurisdiction and enter applicant and family details carefully.",
+                  "spoken": "Next, log in to your account and select Apply for Fresh Passport or Reissue. Make sure you select the correct Regional Passport Office jurisdiction corresponding to your current address, and fill in your personal and family details carefully."
+                },
+                "hi": {
+                  "bubble": "अपने खाते में लॉग इन करें और 'Apply for Fresh Passport / Re-issue' चुनें। अपने अधिकार क्षेत्र का चयन करें और विवरण भरें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Online Form Submission Procedure",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_03_online_fee_payment_appointment",
+              "order": 3,
+              "title": {
+                "en": "Online Fee Payment & Appointment Booking",
+                "hi": "ऑनलाइन शुल्क भुगतान और अपॉइंटमेंट बुकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Online payment is mandatory to book slots at PSK/POPSK. Select an available appointment date and pay via internet banking, cards, or UPI. Payment receipts remain valid for one year.",
+                  "spoken": "After submitting your form, navigate to View Saved Applications and click Pay and Schedule Appointment. Online payment is mandatory to reserve appointment slots at Passport Seva Kendras. You can pay securely using net banking, cards, or UPI. Your payment receipt remains valid for one year."
+                },
+                "hi": {
+                  "bubble": "पीएसके पर स्लॉट बुक करने के लिए ऑनलाइन भुगतान अनिवार्य है। अपॉइंटमेंट की तारीख चुनें और ऑनलाइन भुगतान करें। भुगतान रसीद एक वर्ष के लिए मान्य रहती है।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Appointment Scheduling & Fee Guidelines",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/feeSchedule",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_04_visit_psk_biometrics",
+              "order": 4,
+              "title": {
+                "en": "Visit Passport Seva Kendra (PSK / POPSK)",
+                "hi": "पासपोर्ट सेवा केंद्र (PSK) का दौरा और बायोमेट्रिक्स"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Arrive at your appointment time with your Application Receipt/SMS, original documents (DOB, Address), and self-attested copies. Biometrics (photo and fingerprints) are captured on-site.",
+                  "spoken": "On your appointment day, arrive at your chosen Passport Seva Kendra on time. Carry your Application Receipt or SMS confirmation, along with all original documents for date of birth and address proof, plus one set of self-attested photocopies. Your photograph and biometric fingerprints are captured right at the center."
+                },
+                "hi": {
+                  "bubble": "अपनी नियुक्ति के समय आवेदन रसीद/एसएमएस, मूल दस्तावेज़ों और स्व-प्रमाणित प्रतियों के साथ पहुंचें। बायोमेट्रिक्स केंद्र पर लिए जाएंगे।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Kendra Appointment Visit Instructions",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            },
+            {
+              "id": "stage_05_police_verification_tracking",
+              "order": 5,
+              "title": {
+                "en": "Police Verification & Speed Post Tracking",
+                "hi": "पुलिस सत्यापन और स्पीड पोस्ट ट्रैकिंग"
+              },
+              "explanation": {
+                "en": {
+                  "bubble": "Following your PSK visit, local police verification takes place (if applicable). Once approved and printed, your passport is dispatched via India Post Speed Post. Track status using your 15-character File Number.",
+                  "spoken": "Finally, following your center visit, local police verification is initiated if applicable for your category. Once verified and printed, your passport is dispatched securely via India Post Speed Post. You can track real-time progress anytime on the portal using your 15-character file number."
+                },
+                "hi": {
+                  "bubble": "पीएसके दौरे के बाद, स्थानीय पुलिस सत्यापन होगा। स्वीकृत होने पर पासपोर्ट स्पीड पोस्ट द्वारा भेजा जाता है। फ़ाइल नंबर से स्थिति ट्रैक करें।"
+                }
+              },
+              "trust": "official_document",
+              "source": {
+                "title": "Passport Seva Application Status Tracking Portal",
+                "url": "https://www.passportindia.gov.in/AppOnlineProject/statusTracker/trackStatusInpNew",
+                "retrievedOn": "2026-11-22"
+              },
+              "explainOnly": true
+            }
+          ],
+          "trust": "official_document",
+          "source": {
+            "title": "Passport Seva Registered Applicant Login Portal",
+            "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+            "retrievedOn": "2026-11-22"
           }
         }
       ],
@@ -1047,6 +2049,128 @@
         {
           "en": "Old Passport (original + self-attested copies) for re-issue",
           "hi": "पुनर्जागरण के लिए पुराना पासपोर्ट (मूल + स्व-सत्यापित प्रतियां)"
+        }
+      ],
+      "whatsNext": [
+        {
+          "id": "stage_01_registration_activation",
+          "order": 1,
+          "title": {
+            "en": "Register & Activate Portal Account",
+            "hi": "पंजीकरण करें और पोर्टल खाता सक्रिय करें"
+          },
+          "explanation": {
+            "en": {
+              "bubble": "Create an account on the official portal using your email ID. Click the activation link sent to your email. Always use the official portal (passportindia.gov.in) and never pay intermediary agents.",
+              "spoken": "First, you will register for an account on the official Passport Seva portal using your name and email. Once submitted, check your email inbox and click the activation link to activate your account. Always ensure you are on the official government website and never pay any third-party intermediary."
+            },
+            "hi": {
+              "bubble": "अपने ईमेल आईडी का उपयोग करके आधिकारिक पोर्टल पर खाता बनाएं। अपने ईमेल पर भेजे गए सक्रियण लिंक पर क्लिक करें। केवल आधिकारिक पोर्टल का उपयोग करें।"
+            }
+          },
+          "trust": "official_document",
+          "source": {
+            "title": "Passport Seva Steps to Apply & User Registration Guidelines",
+            "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+            "retrievedOn": "2026-11-22"
+          },
+          "explainOnly": true
+        },
+        {
+          "id": "stage_02_fill_application_form",
+          "order": 2,
+          "title": {
+            "en": "Fill Online Application Form",
+            "hi": "ऑनलाइन आवेदन पत्र भरें"
+          },
+          "explanation": {
+            "en": {
+              "bubble": "Log in to your account and click 'Apply for Fresh Passport / Re-issue'. Select your Regional Passport Office (RPO) jurisdiction and enter applicant and family details carefully.",
+              "spoken": "Next, log in to your account and select Apply for Fresh Passport or Reissue. Make sure you select the correct Regional Passport Office jurisdiction corresponding to your current address, and fill in your personal and family details carefully."
+            },
+            "hi": {
+              "bubble": "अपने खाते में लॉग इन करें और 'Apply for Fresh Passport / Re-issue' चुनें। अपने अधिकार क्षेत्र का चयन करें और विवरण भरें।"
+            }
+          },
+          "trust": "official_document",
+          "source": {
+            "title": "Passport Seva Online Form Submission Procedure",
+            "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+            "retrievedOn": "2026-11-22"
+          },
+          "explainOnly": true
+        },
+        {
+          "id": "stage_03_online_fee_payment_appointment",
+          "order": 3,
+          "title": {
+            "en": "Online Fee Payment & Appointment Booking",
+            "hi": "ऑनलाइन शुल्क भुगतान और अपॉइंटमेंट बुकिंग"
+          },
+          "explanation": {
+            "en": {
+              "bubble": "Online payment is mandatory to book slots at PSK/POPSK. Select an available appointment date and pay via internet banking, cards, or UPI. Payment receipts remain valid for one year.",
+              "spoken": "After submitting your form, navigate to View Saved Applications and click Pay and Schedule Appointment. Online payment is mandatory to reserve appointment slots at Passport Seva Kendras. You can pay securely using net banking, cards, or UPI. Your payment receipt remains valid for one year."
+            },
+            "hi": {
+              "bubble": "पीएसके पर स्लॉट बुक करने के लिए ऑनलाइन भुगतान अनिवार्य है। अपॉइंटमेंट की तारीख चुनें और ऑनलाइन भुगतान करें। भुगतान रसीद एक वर्ष के लिए मान्य रहती है।"
+            }
+          },
+          "trust": "official_document",
+          "source": {
+            "title": "Passport Seva Appointment Scheduling & Fee Guidelines",
+            "url": "https://www.passportindia.gov.in/AppOnlineProject/online/feeSchedule",
+            "retrievedOn": "2026-11-22"
+          },
+          "explainOnly": true
+        },
+        {
+          "id": "stage_04_visit_psk_biometrics",
+          "order": 4,
+          "title": {
+            "en": "Visit Passport Seva Kendra (PSK / POPSK)",
+            "hi": "पासपोर्ट सेवा केंद्र (PSK) का दौरा और बायोमेट्रिक्स"
+          },
+          "explanation": {
+            "en": {
+              "bubble": "Arrive at your appointment time with your Application Receipt/SMS, original documents (DOB, Address), and self-attested copies. Biometrics (photo and fingerprints) are captured on-site.",
+              "spoken": "On your appointment day, arrive at your chosen Passport Seva Kendra on time. Carry your Application Receipt or SMS confirmation, along with all original documents for date of birth and address proof, plus one set of self-attested photocopies. Your photograph and biometric fingerprints are captured right at the center."
+            },
+            "hi": {
+              "bubble": "अपनी नियुक्ति के समय आवेदन रसीद/एसएमएस, मूल दस्तावेज़ों और स्व-प्रमाणित प्रतियों के साथ पहुंचें। बायोमेट्रिक्स केंद्र पर लिए जाएंगे।"
+            }
+          },
+          "trust": "official_document",
+          "source": {
+            "title": "Passport Seva Kendra Appointment Visit Instructions",
+            "url": "https://www.passportindia.gov.in/AppOnlineProject/online/procFormSubOnl",
+            "retrievedOn": "2026-11-22"
+          },
+          "explainOnly": true
+        },
+        {
+          "id": "stage_05_police_verification_tracking",
+          "order": 5,
+          "title": {
+            "en": "Police Verification & Speed Post Tracking",
+            "hi": "पुलिस सत्यापन और स्पीड पोस्ट ट्रैकिंग"
+          },
+          "explanation": {
+            "en": {
+              "bubble": "Following your PSK visit, local police verification takes place (if applicable). Once approved and printed, your passport is dispatched via India Post Speed Post. Track status using your 15-character File Number.",
+              "spoken": "Finally, following your center visit, local police verification is initiated if applicable for your category. Once verified and printed, your passport is dispatched securely via India Post Speed Post. You can track real-time progress anytime on the portal using your 15-character file number."
+            },
+            "hi": {
+              "bubble": "पीएसके दौरे के बाद, स्थानीय पुलिस सत्यापन होगा। स्वीकृत होने पर पासपोर्ट स्पीड पोस्ट द्वारा भेजा जाता है। फ़ाइल नंबर से स्थिति ट्रैक करें।"
+            }
+          },
+          "trust": "official_document",
+          "source": {
+            "title": "Passport Seva Application Status Tracking Portal",
+            "url": "https://www.passportindia.gov.in/AppOnlineProject/statusTracker/trackStatusInpNew",
+            "retrievedOn": "2026-11-22"
+          },
+          "explainOnly": true
         }
       ]
     }

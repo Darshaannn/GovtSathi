@@ -1,53 +1,40 @@
-# Mission: Interactive Mascot & Rich Guidance TODO List
+# Mission: "What's Next" Layer with Official Sources & Trust Levels
 
-- [x] 1. EXPRESSION STATES (`idle`, `pointing`, `thinking`, `happy`, `confused`):
-  - [x] Enhance `assets/mascot-default.svg` with modular elements (pupils, eyebrows, mouth, wings) capable of distinct expression states.
-  - [x] Add `setExpression(state)` method to `engine/mascot-ui.js` supporting `idle`, `pointing`, `thinking`, `happy`, `confused`.
-  - [x] Add CSS expression animations & styling inside `engine/shadow-dom.js`.
-  - [x] Document in `README.md` the exact poses and expression requirements for custom mascot SVGs.
+- [x] 1. DEV-TIME RESEARCH (Official government sources only: gov.in / nic.in / portal manuals):
+  - [x] Research Sarathi (Delhi) post-Applicant Category stages (Aadhaar eKYC vs non-Aadhaar, personal details, document & photo/sig upload, fee payment, test slot booking, LL test day). Record source URLs & retrievedOn dates.
+  - [x] Research Passport Seva post-Document Advisor stages (registration, form filling, fee payment, appointment booking, PSK visit items, post-visit tracking). Record source URLs & retrievedOn dates.
+  - [x] Save research notes in `research/` (ignored by git).
+  - [x] Identify any unsourced items and create `docs/unsourced-items.md`.
 
-- [x] 2. QUICK-REPLY CHIPS IN SPEECH BUBBLE:
-  - [x] Add chip container in `engine/speech-bubble.js` below text body.
-  - [x] Implement 5 chips:
-    - `"What is this page?"` (reads page `about`)
-    - `"What documents do I need?"` (reads page `documents` & toggles checklist)
-    - `"I'm stuck"` (reads page `stuck`)
-    - `"What's next?"` (reads page `next`)
-    - `"Say it again"` (replays speech/audio)
-  - [x] Support localized button text in `engine/languages.js` with fallback to English.
-  - [x] Add per-page content fields (`about`, `documents`, `stuck`, `next`) in `guides/parivahan/sarathi-ll.json` and `guides/passportseva/passportseva-main.json` (EN with `spoken` + HI, other 9 fallback to EN).
+- [x] 2. GUIDE SCHEMA ADDITIONS:
+  - [x] Add `whatsNext` array to relevant pages/flows in `guides/parivahan/sarathi-ll.json`.
+    - Each item: `id`, `order`, `title`, `explanation` (multilingual + English `spoken`), `trust` (`verified_page` | `official_document` | `unverified`), `source` (`{title, url, retrievedOn}` for `official_document`), `explainOnly: true`.
+    - Safety reminders included: documents ready, never share OTP, payment strictly on official portal.
+    - Convert existing unverified screens 6 & 7 into `whatsNext` items with official sources or `unverified`.
+  - [x] Add `whatsNext` array to `guides/passportseva/passportseva-main.json` with official sources.
+  - [x] Review language status: English (`reviewed: true`), Hindi (marked with note), other 9 languages fallback to English (`reviewed: false`).
 
-- [x] 3. EXPLAIN-THIS-FIELD MODE:
-  - [x] Add toggle button in speech bubble header (`govguide-explain-field-btn`) with active indicator.
-  - [x] In `engine/step-runner.js`, implement non-intrusive click listener on form elements (`input`, `select`, `textarea`, `label`).
-  - [x] Extract label text / aria-label / guide field explanations.
-  - [x] Privacy guarantee: NEVER read `element.value`, NEVER store/transmit input data.
-  - [x] Sensitive field safety: If input is password/OTP/Aadhaar/CAPTCHA/login, show generic privacy safe message: *"This is a secure input field. GovGuide never reads or inspects your personal values."*
+- [x] 3. ENGINE & UI UPGRADE:
+  - [x] Update `engine/languages.js`: Add UI strings for trust badges ("Seen on page", "From official document", "Not verified"), 180-day stale warning ("This may have changed. Check the portal."), unverified warning ("Not verified. The portal may be different."), "Open official source", spoken intro for trust level.
+  - [x] Update `engine/speech-bubble.js`:
+    - Add "What's next" preview card / list inside speech bubble when chip is clicked.
+    - Render trust badges (`verified_page`, `official_document`, `unverified`).
+    - For `official_document`, render source title, retrieved date, and safe link (`target="_blank" rel="noopener noreferrer"`).
+    - If `retrievedOn` > 180 days old, show stale warning message.
+    - If `unverified`, show unverified warning message.
+    - Touch targets min 44px, keyboard accessible, responsive down to 360px, Light/Dark theme.
+  - [x] Update `engine/mascot-ui.js` / `engine/step-runner.js`:
+    - Mascot expression: `thinking` while preview loads/speaks; switch to `confused` only if an item is `unverified`.
+    - Spoken phrasing: Speak trust level plain-words intro only ONCE per preview list.
+    - Strict rule: `whatsNext` items NEVER create a spotlight, pointer, or done-trigger.
 
-- [x] 4. DOCUMENT CHECKLIST:
-  - [x] Add expandable checklist drawer in `engine/speech-bubble.js` populated from current page/flow `documents`.
-  - [x] Persist checkbox tick states per flow in `chrome.storage.local` under `govguide_checklist_<flowId>`.
-  - [x] Add reset / clear checklist option or preserve tick states across navigation.
+- [x] 4. DOCUMENTATION:
+  - [x] Update `docs/writing-a-guide.md` with the full `whatsNext` schema specification and trust level rules.
 
-- [x] 5. MASCOT INTERACTION (Drag persistence, celebration, inactivity nudge):
-  - [x] Persist draggable position to `chrome.storage.local` (`govguide_mascot_pos`).
-  - [x] Celebrate on step done (switch to `happy` expression for ~1.8s).
-  - [x] 20-second inactivity nudge: Trigger helpful suggestion once per step; reset on user activity.
-  - [x] Add toggle in `popup/popup.html` & `popup/popup.js` for inactivity nudges (`govguide_nudge_enabled`).
+- [x] 5. TESTING & VERIFICATION:
+  - [x] Phase 1 (offline test suite): Schema validation, valid allowed domains (`gov.in`, `nic.in`), 180-day stale date logic, no empty strings, English fallback, zero spotlight/trigger creation, privacy grep (0 `.value` reads, 0 runtime network calls), regression check on Sarathi & Passport Seva.
+  - [x] Phase 2 (live read-only test): Mount extension on live Sarathi and Passport Seva, test "What's next" chip preview, trust badge rendering, external link opening, zero console errors.
 
-- [x] 6. ACCESSIBILITY & RESPONSIVENESS:
-  - [x] Respect `prefers-reduced-motion` for all new animations.
-  - [x] Keyboard navigation, visible focus rings, ARIA roles/labels for chips, checklist, and toggles.
-  - [x] Min 44px hit targets and responsive down to 360px viewport.
-
-- [x] 7. CONTENT ENRICHMENT:
-  - [x] Enrich all pages in `guides/parivahan/sarathi-ll.json`.
-  - [x] Enrich all pages in `guides/passportseva/passportseva-main.json`.
-
-- [x] 8. TESTING & VERIFICATION:
-  - [x] Phase 1: Offline automated test suite (`TEST-PHASE-1-INTERACTIVE.md`) testing expressions, chips, explainer, checklist, drag persistence, nudge, privacy grep, zero regression.
-  - [x] Phase 2: Live read-only verification on Parivahan Sarathi & Passport Seva (`TEST-PHASE-2-INTERACTIVE.md`).
-
-- [x] 9. DOCUMENTATION & REPO COMMIT:
-  - [x] Update `README.md` with new features and custom mascot guide.
-  - [x] Commit all changes and push to GitHub.
+- [x] 6. GIT COMMIT & FINAL REPORT:
+  - [x] Commit all code, docs, and test files and push to GitHub.
+  - [x] Write final report with items per trust level, unsourced items, and tested vs assumed.

@@ -8,6 +8,7 @@
  * - Quick-Reply chips: "What is this page?", "What documents do I need?", "I'm stuck", "What's next?", "Say it again"
  * - Explain-This-Field toggle button
  * - Collapsible Document Checklist with persistent tick states
+ * - "What's Next" preview drawer with trust badges, source links, and stale warnings
  * - Unreviewed language disclaimer notice
  * - Fully accessible: aria-live, tooltips, visible focus, min hit targets
  */
@@ -39,6 +40,10 @@
       this.checklistDrawer = null;
       this.checklistItemsContainer = null;
       this.checklistHeaderTitle = null;
+
+      this.whatsNextDrawer = null;
+      this.whatsNextItemsContainer = null;
+      this.whatsNextHeaderTitle = null;
 
       this.currentTextSize = 'medium'; // 'small' | 'medium' | 'large'
       this.currentLang = 'en';
@@ -145,6 +150,15 @@
           <div class="govguide-checklist-items"></div>
         </div>
 
+        <!-- "What's Next" Preview Drawer (Collapsible) -->
+        <div class="govguide-whats-next-drawer" style="display: none;" role="region" aria-label="What's Next Stages">
+          <div class="govguide-whats-next-header">
+            <span class="govguide-whats-next-title-text">⏩ What's Next</span>
+            <button class="govguide-whats-next-close-btn" style="background:none;border:none;cursor:pointer;font-size:14px;color:var(--gg-text-muted);" title="Close what's next preview">✕</button>
+          </div>
+          <div class="govguide-whats-next-items"></div>
+        </div>
+
         <!-- Quick Reply Chips Bar -->
         <div class="govguide-chips-bar" role="toolbar" aria-label="Quick questions">
           <button class="govguide-chip" data-chip="what-is-page" aria-label="What is this page?">
@@ -200,6 +214,10 @@
       this.checklistItemsContainer = bubble.querySelector('.govguide-checklist-items');
       this.checklistHeaderTitle = bubble.querySelector('.govguide-checklist-title-text');
 
+      this.whatsNextDrawer = bubble.querySelector('.govguide-whats-next-drawer');
+      this.whatsNextItemsContainer = bubble.querySelector('.govguide-whats-next-items');
+      this.whatsNextHeaderTitle = bubble.querySelector('.govguide-whats-next-title-text');
+
       // Bind events
       this.muteBtn.addEventListener('click', () => this.onMuteToggle());
       this.repeatBtn.addEventListener('click', () => this.onRepeat());
@@ -215,6 +233,10 @@
 
       this.checklistDrawer.querySelector('.govguide-checklist-close-btn').addEventListener('click', () => {
         this.checklistDrawer.style.display = 'none';
+      });
+
+      this.whatsNextDrawer.querySelector('.govguide-whats-next-close-btn').addEventListener('click', () => {
+        this.whatsNextDrawer.style.display = 'none';
       });
 
       this.chipsBar.querySelectorAll('.govguide-chip').forEach(chip => {
@@ -267,6 +289,7 @@
      * Renders Document Checklist
      */
     showChecklist(docList = [], savedTicks = {}, onTickChange = null) {
+      this.hideWhatsNext();
       if (!docList || docList.length === 0) {
         this.checklistDrawer.style.display = 'none';
         return;
@@ -312,6 +335,99 @@
 
     hideChecklist() {
       this.checklistDrawer.style.display = 'none';
+    }
+
+    /**
+     * Renders "What's Next" Preview Drawer
+     */
+    showWhatsNext(items = []) {
+      this.hideChecklist();
+      if (!items || items.length === 0) {
+        this.whatsNextDrawer.style.display = 'none';
+        return;
+      }
+
+      const langCode = this.currentLang;
+      const titleStr = (window.GovGuideLanguages && window.GovGuideLanguages.LanguageRegistry)
+        ? window.GovGuideLanguages.LanguageRegistry.getString('whatsNextTitle', langCode)
+        : "What's Next (Upcoming Stages)";
+      this.whatsNextHeaderTitle.textContent = `⏩ ${titleStr}`;
+
+      const getStr = (k, fb) => (window.GovGuideLanguages && window.GovGuideLanguages.LanguageRegistry)
+        ? window.GovGuideLanguages.LanguageRegistry.getString(k, langCode)
+        : fb;
+
+      const badgeLabelMap = {
+        'verified_page': getStr('trustVerifiedPage', 'Seen on page'),
+        'official_document': getStr('trustOfficialDocument', 'From official document'),
+        'unverified': getStr('trustUnverified', 'Not verified')
+      };
+
+      const now = new Date();
+      const ONE_EIGHTY_DAYS_MS = 180 * 24 * 60 * 60 * 1000;
+
+      this.whatsNextItemsContainer.innerHTML = '';
+      items.forEach((item, idx) => {
+        const itemEl = document.createElement('div');
+        itemEl.className = 'govguide-whats-next-item';
+
+        const trust = item.trust || 'unverified';
+        const trustBadgeText = badgeLabelMap[trust] || trust;
+
+        const titleText = typeof item.title === 'object'
+          ? (item.title[langCode] || item.title.en || '')
+          : String(item.title || `Stage ${idx + 1}`);
+
+        const explObj = item.explanation || item.messages || {};
+        let descText = '';
+        if (typeof explObj === 'object') {
+          const lData = explObj[langCode] || explObj.en || {};
+          descText = typeof lData === 'string' ? lData : (lData.bubble || lData.spoken || lData.speech || '');
+        } else {
+          descText = String(explObj);
+        }
+
+        let metaHtml = '';
+        let warningHtml = '';
+
+        if (trust === 'official_document' && item.source) {
+          const src = item.source;
+          const retrieved = src.retrievedOn ? new Date(src.retrievedOn) : null;
+          const isStale = retrieved && (now - retrieved > ONE_EIGHTY_DAYS_MS);
+
+          const openLinkText = getStr('openSourceLink', 'Open official source');
+          metaHtml = `
+            <div class="govguide-whats-next-meta">
+              <span>${src.title || 'Official Document'} (${src.retrievedOn || ''})</span>
+              ${src.url ? `<a href="${src.url}" target="_blank" rel="noopener noreferrer">${openLinkText} ↗</a>` : ''}
+            </div>
+          `;
+
+          if (isStale) {
+            warningHtml = `<span class="govguide-stale-warning">⚠️ ${getStr('staleWarning', 'This may have changed. Check the portal.')}</span>`;
+          }
+        } else if (trust === 'unverified') {
+          warningHtml = `<span class="govguide-unverified-warning">ℹ️ ${getStr('unverifiedNoticeDetail', 'Not verified. The portal may be different.')}</span>`;
+        }
+
+        itemEl.innerHTML = `
+          <div class="govguide-whats-next-title-row">
+            <span class="govguide-whats-next-title">${idx + 1}. ${titleText}</span>
+            <span class="govguide-trust-badge trust-${trust}">${trustBadgeText}</span>
+          </div>
+          <div class="govguide-whats-next-desc">${descText}</div>
+          ${warningHtml}
+          ${metaHtml}
+        `;
+
+        this.whatsNextItemsContainer.appendChild(itemEl);
+      });
+
+      this.whatsNextDrawer.style.display = 'block';
+    }
+
+    hideWhatsNext() {
+      this.whatsNextDrawer.style.display = 'none';
     }
 
     updateChipLabels(langCode) {

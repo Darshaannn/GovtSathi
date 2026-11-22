@@ -348,13 +348,40 @@
         this.mascot.setExpression('thinking');
         this.speech.speak(text.speech);
       } else if (chipType === 'next') {
-        const text = this._resolveContentField(this.currentPage.next, {
-          en: "Once you complete this screen, the portal will move to the next step of your application.",
-          hi: "इस स्क्रीन को पूरा करने के बाद, पोर्टल आपके आवेदन के अगले चरण पर जाएगा।"
-        });
-        this.bubble.bodyEl.textContent = text.bubble;
-        this.mascot.setExpression('pointing');
-        this.speech.speak(text.speech);
+        const whatsNextItems = (this.currentPage && this.currentPage.whatsNext) || (this.currentFlow && this.currentFlow.whatsNext) || null;
+
+        if (whatsNextItems && whatsNextItems.length > 0) {
+          this.bubble.showWhatsNext(whatsNextItems);
+          
+          // Check if any item in the preview is unverified
+          const hasUnverified = whatsNextItems.some(it => it.trust === 'unverified');
+          if (hasUnverified) {
+            this.mascot.setExpression('confused');
+          } else {
+            this.mascot.setExpression('thinking');
+          }
+
+          // Spoken version: say trust level in plain words only ONCE per list, not for every item
+          const spokenIntro = (window.GovGuideLanguages && window.GovGuideLanguages.LanguageRegistry)
+            ? window.GovGuideLanguages.LanguageRegistry.getString('spokenTrustIntro', this.currentLanguage)
+            : "Here is what happens next. This part is from the official instructions.";
+          
+          const titlesSummary = whatsNextItems.map((it, idx) => {
+            const t = typeof it.title === 'object' ? (it.title[this.currentLanguage] || it.title.en || '') : String(it.title || '');
+            return `${idx + 1}: ${t}`;
+          }).join('. ');
+
+          const fullSpoken = `${spokenIntro} ${titlesSummary}`;
+          this.speech.speak(fullSpoken);
+        } else {
+          const text = this._resolveContentField(this.currentPage.next, {
+            en: "Once you complete this screen, the portal will move to the next step of your application.",
+            hi: "इस स्क्रीन को पूरा करने के बाद, पोर्टल आपके आवेदन के अगले चरण पर जाएगा।"
+          });
+          this.bubble.bodyEl.textContent = text.bubble;
+          this.mascot.setExpression('pointing');
+          this.speech.speak(text.speech);
+        }
       }
     }
 
